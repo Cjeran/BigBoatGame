@@ -45,13 +45,19 @@ namespace BigBoatGame
                     ns = new Screens.MenuScreen();
                     break;
                 case "GameScreen":
-                  //  ns = new GameScreen();
+                    ns = new Screens.GameScreen();
                     break;
                 case "HighScreen":
-                   // ns = new HighScreen();
+                    ns = new Screens.HighScreen();
+                    break;
+                case "HowScreen":
+                    ns = new Screens.HowScreen();
                     break;
                 case "NameScreen":
                    // ns = new NameScreen1();
+                    break;
+                case "EndScreen":
+                     ns = new Screens.EndScreen();
                     break;
             }
             //centres on the screen

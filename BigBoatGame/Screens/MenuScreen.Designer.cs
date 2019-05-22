@@ -28,13 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.startButton = new System.Windows.Forms.Button();
+            this.highscoreButton = new System.Windows.Forms.Button();
+            this.howButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.flipperButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(61, 684);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.TabIndex = 0;
+            this.startButton.Text = "stort button";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // highscoreButton
+            // 
+            this.highscoreButton.Location = new System.Drawing.Point(191, 684);
+            this.highscoreButton.Name = "highscoreButton";
+            this.highscoreButton.Size = new System.Drawing.Size(75, 23);
+            this.highscoreButton.TabIndex = 1;
+            this.highscoreButton.Text = "HIGH button";
+            this.highscoreButton.UseVisualStyleBackColor = true;
+            this.highscoreButton.Click += new System.EventHandler(this.highscoreButton_Click);
+            // 
+            // howButton
+            // 
+            this.howButton.Location = new System.Drawing.Point(612, 684);
+            this.howButton.Name = "howButton";
+            this.howButton.Size = new System.Drawing.Size(75, 23);
+            this.howButton.TabIndex = 2;
+            this.howButton.Text = "sHow";
+            this.howButton.UseVisualStyleBackColor = true;
+            this.howButton.Click += new System.EventHandler(this.howButton_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(1028, 684);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "leave";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // flipperButton
+            // 
+            this.flipperButton.Location = new System.Drawing.Point(1130, 73);
+            this.flipperButton.Name = "flipperButton";
+            this.flipperButton.Size = new System.Drawing.Size(75, 23);
+            this.flipperButton.TabIndex = 4;
+            this.flipperButton.Text = "Flop";
+            this.flipperButton.UseVisualStyleBackColor = true;
             // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.flipperButton);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.howButton);
+            this.Controls.Add(this.highscoreButton);
+            this.Controls.Add(this.startButton);
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(1300, 750);
             this.ResumeLayout(false);
@@ -42,5 +101,11 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button highscoreButton;
+        private System.Windows.Forms.Button howButton;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button flipperButton;
     }
 }
