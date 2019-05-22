@@ -36,5 +36,10 @@ namespace BigBoatGame.Screens
         {
             GameForm.ChangeScreen(this, "HowScreen");
         }
+
+        private void flipperButton_Click(object sender, EventArgs e)
+        {
+            GameForm.yank = false;
+        }
     }
 }
