@@ -62,6 +62,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +76,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_DownLeft.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_DownRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_UpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dauntless_UpRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_DownLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_DownRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_UpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_UpRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
