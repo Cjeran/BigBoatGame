@@ -70,7 +70,7 @@
             this.Controls.Add(this.carrierBox);
             this.Controls.Add(this.continueButton);
             this.Name = "EndScreen";
-            this.Size = new System.Drawing.Size(1300, 750);
+            this.Size = new System.Drawing.Size(1300, 730);
             ((System.ComponentModel.ISupportInitialize)(this.carrierBox)).EndInit();
             this.ResumeLayout(false);
 
