@@ -127,52 +127,52 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_Down.png" />
+    <None Include="Resources\Images\Dauntless_Down.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_DownLeft.PNG" />
+    <None Include="Resources\Images\Dauntless_DownLeft.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_DownRight.png" />
+    <None Include="Resources\Images\Dauntless_DownRight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_Left.png" />
+    <None Include="Resources\Images\Dauntless_Left.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_Right.png" />
+    <None Include="Resources\Images\Dauntless_Right.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_Up.png" />
+    <None Include="Resources\Images\Dauntless_Up.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_UpLeft.png" />
+    <None Include="Resources\Images\Dauntless_UpLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dauntless_UpRight.png" />
+    <None Include="Resources\Images\Dauntless_UpRight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_Down.png" />
+    <None Include="Resources\Images\F4F-4_Down.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_DownLeft.png" />
+    <None Include="Resources\Images\F4F-4_DownLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_DownRight.png" />
+    <None Include="Resources\Images\F4F-4_DownRight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_Left.png" />
+    <None Include="Resources\Images\F4F-4_Left.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_Right.png" />
+    <None Include="Resources\Images\F4F-4_Right.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_Up.png" />
+    <None Include="Resources\Images\F4F-4_Up.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_UpLeft.png" />
+    <None Include="Resources\Images\F4F-4_UpLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_UpRight.png" />
+    <None Include="Resources\Images\F4F-4_UpRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
