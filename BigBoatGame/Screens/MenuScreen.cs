@@ -39,7 +39,7 @@ namespace BigBoatGame.Screens
 
         private void flipperButton_Click(object sender, EventArgs e)
         {
-            GameForm.yank = false;
+            GameForm.yank = !GameForm.yank;
         }
     }
 }

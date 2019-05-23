@@ -16,5 +16,10 @@ namespace BigBoatGame.Screens
         {
             InitializeComponent();
         }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            GameForm.ChangeScreen(this, "MenuScreen");
+        }
     }
 }

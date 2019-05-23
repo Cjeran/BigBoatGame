@@ -39,6 +39,7 @@
             this.menuButton.TabIndex = 0;
             this.menuButton.Text = "button1";
             this.menuButton.UseVisualStyleBackColor = true;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // HowScreen
             // 
@@ -47,7 +48,7 @@
             this.BackColor = System.Drawing.Color.Coral;
             this.Controls.Add(this.menuButton);
             this.Name = "HowScreen";
-            this.Size = new System.Drawing.Size(1300, 750);
+            this.Size = new System.Drawing.Size(1300, 730);
             this.ResumeLayout(false);
 
         }

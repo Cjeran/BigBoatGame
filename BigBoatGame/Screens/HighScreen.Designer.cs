@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.highLabel = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // highLabel
@@ -40,10 +41,19 @@
             this.highLabel.TabIndex = 0;
             this.highLabel.Text = "hightime";
             // 
+            // scoreLabel
+            // 
+            this.scoreLabel.Location = new System.Drawing.Point(112, 106);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(183, 324);
+            this.scoreLabel.TabIndex = 1;
+            this.scoreLabel.Text = "label1";
+            // 
             // HighScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.highLabel);
             this.Name = "HighScreen";
             this.Size = new System.Drawing.Size(1300, 750);
@@ -55,5 +65,6 @@
         #endregion
 
         private System.Windows.Forms.Label highLabel;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }
