@@ -26,7 +26,7 @@ namespace BigBoatGame
             f.Controls.Remove(this);
             UserControl ns = null;
             ns = new Screens.MenuScreen();
-            ns.Location = new Point((f.Width - ns.Width) / 2, (f.Height - ns.Height) / 2);
+            ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2)-30);
             f.Controls.Add(ns);
             ns.Focus();
             
@@ -62,7 +62,7 @@ namespace BigBoatGame
                     break;
             }
             //centres on the screen
-            ns.Location = new Point((f.Width - ns.Width) / 2, (f.Height - ns.Height) / 2);
+            ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2) - 30);
 
             f.Controls.Add(ns);
             ns.Focus();

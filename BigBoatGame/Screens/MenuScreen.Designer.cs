@@ -39,7 +39,7 @@
             // 
             this.startButton.Location = new System.Drawing.Point(61, 684);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(75, 23);
+            this.startButton.Size = new System.Drawing.Size(79, 42);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "stort button";
             this.startButton.UseVisualStyleBackColor = true;
@@ -49,7 +49,7 @@
             // 
             this.highscoreButton.Location = new System.Drawing.Point(191, 684);
             this.highscoreButton.Name = "highscoreButton";
-            this.highscoreButton.Size = new System.Drawing.Size(75, 23);
+            this.highscoreButton.Size = new System.Drawing.Size(77, 42);
             this.highscoreButton.TabIndex = 1;
             this.highscoreButton.Text = "HIGH button";
             this.highscoreButton.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // howButton
             // 
-            this.howButton.Location = new System.Drawing.Point(612, 684);
+            this.howButton.Location = new System.Drawing.Point(596, 684);
             this.howButton.Name = "howButton";
-            this.howButton.Size = new System.Drawing.Size(75, 23);
+            this.howButton.Size = new System.Drawing.Size(91, 42);
             this.howButton.TabIndex = 2;
             this.howButton.Text = "sHow";
             this.howButton.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(1028, 684);
+            this.exitButton.Location = new System.Drawing.Point(1004, 684);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.Size = new System.Drawing.Size(99, 42);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "leave";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // 
             // flipperButton
             // 
-            this.flipperButton.Location = new System.Drawing.Point(1130, 73);
+            this.flipperButton.Location = new System.Drawing.Point(1110, 73);
             this.flipperButton.Name = "flipperButton";
-            this.flipperButton.Size = new System.Drawing.Size(75, 23);
+            this.flipperButton.Size = new System.Drawing.Size(95, 55);
             this.flipperButton.TabIndex = 4;
             this.flipperButton.Text = "Flop";
             this.flipperButton.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.Controls.Add(this.highscoreButton);
             this.Controls.Add(this.startButton);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(1300, 750);
+            this.Size = new System.Drawing.Size(1300, 730);
             this.ResumeLayout(false);
 
         }
