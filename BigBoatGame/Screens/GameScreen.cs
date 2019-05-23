@@ -12,9 +12,24 @@ namespace BigBoatGame.Screens
 {
     public partial class GameScreen : UserControl
     {
+        int waves;
+        public static int carrierHP;
+
         public GameScreen()
         {
             InitializeComponent();
+            OnStart();
+           
         }
-    }
+
+        public void OnStart()
+        {
+            waves = 0;
+            carrierHP = 100;
+            gameTimer.Start();
+        }
+            
+
+            
+}
 }
