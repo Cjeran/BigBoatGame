@@ -43,6 +43,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1300, 750);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.ResumeLayout(false);
 
         }
