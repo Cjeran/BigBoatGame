@@ -83,6 +83,7 @@
             this.flipperButton.TabIndex = 4;
             this.flipperButton.Text = "Flop";
             this.flipperButton.UseVisualStyleBackColor = true;
+            this.flipperButton.Click += new System.EventHandler(this.flipperButton_Click);
             // 
             // MenuScreen
             // 

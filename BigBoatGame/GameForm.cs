@@ -12,6 +12,7 @@ namespace BigBoatGame
 {
     public partial class GameForm : Form
     {
+        public static bool yank = true;
         public GameForm()
         {
             InitializeComponent();
