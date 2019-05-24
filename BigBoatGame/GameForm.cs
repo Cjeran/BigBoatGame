@@ -20,7 +20,7 @@ namespace BigBoatGame
         {
             InitializeComponent();
             OnStart();
-            scores = new List<Score>();
+            
         }
         public void OnStart()
         {
@@ -36,25 +36,29 @@ namespace BigBoatGame
         }
         public void XmlRead()
         {
+            scores = new List<Score>();
             reader = XmlReader.Create("Resources/HighScores.xml");
+
+            reader.ReadToFollowing("HighScores");
             while (reader.Read())
             {
-
-                //: create a day object
+                
+                // create a score object
                 Score s = new Score();
-                //: fill score object with required data
-                reader.ReadToFollowing("HighScores");
+                // fill score object with required data
+               
                 reader.ReadToFollowing("player");
                 s.name = reader.GetAttribute("name"); 
-                s.number = reader.GetAttribute("number");
+                s.number = reader.GetAttribute("score");
 
-                //TODO: if day object not null add to the days list
+                //
                 if (s != null)
                 {
                     scores.Add(s);
                 }
             }
             reader.Close();
+            scores.RemoveAt(10); // fix bug 
         }
     
 

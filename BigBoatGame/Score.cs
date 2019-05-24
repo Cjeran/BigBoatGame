@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigBoatGame
 {
-    class Score
+    public class Score
     {
         public string name,number;
         public Score()

@@ -96,7 +96,7 @@
             this.Controls.Add(this.highscoreButton);
             this.Controls.Add(this.startButton);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(1300, 730);
+            this.Size = new System.Drawing.Size(1300, 734);
             this.ResumeLayout(false);
 
         }
