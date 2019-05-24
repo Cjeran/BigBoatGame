@@ -56,5 +56,13 @@ namespace BigBoatGame.Screens
                 }
             }
         }
+
+        private void GameScreen_Paint(object sender, PaintEventArgs e)
+        {
+            foreach(Plane p in players)
+            {
+                e.Graphics.DrawImage(p.playerImage(),p.planeRect);
+            }
+        }
     }
 }
