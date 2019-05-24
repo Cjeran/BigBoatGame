@@ -15,6 +15,7 @@ namespace BigBoatGame.Screens
         List<Plane> players = new List<Plane>();
         int waves;
         public static int carrierHP;
+        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown;
 
         public GameScreen()
         {
@@ -54,6 +55,56 @@ namespace BigBoatGame.Screens
                 {
                     p.speed++;
                 }
+            }
+
+            foreach (Plane p in players)
+            {
+                if (rightKeyDown)
+                {
+                    p.Turn(true);
+                }
+                else if (leftKeyDown)
+                {
+                    p.Turn(false);
+                }
+            }
+        }
+
+        private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    upKeyDown = true;
+                    break;
+                case Keys.Right:
+                    rightKeyDown = true;
+                    break;
+                case Keys.Left:
+                    leftKeyDown = true;
+                    break;
+                case Keys.Down:
+                    downKeyDown = true;
+                    break;
+            }
+        }
+
+        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    upKeyDown = false;
+                    break;
+                case Keys.Right:
+                    rightKeyDown = false;
+                    break;
+                case Keys.Left:
+                    leftKeyDown = false;
+                    break;
+                case Keys.Down:
+                    downKeyDown = false;
+                    break;
             }
         }
     }
