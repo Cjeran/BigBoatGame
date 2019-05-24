@@ -175,5 +175,10 @@
   <ItemGroup>
     <None Include="Resources\Images\F4F-4_UpRight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Highscores.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

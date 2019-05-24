@@ -19,6 +19,7 @@ namespace BigBoatGame.Screens
         }
         private void OnStart()
         {
+            foreach (Score s in GameForm.scores)
             highLabel.Text = "hehehehe";
         }
     }

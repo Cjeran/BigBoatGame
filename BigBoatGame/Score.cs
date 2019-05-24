@@ -8,11 +8,10 @@ namespace BigBoatGame
 {
     class Score
     {
-        string name,number;
-        public Score(string _name,string _number)
+        public string name,number;
+        public Score()
         {
-            name = _name;
-            number = _number;
+            name = number = "";
         }
     }
 }
