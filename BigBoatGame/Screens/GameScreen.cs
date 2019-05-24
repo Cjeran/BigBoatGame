@@ -15,12 +15,12 @@ namespace BigBoatGame.Screens
         List<Plane> players = new List<Plane>();
         int waves;
         public static int carrierHP;
-
+        
         public GameScreen()
         {
             InitializeComponent();
             OnStart();
-           
+            DoubleBuffered = true;
         }
 
         public void OnStart()
@@ -31,12 +31,12 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-                Plane player = new Plane(8, 50, 50, 0, 0, 3, false, 50, 50);
+                Plane player = new Plane(8, 250, 250, 0, 0, 3, false, 50, 50);
                 players.Add(player);
             } 
             else
             {
-                Plane player = new Plane(5, 50, 50, 0, 0, 2, true, 50, 50);
+                Plane player = new Plane(5, 250, 250, 0, 0, 2, true, 50, 50);
                 players.Add(player);
             }
                    
@@ -50,11 +50,9 @@ namespace BigBoatGame.Screens
             foreach (Plane p in players)
             {
                 p.Move();
-                if (p.speed > 10)
-                {
-                    p.speed++;
-                }
             }
+
+            Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
