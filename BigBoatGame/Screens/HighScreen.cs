@@ -15,6 +15,12 @@ namespace BigBoatGame.Screens
         public HighScreen()
         {
             InitializeComponent();
+            OnStart();
+        }
+        private void OnStart()
+        {
+            highLabel.Text = "hehehehe";
         }
     }
+
 }

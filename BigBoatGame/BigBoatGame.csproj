@@ -60,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Score.cs" />
     <Compile Include="Screens\EndScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>

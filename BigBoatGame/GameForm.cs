@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BigBoatGame
 {
     public partial class GameForm : Form
     {
+       // List<>
+        XmlReader reader; 
         public static bool yank = true;
         public GameForm()
         {
             InitializeComponent();
             OnStart();
-           
+            
         }
         public void OnStart()
         {
@@ -31,6 +34,21 @@ namespace BigBoatGame
             ns.Focus();
             
         }
+        public void XmlRead()
+        {
+            reader = XmlReader.Create("HighScore.xml");
+            while (reader.Read())
+
+            {
+                if (reader.NodeType == XmlNodeType.Text) // read
+                {
+                    //
+                }
+
+            }
+            reader.Close();
+        }
+    
 
         public static void ChangeScreen(UserControl current, string next)
         {
