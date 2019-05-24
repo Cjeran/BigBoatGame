@@ -42,37 +42,43 @@ namespace BigBoatGame
 
         public void Move()
         {
+            if (speed < 10)
+            {
+                speed++;
+            }
             switch (direction)
             {
                 case Direction.Up:
-                    y = y - speed;
+                    planeRect.Y -= speed;
                     break;
                 case Direction.UpRight:
-                    y = y - speed / 2;
-                    x = x + speed / 2;
+                    planeRect.Y -= speed / 2;
+                    planeRect.X += speed / 2;
                     break;
                 case Direction.Right:
-                    x = x + speed;
+                    planeRect.X += speed;
                     break;
                 case Direction.DownRight:
-                    y = y + speed / 2;
-                    x = x + speed / 2;
+                    planeRect.Y -= speed / 2;
+                    planeRect.X += speed / 2;
                     break;
                 case Direction.Down:
-                    y = y + speed;
+                    planeRect.Y += speed;
                     break;
                 case Direction.DownLeft:
-                    y = y + speed / 2;
-                    x = x - speed / 2;
+                    planeRect.Y += speed / 2;
+                    planeRect.X -= speed / 2;
                     break;
                 case Direction.Left:
-                    x = x - speed;
+                    planeRect.X -= speed;
                     break;
                 case Direction.UpLeft:
-                    y = y - speed / 2;
-                    x = x - speed / 2;
+                    planeRect.Y -= speed / 2;
+                    planeRect.X -= speed / 2;
                     break;
             }
+
+           
         }
 
         public void Shoot(int shootDirection, bool primary)
