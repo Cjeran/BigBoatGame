@@ -41,19 +41,19 @@ namespace BigBoatGame.Screens
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            writer = XmlWriter.Create("HighScores.xml"); // make reader
+            writer = XmlWriter.Create("Resources/HighScores.xml"); // make reader
             writer.WriteStartElement("HighScores");
 
             for(int i = 0; i < 10; i++)
             { 
 
                 //Write sub-elements
-                writer.WriteStartElement("score");
-                writer.WriteAttributeString("name", GameForm.scores[i].name);
+                writer.WriteStartElement("player");
                 writer.WriteAttributeString("number", GameForm.scores[i].number);
+                writer.WriteAttributeString("name", GameForm.scores[i].name);
                 writer.WriteEndElement();
             }
-            // end the element
+            
             writer.WriteEndElement();
             // end the root element
 

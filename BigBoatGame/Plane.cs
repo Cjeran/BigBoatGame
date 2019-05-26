@@ -40,18 +40,7 @@ namespace BigBoatGame
             ammo1 = 40;
             ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
-            switch (_name)
-            {
-                case "F4F-4":
-
-                    break;
-                case "A6M2":
-
-                    break;
-                case "Dauntless":
-
-                    break;
-            }
+            name = _name;
         }
 
         public void Move()
@@ -97,13 +86,15 @@ namespace BigBoatGame
 
         public void Shoot(int shootDirection, bool primary)
         {
-
+            Bullet b = new Bullet(x, y, true);
         }
          
 
-        public Image playerImage()
+        public Image playerImage()             // i hate this but it works
         {
-               
+            switch (name)
+            {
+                case "F4F-4":
                     switch (direction)
                     {
                         case Direction.Up:
@@ -122,7 +113,77 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_Left;
                         case Direction.UpLeft:
                             return Properties.Resources.F4F_4_UpLeft;
-                    }  
+                    }
+                    return Properties.Resources.F4F_4_Up;
+                    
+                case "A6M2":
+                    switch (direction)                // TODO chage images
+                    {
+                        case Direction.Up:
+                            return Properties.Resources.F4F_4_Up;
+                        case Direction.UpRight:
+                            return Properties.Resources.F4F_4_UpRight;
+                        case Direction.Right:
+                            return Properties.Resources.F4F_4_Right;
+                        case Direction.DownRight:
+                            return Properties.Resources.F4F_4_DownRight;
+                        case Direction.Down:
+                            return Properties.Resources.F4F_4_Down;
+                        case Direction.DownLeft:
+                            return Properties.Resources.F4F_4_DownLeft;
+                        case Direction.Left:
+                            return Properties.Resources.F4F_4_Left;
+                        case Direction.UpLeft:
+                            return Properties.Resources.F4F_4_UpLeft;
+                    }
+                    return Properties.Resources.F4F_4_Up;
+                    
+                case "Dauntless":
+                    switch (direction)
+                    {
+                        case Direction.Up:
+                            return Properties.Resources.Dauntless_Up;
+                        case Direction.UpRight:
+                            return Properties.Resources.Dauntless_UpRight;
+                        case Direction.Right:
+                            return Properties.Resources.Dauntless_Right;
+                        case Direction.DownRight:
+                            return Properties.Resources.Dauntless_DownRight;
+                        case Direction.Down:
+                            return Properties.Resources.Dauntless_Down;
+                        case Direction.DownLeft:
+                            return Properties.Resources.Dauntless_DownLeft;
+                        case Direction.Left:
+                            return Properties.Resources.Dauntless_Left;
+                        case Direction.UpLeft:
+                            return Properties.Resources.Dauntless_UpLeft;
+                    }
+                    return Properties.Resources.Dauntless_Up;
+                    
+                case "J7m2":
+                    switch (direction)                        // TODO change image directory when images are done
+                    {
+                        case Direction.Up:
+                            return Properties.Resources.F4F_4_Up;
+                        case Direction.UpRight:
+                            return Properties.Resources.F4F_4_UpRight;
+                        case Direction.Right:
+                            return Properties.Resources.F4F_4_Right;
+                        case Direction.DownRight:
+                            return Properties.Resources.F4F_4_DownRight;
+                        case Direction.Down:
+                            return Properties.Resources.F4F_4_Down;
+                        case Direction.DownLeft:
+                            return Properties.Resources.F4F_4_DownLeft;
+                        case Direction.Left:
+                            return Properties.Resources.F4F_4_Left;
+                        case Direction.UpLeft:
+                            return Properties.Resources.F4F_4_UpLeft;
+                    }
+                    return Properties.Resources.F4F_4_Up;
+                   
+
+            }
             return Properties.Resources.F4F_4_Up;
         }
 
