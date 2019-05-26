@@ -19,8 +19,17 @@ namespace BigBoatGame.Screens
         }
         private void OnStart()
         {
-            foreach (Score s in GameForm.scores)
-            highLabel.Text = "hehehehe";
+            
+            for (int i = 0; i < 10;i++)
+            {
+                scoreLabel.Text += "\n"+GameForm.scores[i].name+" - "+ GameForm.scores[i].number;
+            }
+            
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            GameForm.ChangeScreen(this, "MenuScreen");
         }
     }
 

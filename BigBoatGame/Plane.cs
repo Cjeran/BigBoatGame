@@ -7,12 +7,14 @@ using System.Drawing;
 
 namespace BigBoatGame
 {
-    class Plane
+    public class Plane
     {
         Direction direction;
         public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter;
         public bool cannon;
         public Rectangle planeRect;
+        string name;
+
 
         public enum Direction
         {
@@ -26,7 +28,7 @@ namespace BigBoatGame
             UpLeft = 7
         }
 
-        public Plane(int _hp, int _x, int _y, int _direction, int _speed, int _gunNumber, bool _cannon, int _ammo1, int _ammo2)
+        public Plane(int _hp, int _x, int _y, int _direction, int _speed, int _gunNumber, bool _cannon,string _name)
         {
             hp = _hp;
             x = _x;
@@ -35,9 +37,21 @@ namespace BigBoatGame
             direction = (Direction)_direction;
             gunNumber = _gunNumber;
             cannon = _cannon;
-            ammo1 = _ammo1;
-            ammo2 = _ammo2;
+            ammo1 = 40;
+            ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
+            switch (_name)
+            {
+                case "F4F-4":
+
+                    break;
+                case "A6M2":
+
+                    break;
+                case "Dauntless":
+
+                    break;
+            }
         }
 
         public void Move()
@@ -85,11 +99,11 @@ namespace BigBoatGame
         {
 
         }
+         
 
         public Image playerImage()
         {
-                if (GameForm.yank)
-                {
+               
                     switch (direction)
                     {
                         case Direction.Up:
@@ -108,31 +122,7 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_Left;
                         case Direction.UpLeft:
                             return Properties.Resources.F4F_4_UpLeft;
-                    }
-                }
-                else
-                {
-                    switch (direction)
-                    {
-                        case Direction.Up:
-                            return Properties.Resources.F4F_4_Up;
-                        case Direction.UpRight:
-                            return Properties.Resources.F4F_4_UpRight;
-                        case Direction.Right:
-                            return Properties.Resources.F4F_4_Right;
-                        case Direction.DownRight:
-                            return Properties.Resources.F4F_4_DownRight;
-                        case Direction.Down:
-                            return Properties.Resources.F4F_4_Down;
-                        case Direction.DownLeft:
-                            return Properties.Resources.F4F_4_DownLeft;
-                        case Direction.Left:
-                            return Properties.Resources.F4F_4_Left;
-                        case Direction.UpLeft:
-                            return Properties.Resources.F4F_4_UpLeft;
-                    }
-
-                }
+                    }  
             return Properties.Resources.F4F_4_Up;
         }
 
