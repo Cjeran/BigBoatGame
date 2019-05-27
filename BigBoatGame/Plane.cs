@@ -41,6 +41,7 @@ namespace BigBoatGame
             ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
             name = _name;
+            turnTimer = 0;
         }
 
         public void Move()
@@ -81,7 +82,7 @@ namespace BigBoatGame
                     break;
             }
 
-           
+
         }
 
         public void Turn(Boolean right)
@@ -90,29 +91,37 @@ namespace BigBoatGame
             {
                 switch (direction)
                 {
-                    case Direction.up:
-                        direction = Direction.upRight;
+                    case Direction.Up:
+                        direction = Direction.UpRight;
+                        turnTimer = 0;
                         break;
-                    case Direction.upRight:
-                        direction = Direction.right;
+                    case Direction.UpRight:
+                        direction = Direction.Right;
+                        turnTimer = 0;
                         break;
-                    case Direction.right:
-                        direction = Direction.downRight;
+                    case Direction.Right:
+                        direction = Direction.DownRight;
+                        turnTimer = 0;
                         break;
-                    case Direction.downRight:
-                        direction = Direction.down;
+                    case Direction.DownRight:
+                        direction = Direction.Down;
+                        turnTimer = 0;
                         break;
-                    case Direction.down:
-                        direction = Direction.downLeft;
+                    case Direction.Down:
+                        direction = Direction.DownLeft;
+                        turnTimer = 0;
                         break;
-                    case Direction.downLeft:
-                        direction = Direction.left;
+                    case Direction.DownLeft:
+                        direction = Direction.Left;
+                        turnTimer = 0;
                         break;
-                    case Direction.left:
-                        direction = Direction.upLeft;
+                    case Direction.Left:
+                        direction = Direction.UpLeft;
+                        turnTimer = 0;
                         break;
-                    case Direction.upLeft:
-                        direction = Direction.up;
+                    case Direction.UpLeft:
+                        direction = Direction.Up;
+                        turnTimer = 0;
                         break;
                 }
             }
@@ -120,29 +129,37 @@ namespace BigBoatGame
             {
                 switch (direction)
                 {
-                    case Direction.up:
-                        direction = Direction.upLeft;
+                    case Direction.Up:
+                        direction = Direction.UpLeft;
+                        turnTimer = 0;
                         break;
-                    case Direction.upRight:
-                        direction = Direction.up;
+                    case Direction.UpRight:
+                        direction = Direction.Up;
+                        turnTimer = 0;
                         break;
-                    case Direction.right:
-                        direction = Direction.upRight;
+                    case Direction.Right:
+                        direction = Direction.UpRight;
+                        turnTimer = 0;
                         break;
-                    case Direction.downRight:
-                        direction = Direction.right;
+                    case Direction.DownRight:
+                        direction = Direction.Right;
+                        turnTimer = 0;
                         break;
-                    case Direction.down:
-                        direction = Direction.downRight;
+                    case Direction.Down:
+                        direction = Direction.DownRight;
+                        turnTimer = 0;
                         break;
-                    case Direction.downLeft:
-                        direction = Direction.down;
+                    case Direction.DownLeft:
+                        direction = Direction.Down;
+                        turnTimer = 0;
                         break;
-                    case Direction.left:
-                        direction = Direction.downLeft;
+                    case Direction.Left:
+                        direction = Direction.DownLeft;
+                        turnTimer = 0;
                         break;
-                    case Direction.upLeft:
-                        direction = Direction.left;
+                    case Direction.UpLeft:
+                        direction = Direction.Left;
+                        turnTimer = 0;
                         break;
                 }
             }
@@ -152,7 +169,7 @@ namespace BigBoatGame
         {
             Bullet b = new Bullet(x, y, true);
         }
-         
+
 
         public Image playerImage()             // i hate this but it works
         {
@@ -179,7 +196,7 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                    
+
                 case "A6M2":
                     switch (direction)                // TODO chage images
                     {
@@ -201,7 +218,7 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                    
+
                 case "Dauntless":
                     switch (direction)
                     {
@@ -223,7 +240,7 @@ namespace BigBoatGame
                             return Properties.Resources.Dauntless_UpLeft;
                     }
                     return Properties.Resources.Dauntless_Up;
-                    
+
                 case "B7A2":
                     switch (direction)                        // TODO change image directory when images are done
                     {
@@ -245,20 +262,16 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                   
+
 
             }
             return Properties.Resources.F4F_4_Up;
         }
-        }
+
 
         public void Update()
         {
             turnTimer++;
         }
     }
-
-
-    }
-
 }
