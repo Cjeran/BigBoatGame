@@ -10,7 +10,8 @@ namespace BigBoatGame
     public class Plane
     {
         Direction direction;
-        public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed;
+        public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed, turnTimer;
+
         public bool cannon;
         public Rectangle planeRect;
         string name;
@@ -41,6 +42,7 @@ namespace BigBoatGame
             ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
             name = _name;
+            turnTimer = 0;
             switch (name)
             {
                 case "F4F_4":
@@ -68,6 +70,7 @@ namespace BigBoatGame
                     gunNumber = 1;
                     break;
             }
+
         }
 
         public void Move()
@@ -108,14 +111,94 @@ namespace BigBoatGame
                     break;
             }
 
-           
+
+        }
+
+        public void Turn(Boolean right)
+        {
+            if (turnTimer > 30 && right)
+            {
+                switch (direction)
+                {
+                    case Direction.Up:
+                        direction = Direction.UpRight;
+                        turnTimer = 0;
+                        break;
+                    case Direction.UpRight:
+                        direction = Direction.Right;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Right:
+                        direction = Direction.DownRight;
+                        turnTimer = 0;
+                        break;
+                    case Direction.DownRight:
+                        direction = Direction.Down;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Down:
+                        direction = Direction.DownLeft;
+                        turnTimer = 0;
+                        break;
+                    case Direction.DownLeft:
+                        direction = Direction.Left;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Left:
+                        direction = Direction.UpLeft;
+                        turnTimer = 0;
+                        break;
+                    case Direction.UpLeft:
+                        direction = Direction.Up;
+                        turnTimer = 0;
+                        break;
+                }
+            }
+            else if (turnTimer > 30 && !right)
+            {
+                switch (direction)
+                {
+                    case Direction.Up:
+                        direction = Direction.UpLeft;
+                        turnTimer = 0;
+                        break;
+                    case Direction.UpRight:
+                        direction = Direction.Up;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Right:
+                        direction = Direction.UpRight;
+                        turnTimer = 0;
+                        break;
+                    case Direction.DownRight:
+                        direction = Direction.Right;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Down:
+                        direction = Direction.DownRight;
+                        turnTimer = 0;
+                        break;
+                    case Direction.DownLeft:
+                        direction = Direction.Down;
+                        turnTimer = 0;
+                        break;
+                    case Direction.Left:
+                        direction = Direction.DownLeft;
+                        turnTimer = 0;
+                        break;
+                    case Direction.UpLeft:
+                        direction = Direction.Left;
+                        turnTimer = 0;
+                        break;
+                }
+            }
         }
 
         public void Shoot(int shootDirection, bool primary)
         {
             Bullet b = new Bullet(x, y, true);
         }
-         
+
 
         public Image playerImage()             // i hate this but it works
         {
@@ -142,7 +225,7 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                    
+
                 case "A6M2":
                     switch (direction)                // TODO chage images
                     {
@@ -164,7 +247,7 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                    
+
                 case "Dauntless":
                     switch (direction)
                     {
@@ -186,7 +269,7 @@ namespace BigBoatGame
                             return Properties.Resources.Dauntless_UpLeft;
                     }
                     return Properties.Resources.Dauntless_Up;
-                    
+
                 case "B7A2":
                     switch (direction)                        // TODO change image directory when images are done
                     {
@@ -208,13 +291,16 @@ namespace BigBoatGame
                             return Properties.Resources.F4F_4_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
-                   
+
 
             }
             return Properties.Resources.F4F_4_Up;
         }
 
 
+        public void Update()
+        {
+            turnTimer++;
+        }
     }
-
 }
