@@ -13,9 +13,13 @@ namespace BigBoatGame.Screens
     public partial class GameScreen : UserControl
     {
         List<Plane> players = new List<Plane>();
+        List<Carrier> carriers = new List<Carrier>();
+        List<Bullet> bullets = new List<Bullet>();
+
         int waves;
         public static int carrierHP;
-        
+        public Carrier carrier;
+        public Plane player;
         public GameScreen()
         {
             InitializeComponent();
@@ -31,16 +35,15 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-                Plane player = new Plane(8, 250, 250, 0, 0, 3, false, 50, 50);
-                players.Add(player);
+                
+                players.Add(player = new Plane(8, 250, 250, 0, 0, 3, false, "F4F_4"));
             } 
             else
-            {
-                Plane player = new Plane(5, 250, 250, 0, 0, 2, true, 50, 50);
-                players.Add(player);
+            { 
+                players.Add(player = new Plane(5, 250, 250, 0, 0, 2, true, "A6M2"));
             }
-                   
-
+            carriers.Add(carrier = new Carrier(400, 400));
+            
 
 
         }
@@ -50,6 +53,10 @@ namespace BigBoatGame.Screens
             foreach (Plane p in players)
             {
                 p.Move();
+            }
+            foreach (Bullet b in bullets)
+            {
+               // b.Move();
             }
 
             Refresh();
@@ -61,6 +68,11 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawImage(p.playerImage(),p.planeRect);
             }
+            foreach (Carrier c in carriers)
+            {
+                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+            }
+            //e.Graphics.DrawImage(Properties.Resources.Dauntless_Down );
         }
     }
 }
