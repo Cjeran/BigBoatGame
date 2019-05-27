@@ -12,6 +12,10 @@ namespace BigBoatGame.Screens
 {
     public partial class GameScreen : UserControl
     {
+        SolidBrush hudBrush = new SolidBrush(Color.Moccasin);
+        Brush textBrush = new SolidBrush(Color.Black);
+        Font textFont = new Font("Mongolian Baiti", 12);
+
         List<Plane> players = new List<Plane>();
         List<Carrier> carriers = new List<Carrier>();
         List<Bullet> bullets = new List<Bullet>();
@@ -72,7 +76,22 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
             }
-            //e.Graphics.DrawImage(Properties.Resources.Dauntless_Down );
+
+            //HUD
+            e.Graphics.FillRectangle(hudBrush, this.Width-200, 0, 200, this.Height);
+            e.Graphics.DrawString("Score: " + GameForm.score, textFont, textBrush, this.Width - 150, 50);
+            e.Graphics.DrawString("Carrier HP: " + carrierHP, textFont, textBrush, this.Width - 150, 75);
+            e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
+            if (GameForm.yank)
+            {
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
+            }
+            else
+            {
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
+            }
+            e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
+            e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
         }
     }
 }

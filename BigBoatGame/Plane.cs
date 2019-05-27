@@ -28,7 +28,7 @@ namespace BigBoatGame
             UpLeft = 7
         }
 
-        public Plane(int _hp, int _x, int _y, int _direction, int _speed, int _gunNumber, bool _cannon,string _name)
+        public Plane(int _hp, int _x, int _y, int _direction, int _speed, int _gunNumber, bool _cannon, string _name)
         {
             hp = _hp;
             x = _x;
@@ -160,7 +160,7 @@ namespace BigBoatGame
                     }
                     return Properties.Resources.Dauntless_Up;
                     
-                case "J7m2":
+                case "B7A2":
                     switch (direction)                        // TODO change image directory when images are done
                     {
                         case Direction.Up:
