@@ -36,11 +36,11 @@ namespace BigBoatGame.Screens
             if (GameForm.yank == true)
             {
                 
-                players.Add(player = new Plane(8, 250, 250, 0, 0, 3, false, "F4F_4"));
+                players.Add(player = new Plane(8, 250, 250, 0, "F4F_4"));
             } 
             else
             { 
-                players.Add(player = new Plane(5, 250, 250, 0, 0, 2, true, "A6M2"));
+                players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
             carriers.Add(carrier = new Carrier(400, 400));
             
