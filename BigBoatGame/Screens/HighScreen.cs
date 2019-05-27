@@ -15,6 +15,22 @@ namespace BigBoatGame.Screens
         public HighScreen()
         {
             InitializeComponent();
+            OnStart();
+        }
+        private void OnStart()
+        {
+            
+            for (int i = 0; i < 10;i++)
+            {
+                scoreLabel.Text += "\n"+GameForm.scores[i].name+" - "+ GameForm.scores[i].number;
+            }
+            
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            GameForm.ChangeScreen(this, "MenuScreen");
         }
     }
+
 }
