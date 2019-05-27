@@ -13,6 +13,8 @@ namespace BigBoatGame.Screens
     public partial class GameScreen : UserControl
     {
         List<Plane> players = new List<Plane>();
+        List<Plane> enemies = new List<Plane>();
+        List<Bullet> bullets = new List<Bullet>();
         int waves;
         public static int carrierHP;
         
@@ -50,6 +52,10 @@ namespace BigBoatGame.Screens
             foreach (Plane p in players)
             {
                 p.Move();
+            }
+            foreach (Plane a in enemies)
+            {
+                a.Move();
             }
 
             Refresh();

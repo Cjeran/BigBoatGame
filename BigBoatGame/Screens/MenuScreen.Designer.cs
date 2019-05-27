@@ -37,6 +37,7 @@
             // 
             // startButton
             // 
+            this.startButton.Font = new System.Drawing.Font("OfficePlanning", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.startButton.Location = new System.Drawing.Point(61, 684);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(79, 42);
@@ -77,6 +78,7 @@
             // 
             // flipperButton
             // 
+            this.flipperButton.Font = new System.Drawing.Font("OfficePlanning", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.flipperButton.Location = new System.Drawing.Point(1110, 73);
             this.flipperButton.Name = "flipperButton";
             this.flipperButton.Size = new System.Drawing.Size(95, 55);
