@@ -13,11 +13,11 @@ namespace BigBoatGame
         public bool cannon;
         public Rectangle bulletRect;
 
-        public Bullet(int _x, int _y, int _speed, bool _cannon)
+        public Bullet(int _x, int _y, bool _cannon)// need some way to know if the plane has power up 
         {
             x = _x;
             y = _y;
-            speed = _speed;
+            speed = 15;  // * by power ups 
             cannon = _cannon;
             bulletRect = new Rectangle(x, y, 50, 50);
         }

@@ -37,8 +37,7 @@
             // 
             // startButton
             // 
-            this.startButton.Font = new System.Drawing.Font("OfficePlanning", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.startButton.Location = new System.Drawing.Point(61, 684);
+            this.startButton.Location = new System.Drawing.Point(63, 649);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(79, 42);
             this.startButton.TabIndex = 0;
@@ -48,7 +47,7 @@
             // 
             // highscoreButton
             // 
-            this.highscoreButton.Location = new System.Drawing.Point(191, 684);
+            this.highscoreButton.Location = new System.Drawing.Point(338, 649);
             this.highscoreButton.Name = "highscoreButton";
             this.highscoreButton.Size = new System.Drawing.Size(77, 42);
             this.highscoreButton.TabIndex = 1;
@@ -58,7 +57,7 @@
             // 
             // howButton
             // 
-            this.howButton.Location = new System.Drawing.Point(596, 684);
+            this.howButton.Location = new System.Drawing.Point(800, 649);
             this.howButton.Name = "howButton";
             this.howButton.Size = new System.Drawing.Size(91, 42);
             this.howButton.TabIndex = 2;
@@ -68,7 +67,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(1004, 684);
+            this.exitButton.Location = new System.Drawing.Point(1106, 649);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(99, 42);
             this.exitButton.TabIndex = 3;
@@ -98,7 +97,7 @@
             this.Controls.Add(this.highscoreButton);
             this.Controls.Add(this.startButton);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(1300, 730);
+            this.Size = new System.Drawing.Size(1300, 734);
             this.ResumeLayout(false);
 
         }

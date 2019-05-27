@@ -269,5 +269,27 @@ namespace BigBoatGame.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;HighScores&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;aac&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;acc&quot;/&gt;
+        ///  &lt;player score =&quot;1&quot; name =&quot;abb&quot;/&gt;
+        ///&lt;/HighScores&gt;.
+        /// </summary>
+        internal static string Highscores {
+            get {
+                return ResourceManager.GetString("Highscores", resourceCulture);
+            }
+        }
     }
 }
