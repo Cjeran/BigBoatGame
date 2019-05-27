@@ -61,7 +61,7 @@ namespace BigBoatGame
                     ammo2 = 0;
                     gunNumber = 1;
                     break;
-                case "J7M2":
+                case "B7A2":
                     cannon = false;
                     ammo1 = 40;
                     ammo2 = 0;
@@ -187,7 +187,7 @@ namespace BigBoatGame
                     }
                     return Properties.Resources.Dauntless_Up;
                     
-                case "J7M2":
+                case "B7A2":
                     switch (direction)                        // TODO change image directory when images are done
                     {
                         case Direction.Up:

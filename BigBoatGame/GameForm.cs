@@ -14,6 +14,7 @@ namespace BigBoatGame
     public partial class GameForm : Form
     {
         public static List<Score> scores;
+        public static int score;
         XmlReader reader; 
         public static bool yank = true;
         public GameForm()

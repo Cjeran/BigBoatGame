@@ -77,6 +77,7 @@
             // 
             // flipperButton
             // 
+            this.flipperButton.Font = new System.Drawing.Font("OfficePlanning", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.flipperButton.Location = new System.Drawing.Point(1110, 73);
             this.flipperButton.Name = "flipperButton";
             this.flipperButton.Size = new System.Drawing.Size(95, 55);
@@ -89,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.Moccasin;
             this.Controls.Add(this.flipperButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.howButton);
