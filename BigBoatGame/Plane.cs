@@ -36,7 +36,7 @@ namespace BigBoatGame
             y = _y;
             speed = 0;
             direction = (Direction)_direction;
-            
+            maxSpeed = 6;
            
             ammo1 = 40;
             ammo2 = 20;
@@ -75,7 +75,7 @@ namespace BigBoatGame
 
         public void Move()
         {
-            if (speed < 10)
+            if (speed < maxSpeed)
             {
                 speed++;
             }
@@ -85,14 +85,14 @@ namespace BigBoatGame
                     planeRect.Y -= speed;
                     break;
                 case Direction.UpRight:
-                    planeRect.Y -= speed / 2;
-                    planeRect.X += speed / 2;
+                    planeRect.Y -= speed * 2/3;
+                    planeRect.X += speed * 2/3;
                     break;
                 case Direction.Right:
                     planeRect.X += speed;
                     break;
                 case Direction.DownRight:
-                    planeRect.Y -= speed / 2;
+                    planeRect.Y += speed / 2;
                     planeRect.X += speed / 2;
                     break;
                 case Direction.Down:
@@ -116,7 +116,7 @@ namespace BigBoatGame
 
         public void Turn(Boolean right)
         {
-            if (turnTimer > 30 && right)
+            if (turnTimer > 10 && right)
             {
                 switch (direction)
                 {
@@ -154,7 +154,7 @@ namespace BigBoatGame
                         break;
                 }
             }
-            else if (turnTimer > 30 && !right)
+            else if (turnTimer > 10 & !right)
             {
                 switch (direction)
                 {
@@ -196,7 +196,7 @@ namespace BigBoatGame
 
         public void Shoot(int shootDirection, bool primary)
         {
-            Bullet b = new Bullet(x, y, true);
+            Bullet b = new Bullet(x, y, true,shootDirection);
         }
 
 

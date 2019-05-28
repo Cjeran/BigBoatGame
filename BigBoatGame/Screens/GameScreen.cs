@@ -41,61 +41,17 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-                
-                players.Add(player = new Plane(8, 250, 250, 0, "F4F_4"));
-            } 
+                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4"));
+            }
             else
-            { 
+            {
                 players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
             carriers.Add(carrier = new Carrier(400, 400));
-            
+
 
 
         }
-
-        private void gameTimer_Tick(object sender, EventArgs e)
-        {
-            foreach (Plane p in players)
-            {
-                p.Move();
-            }
-            foreach (Bullet b in bullets)
-            {
-               // b.Move();
-            }
-
-            Refresh();
-        }
-
-        private void GameScreen_Paint(object sender, PaintEventArgs e)
-        {
-            foreach(Plane p in players)
-            {
-                e.Graphics.DrawImage(p.playerImage(),p.planeRect);
-            }
-            foreach (Carrier c in carriers)
-            {
-                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
-            }
-
-            //HUD
-            e.Graphics.FillRectangle(hudBrush, this.Width-200, 0, 200, this.Height);
-            e.Graphics.DrawString("Score: " + GameForm.score, textFont, textBrush, this.Width - 150, 50);
-            e.Graphics.DrawString("Carrier HP: " + carrierHP, textFont, textBrush, this.Width - 150, 75);
-            e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
-            if (GameForm.yank)
-            {
-                e.Graphics.DrawString("Speed: " + player.speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
-            }
-            else
-            {
-                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
-            }
-            e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
-            e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
-        }
-
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -115,6 +71,7 @@ namespace BigBoatGame.Screens
             }
         }
 
+
         private void GameScreen_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -133,5 +90,65 @@ namespace BigBoatGame.Screens
                     break;
             }
         }
+
+
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            if (rightKeyDown)
+            {
+                players[0].Turn(true);
+            }
+            else if (leftKeyDown)
+            {
+                players[0].Turn(false);
+            }
+
+            foreach (Plane p in players)
+            {
+                p.Update();
+                p.Move();
+                p.Update();
+            }
+            foreach (Bullet b in bullets)
+            {
+               b.Move();
+
+            }
+
+            Refresh();
+        }
+
+        private void GameScreen_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (Plane p in players)
+            {
+                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
+            }
+            foreach (Carrier c in carriers)
+            {
+                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+            }
+            foreach (Bullet b in bullets)
+            {
+                e.Graphics.FillRectangle(hudBrush, b.x, b.y, 10, 20);
+            }
+
+            //HUD
+            e.Graphics.FillRectangle(hudBrush, this.Width - 200, 0, 200, this.Height);
+            e.Graphics.DrawString("Score: " + GameForm.score, textFont, textBrush, this.Width - 150, 50);
+            e.Graphics.DrawString("Carrier HP: " + carrierHP, textFont, textBrush, this.Width - 150, 75);
+            e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
+            if (GameForm.yank)
+            {
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
+            }
+            else
+            {
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
+            }
+            e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
+            e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+        }
+
     }
 }
