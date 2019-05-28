@@ -24,7 +24,7 @@ namespace BigBoatGame.Screens
         public static int carrierHP;
         public Carrier carrier;
         public Plane player;
-        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown;
+        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, spaceKeyDown;
 
         public GameScreen()
         {
@@ -59,10 +59,14 @@ namespace BigBoatGame.Screens
             {
                 p.Update();
                 p.Move();
+                if (spaceKeyDown)
+                {
+                    //p.Shoot();
+                }
             }
             foreach (Bullet b in bullets)
             {
-               b.Move();
+               //b.Move();
             }
 
             Refresh();
@@ -116,6 +120,9 @@ namespace BigBoatGame.Screens
                 case Keys.Down:
                     downKeyDown = true;
                     break;
+                case Keys.Space:
+                    spaceKeyDown = true;
+                    break;
             }
         }
 
@@ -134,6 +141,9 @@ namespace BigBoatGame.Screens
                     break;
                 case Keys.Down:
                     downKeyDown = false;
+                    break;
+                case Keys.Space:
+                    spaceKeyDown = false;
                     break;
             }
         }
