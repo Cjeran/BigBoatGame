@@ -42,27 +42,27 @@ namespace BigBoatGame.Screens
             if (GameForm.yank == true)
             {
                 
-                players.Add(player = new Plane(8, 250, 250, 0, "F4F_4"));
+                players.Add(player = new Plane(8, 400, 400, 0, "F4F_4"));
             } 
             else
             { 
-                players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
+                players.Add(player = new Plane(5, 400, 400, 0, "A6M2"));
             }
             carriers.Add(carrier = new Carrier(400, 400));
-            
-
-
         }
+
+
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             foreach (Plane p in players)
             {
+                p.Update();
                 p.Move();
             }
             foreach (Bullet b in bullets)
             {
-               // b.Move();
+               b.Move();
             }
 
             Refresh();
@@ -77,6 +77,10 @@ namespace BigBoatGame.Screens
             foreach (Carrier c in carriers)
             {
                 e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+            }
+            foreach (Bullet b in bullets)
+            {
+                e.Graphics.FillRectangle(hudBrush, b.x, b.y, 10, 20);
             }
 
             //HUD
