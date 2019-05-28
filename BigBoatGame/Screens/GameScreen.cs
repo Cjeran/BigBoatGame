@@ -115,12 +115,12 @@ namespace BigBoatGame.Screens
                 p.Move();
                 if (spaceKeyDown)
                 {
-                    //p.Shoot();
+                    bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
                 }
             }
             foreach (Bullet b in bullets)
             {
-               //b.Move();
+               b.Move();
             }
 
             Refresh();
