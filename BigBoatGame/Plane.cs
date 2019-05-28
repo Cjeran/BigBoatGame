@@ -10,8 +10,8 @@ namespace BigBoatGame
     public class Plane
     {
         Direction direction;
-        public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed, turnTimer;
-
+        public int hp, x, y, speed;
+        int gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult;
         public bool cannon;
         public Rectangle planeRect;
         string name;
@@ -37,7 +37,8 @@ namespace BigBoatGame
             speed = 0;
             direction = (Direction)_direction;
             maxSpeed = 6;
-           
+            speedMult = 2 / 3;
+
             ammo1 = 40;
             ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
@@ -85,29 +86,29 @@ namespace BigBoatGame
                     planeRect.Y -= speed;
                     break;
                 case Direction.UpRight:
-                    planeRect.Y -= speed * 2/3;
-                    planeRect.X += speed * 2/3;
+                    planeRect.Y -= speed * speedMult;
+                    planeRect.X += speed * speedMult;
                     break;
                 case Direction.Right:
                     planeRect.X += speed;
                     break;
                 case Direction.DownRight:
-                    planeRect.Y += speed / 2;
-                    planeRect.X += speed / 2;
+                    planeRect.Y += speed * speedMult;
+                    planeRect.X += speed * speedMult;
                     break;
                 case Direction.Down:
                     planeRect.Y += speed;
                     break;
                 case Direction.DownLeft:
-                    planeRect.Y += speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y += speed * speedMult;
+                    planeRect.X -= speed * speedMult;
                     break;
                 case Direction.Left:
                     planeRect.X -= speed;
                     break;
                 case Direction.UpLeft:
-                    planeRect.Y -= speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y -= speed * speedMult;
+                    planeRect.X -= speed * speedMult;
                     break;
             }
 
