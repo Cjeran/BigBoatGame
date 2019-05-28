@@ -118,6 +118,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10 && right)
             {
+                speed--;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -156,6 +157,7 @@ namespace BigBoatGame
             }
             else if (turnTimer > 10 & !right)
             {
+                speed--;
                 switch (direction)
                 {
                     case Direction.Up:
