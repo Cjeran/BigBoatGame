@@ -68,6 +68,9 @@ namespace BigBoatGame.Screens
                 case Keys.Down:
                     downKeyDown = true;
                     break;
+                case Keys.Space:
+                    spaceKeyDown = true;
+                    break;
             }
         }
 
@@ -87,6 +90,9 @@ namespace BigBoatGame.Screens
                     break;
                 case Keys.Down:
                     downKeyDown = false;
+                    break;
+                case Keys.Space:
+                    spaceKeyDown = false;
                     break;
             }
         }
@@ -150,50 +156,6 @@ namespace BigBoatGame.Screens
             }
             e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
             e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
-        }
-
-        private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    upKeyDown = true;
-                    break;
-                case Keys.Right:
-                    rightKeyDown = true;
-                    break;
-                case Keys.Left:
-                    leftKeyDown = true;
-                    break;
-                case Keys.Down:
-                    downKeyDown = true;
-                    break;
-                case Keys.Space:
-                    spaceKeyDown = true;
-                    break;
-            }
-        }
-
-        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    upKeyDown = false;
-                    break;
-                case Keys.Right:
-                    rightKeyDown = false;
-                    break;
-                case Keys.Left:
-                    leftKeyDown = false;
-                    break;
-                case Keys.Down:
-                    downKeyDown = false;
-                    break;
-                case Keys.Space:
-                    spaceKeyDown = false;
-                    break;
-            }
         }
     }
 }
