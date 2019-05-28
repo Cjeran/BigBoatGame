@@ -204,7 +204,7 @@ namespace BigBoatGame
         {
             switch (name)
             {
-                case "F4F-4":
+                case "F4F_4":
                     switch (direction)
                     {
                         case Direction.Up:
