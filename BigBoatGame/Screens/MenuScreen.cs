@@ -36,7 +36,18 @@ namespace BigBoatGame.Screens
 
         private void flipperButton_Click(object sender, EventArgs e)
         {
+          
             GameForm.yank = !GameForm.yank;
+            if (GameForm.yank)
+            {
+                flipperButton.Text = "USA";
+                flipperButton.BackColor = Color.Navy;
+            }
+            else
+            {
+                flipperButton.Text = "japapapapapanes";
+                flipperButton.BackColor = Color.Red;
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
