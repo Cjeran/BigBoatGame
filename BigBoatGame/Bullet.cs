@@ -7,22 +7,23 @@ using System.Drawing;
 
 namespace BigBoatGame
 {
-    class Bullet
+    public class Bullet
     {
-        public int x, y, speed;
+        public int x, y, speed, direction;
         public bool cannon;
         public Rectangle bulletRect;
 
-        public Bullet(int _x, int _y, bool _cannon,int direction)// need some way to know if the plane has power up 
+        public Bullet(int _x, int _y, bool _cannon,int _direction)// need some way to know if the plane has power up 
         {
             x = _x;
             y = _y;
             speed = 15;  // * by power ups 
             cannon = _cannon;
             bulletRect = new Rectangle(x, y, 50, 50);
+            direction = _direction;
         }
 
-        public void Move(int direction)
+        public void Move()
         {
             switch (direction)
             {
