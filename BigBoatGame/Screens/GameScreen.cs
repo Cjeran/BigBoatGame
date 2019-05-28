@@ -41,20 +41,68 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-                
-                players.Add(player = new Plane(8, 400, 400, 0, "F4F_4"));
-            } 
+                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4"));
+            }
             else
-            { 
-                players.Add(player = new Plane(5, 400, 400, 0, "A6M2"));
+            {
+                players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
             carriers.Add(carrier = new Carrier(400, 400));
+
+
+
+        }
+        private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    upKeyDown = true;
+                    break;
+                case Keys.Right:
+                    rightKeyDown = true;
+                    break;
+                case Keys.Left:
+                    leftKeyDown = true;
+                    break;
+                case Keys.Down:
+                    downKeyDown = true;
+                    break;
+            }
         }
 
+
+        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    upKeyDown = false;
+                    break;
+                case Keys.Right:
+                    rightKeyDown = false;
+                    break;
+                case Keys.Left:
+                    leftKeyDown = false;
+                    break;
+                case Keys.Down:
+                    downKeyDown = false;
+                    break;
+            }
+        }
 
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            if (rightKeyDown)
+            {
+                players[0].Turn(true);
+            }
+            else if (leftKeyDown)
+            {
+                players[0].Turn(false);
+            }
+
             foreach (Plane p in players)
             {
                 p.Update();
@@ -74,9 +122,9 @@ namespace BigBoatGame.Screens
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            foreach(Plane p in players)
+            foreach (Plane p in players)
             {
-                e.Graphics.DrawImage(p.playerImage(),p.planeRect);
+                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
             }
             foreach (Carrier c in carriers)
             {
@@ -88,7 +136,7 @@ namespace BigBoatGame.Screens
             }
 
             //HUD
-            e.Graphics.FillRectangle(hudBrush, this.Width-200, 0, 200, this.Height);
+            e.Graphics.FillRectangle(hudBrush, this.Width - 200, 0, 200, this.Height);
             e.Graphics.DrawString("Score: " + GameForm.score, textFont, textBrush, this.Width - 150, 50);
             e.Graphics.DrawString("Carrier HP: " + carrierHP, textFont, textBrush, this.Width - 150, 75);
             e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);

@@ -92,7 +92,7 @@ namespace BigBoatGame
                     planeRect.X += speed;
                     break;
                 case Direction.DownRight:
-                    planeRect.Y -= speed / 2;
+                    planeRect.Y += speed / 2;
                     planeRect.X += speed / 2;
                     break;
                 case Direction.Down:
@@ -116,7 +116,7 @@ namespace BigBoatGame
 
         public void Turn(Boolean right)
         {
-            if (turnTimer > 30 && right)
+            if (turnTimer > 10 && right)
             {
                 switch (direction)
                 {
@@ -154,7 +154,7 @@ namespace BigBoatGame
                         break;
                 }
             }
-            else if (turnTimer > 30 && !right)
+            else if (turnTimer > 10 & !right)
             {
                 switch (direction)
                 {
