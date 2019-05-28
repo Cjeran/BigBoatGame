@@ -9,7 +9,7 @@ namespace BigBoatGame
 {
     public class Plane
     {
-        Direction direction;
+        public Direction direction;
         public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed, turnTimer;
 
         public bool cannon;
