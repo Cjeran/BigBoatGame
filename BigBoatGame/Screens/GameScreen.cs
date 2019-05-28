@@ -41,7 +41,6 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-
                 players.Add(player = new Plane(8, 250, 550, 0, "F4F_4"));
             }
             else
@@ -71,6 +70,7 @@ namespace BigBoatGame.Screens
                     break;
             }
         }
+
 
         private void GameScreen_KeyUp(object sender, KeyEventArgs e)
         {
@@ -105,12 +105,14 @@ namespace BigBoatGame.Screens
 
             foreach (Plane p in players)
             {
+                p.Update();
                 p.Move();
                 p.Update();
             }
             foreach (Bullet b in bullets)
             {
-                // b.Move();
+               b.Move();
+
             }
 
             Refresh();
@@ -125,6 +127,10 @@ namespace BigBoatGame.Screens
             foreach (Carrier c in carriers)
             {
                 e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+            }
+            foreach (Bullet b in bullets)
+            {
+                e.Graphics.FillRectangle(hudBrush, b.x, b.y, 10, 20);
             }
 
             //HUD
