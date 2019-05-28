@@ -10,8 +10,8 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed, turnTimer;
-
+        public int hp, x, y, speed, ammo1, ammo2;
+        int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult;
         public bool cannon;
         public Rectangle planeRect;
         string name;
@@ -38,6 +38,7 @@ namespace BigBoatGame
             direction = (Direction)_direction;
             maxSpeed = 6;
            
+
             ammo1 = 40;
             ammo2 = 20;
             planeRect = new Rectangle(x, y, 50, 50);
@@ -92,22 +93,22 @@ namespace BigBoatGame
                     planeRect.X += speed;
                     break;
                 case Direction.DownRight:
-                    planeRect.Y += speed / 2;
-                    planeRect.X += speed / 2;
+                    planeRect.Y += speed * 2/3;
+                    planeRect.X += speed * 2/3;
                     break;
                 case Direction.Down:
                     planeRect.Y += speed;
                     break;
                 case Direction.DownLeft:
-                    planeRect.Y += speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y += speed * 2/3;
+                    planeRect.X -= speed * 2/3;
                     break;
                 case Direction.Left:
                     planeRect.X -= speed;
                     break;
                 case Direction.UpLeft:
-                    planeRect.Y -= speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y -= speed * 2/3;
+                    planeRect.X -= speed * 2/3;
                     break;
             }
 
@@ -196,9 +197,10 @@ namespace BigBoatGame
             }
         }
 
-        public void Shoot(int shootDirection, bool primary)
+        public Bullet Shoot(int shootDirection, bool primary)
         {
-            Bullet b = new Bullet(x, y, true,shootDirection);
+            Bullet b = new Bullet(planeRect.X, planeRect.Y, true,shootDirection);
+            return b;
         }
 
 

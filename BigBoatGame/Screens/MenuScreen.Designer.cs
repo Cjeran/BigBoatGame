@@ -77,13 +77,15 @@
             // 
             // flipperButton
             // 
-            this.flipperButton.Font = new System.Drawing.Font("OfficePlanning", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.flipperButton.Location = new System.Drawing.Point(1110, 73);
+            this.flipperButton.BackColor = System.Drawing.Color.Navy;
+            this.flipperButton.Font = new System.Drawing.Font("OfficePlanning", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.flipperButton.ForeColor = System.Drawing.Color.White;
+            this.flipperButton.Location = new System.Drawing.Point(1078, 73);
             this.flipperButton.Name = "flipperButton";
-            this.flipperButton.Size = new System.Drawing.Size(95, 55);
+            this.flipperButton.Size = new System.Drawing.Size(127, 74);
             this.flipperButton.TabIndex = 4;
             this.flipperButton.Text = "Flop";
-            this.flipperButton.UseVisualStyleBackColor = true;
+            this.flipperButton.UseVisualStyleBackColor = false;
             this.flipperButton.Click += new System.EventHandler(this.flipperButton_Click);
             // 
             // MenuScreen
