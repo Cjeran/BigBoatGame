@@ -14,5 +14,9 @@ namespace BigBoatGame
             rect = new Rectangle(_x,_y,80,150);
 
         }
+        public Boolean Colision(Plane p)
+        {
+            return (rect.IntersectsWith(p.planeRect));
+        }
     }
 }
