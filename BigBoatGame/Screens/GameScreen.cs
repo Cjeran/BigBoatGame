@@ -145,7 +145,7 @@ namespace BigBoatGame.Screens
                 }
                 foreach (Plane en in enemies)
                 {
-                    
+                    p.Colision(en);
                 }
             }
             foreach (Bullet b in bullets)
