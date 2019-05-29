@@ -23,6 +23,10 @@ namespace BigBoatGame.Screens
         {
             GameForm.ChangeScreen(this, "GameScreen");
         }
+        private void vsButton_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void highscoreButton_Click(object sender, EventArgs e)
         {
@@ -74,5 +78,7 @@ namespace BigBoatGame.Screens
 
             Application.Exit();
         }
+
+      
     }
 }

@@ -33,6 +33,7 @@
             this.howButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.flipperButton = new System.Windows.Forms.Button();
+            this.vsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startButton
@@ -47,9 +48,9 @@
             // 
             // highscoreButton
             // 
-            this.highscoreButton.Location = new System.Drawing.Point(338, 649);
+            this.highscoreButton.Location = new System.Drawing.Point(520, 649);
             this.highscoreButton.Name = "highscoreButton";
-            this.highscoreButton.Size = new System.Drawing.Size(77, 42);
+            this.highscoreButton.Size = new System.Drawing.Size(106, 42);
             this.highscoreButton.TabIndex = 1;
             this.highscoreButton.Text = "HIGH button";
             this.highscoreButton.UseVisualStyleBackColor = true;
@@ -88,11 +89,22 @@
             this.flipperButton.UseVisualStyleBackColor = false;
             this.flipperButton.Click += new System.EventHandler(this.flipperButton_Click);
             // 
+            // vsButton
+            // 
+            this.vsButton.Location = new System.Drawing.Point(243, 649);
+            this.vsButton.Name = "vsButton";
+            this.vsButton.Size = new System.Drawing.Size(79, 42);
+            this.vsButton.TabIndex = 5;
+            this.vsButton.Text = "VS MODE";
+            this.vsButton.UseVisualStyleBackColor = true;
+            this.vsButton.Click += new System.EventHandler(this.vsButton_Click);
+            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
+            this.Controls.Add(this.vsButton);
             this.Controls.Add(this.flipperButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.howButton);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Button howButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button flipperButton;
+        private System.Windows.Forms.Button vsButton;
     }
 }
