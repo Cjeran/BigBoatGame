@@ -10,7 +10,7 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, ammo1, ammo2;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate;
         int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult;
         public bool cannon;
         public Rectangle planeRect;
@@ -44,6 +44,9 @@ namespace BigBoatGame
             planeRect = new Rectangle(x, y, 50, 50);
             name = _name;
             turnTimer = 0;
+            shotClock = 0;
+            fireRate = 5;
+
             switch (name)
             {
                 case "F4F_4":
@@ -197,8 +200,9 @@ namespace BigBoatGame
 
         public Bullet Shoot(int shootDirection, bool primary)
         {
-            Bullet b = new Bullet(planeRect.X, planeRect.Y, true,shootDirection);
-            return b;
+                shotClock = 0;
+                Bullet b = new Bullet(planeRect.X, planeRect.Y, true, shootDirection);
+                return b;
         }
 
 
@@ -303,6 +307,7 @@ namespace BigBoatGame
         public void Update()
         {
             turnTimer++;
+            shotClock++;
         }
     }
 }

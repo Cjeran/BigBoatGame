@@ -11,7 +11,7 @@ namespace BigBoatGame
         public Rectangle rect; 
         public Carrier(int _x,int _y)
         {
-            rect = new Rectangle(_x,_y,80,150);
+            rect = new Rectangle(_x,_y,80,450);
 
         }
     }

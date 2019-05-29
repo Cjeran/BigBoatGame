@@ -47,7 +47,7 @@ namespace BigBoatGame.Screens
             {
                 players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
-            carriers.Add(carrier = new Carrier(400, 400));
+            carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
 
 
 
@@ -113,7 +113,7 @@ namespace BigBoatGame.Screens
             {
                 p.Update();
                 p.Move();
-                if (spaceKeyDown)
+                if (spaceKeyDown && p.shotClock > p.fireRate)
                 {
                     bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
                 }
@@ -134,7 +134,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Carrier c in carriers)
             {
-                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.Red), c.rect);
             }
             foreach (Bullet b in bullets)
             {
