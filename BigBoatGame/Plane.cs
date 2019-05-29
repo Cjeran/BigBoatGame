@@ -196,7 +196,10 @@ namespace BigBoatGame
                 }
             }
         }
-
+        public Boolean Colision(Plane p)
+        {
+            return (planeRect.IntersectsWith(p.planeRect));
+        }
         public Bullet Shoot(int shootDirection, bool primary)
         {
             Bullet b = new Bullet(planeRect.X, planeRect.Y, true,shootDirection);
