@@ -19,7 +19,7 @@ namespace BigBoatGame
             y = _y;
             speed = 15;  // * by power ups 
             cannon = _cannon;
-            bulletRect = new Rectangle(x, y, 50, 50);
+            bulletRect = new Rectangle(x, y, 5, 5);
             direction = _direction;
         }
 
