@@ -173,7 +173,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Bullet b in bullets)
             {
-                e.Graphics.FillRectangle(hudBrush, b.bulletRect.X, b.bulletRect.Y, 5, 10);
+                e.Graphics.FillRectangle(hudBrush, b.bulletRect);
             }
 
             //HUD
