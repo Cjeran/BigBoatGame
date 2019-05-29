@@ -143,6 +143,10 @@ namespace BigBoatGame.Screens
                 {
                     bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
                 }
+                foreach (Plane en in enemies)
+                {
+                    
+                }
             }
             foreach (Bullet b in bullets)
             {
