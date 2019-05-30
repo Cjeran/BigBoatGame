@@ -138,10 +138,19 @@ namespace BigBoatGame.Screens
             foreach (Plane p in players)
             {
                 p.Update();
+                p.GunPosition();
                 p.Move();
                 if (spaceKeyDown && p.shotClock > p.fireRate)
                 {
-                    bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
+                    if (p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                    } 
+                    else if (!p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                    }
+                    p.gunSide = !p.gunSide;
                 }
                 foreach (Plane en in enemies)
                 {
@@ -169,6 +178,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane p in players)
             {
+                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.planeRect);
                 e.Graphics.DrawImage(p.playerImage(), p.planeRect);
             }
             foreach (Plane p in enemies)
