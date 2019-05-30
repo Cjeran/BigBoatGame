@@ -122,6 +122,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10 && right)
             {
+                speed--;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -160,6 +161,7 @@ namespace BigBoatGame
             }
             else if (turnTimer > 10 & !right)
             {
+                speed--;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -197,7 +199,10 @@ namespace BigBoatGame
                 }
             }
         }
-
+        public Boolean Colision(Plane p)
+        {
+            return (planeRect.IntersectsWith(p.planeRect));
+        }
         public Bullet Shoot(int shootDirection, bool primary)
         {
                 shotClock = 0;

@@ -17,6 +17,7 @@ namespace BigBoatGame.Screens
         Font textFont = new Font("Mongolian Baiti", 12);
 
         List<Plane> players = new List<Plane>();
+        List<Plane> enemies = new List<Plane>();
         List<Carrier> carriers = new List<Carrier>();
         List<Bullet> bullets = new List<Bullet>();
 
@@ -24,6 +25,7 @@ namespace BigBoatGame.Screens
         public static int carrierHP;
         public Carrier carrier;
         public Plane player;
+        public Plane enemy;
         Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, spaceKeyDown;
 
         public GameScreen()
@@ -100,6 +102,30 @@ namespace BigBoatGame.Screens
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            if (enemies.Count == 0) //New Wave
+            {
+                waves++;
+                if (waves == 6)
+                {
+                    GameOver();
+                }
+                if (GameForm.yank)
+                {
+                    for (int i = 0; i <= waves * 2; i++)
+                    {
+                        enemies.Add(enemy = new Plane(1, 250, 550, 0, "B7A2"));
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i <= waves * 2; i++)
+                    {
+                        enemies.Add(enemy = new Plane(2, 250, 550, 0, "Dauntless"));
+                    }
+                }
+                
+            }
+
             if (rightKeyDown)
             {
                 players[0].Turn(true);
@@ -117,6 +143,10 @@ namespace BigBoatGame.Screens
                 {
                     bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
                 }
+                foreach (Plane en in enemies)
+                {
+                    p.Colision(en);
+                }
             }
             foreach (Bullet b in bullets)
             {
@@ -126,19 +156,28 @@ namespace BigBoatGame.Screens
             Refresh();
         }
 
+        public void GameOver()
+        {
+            GameForm.ChangeScreen(this, "EndScreen");
+        }
+
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            foreach (Carrier c in carriers)
+            {
+                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+            }
             foreach (Plane p in players)
             {
                 e.Graphics.DrawImage(p.playerImage(), p.planeRect);
             }
-            foreach (Carrier c in carriers)
+            foreach (Plane p in enemies)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.Red), c.rect);
+                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
             }
             foreach (Bullet b in bullets)
             {
-                e.Graphics.FillRectangle(hudBrush, b.bulletRect.X, b.bulletRect.Y, 10, 20);
+                e.Graphics.FillRectangle(hudBrush, b.bulletRect);
             }
 
             //HUD
