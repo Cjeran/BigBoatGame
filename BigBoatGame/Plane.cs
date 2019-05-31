@@ -119,6 +119,52 @@ namespace BigBoatGame
 
         }
 
+        public void AutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+                Direction changer = direction;
+
+                if (p.planeRect.X > planeRect.X && p.planeRect.Y + 25 > planeRect.Y && p.planeRect.Y - 25 < planeRect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y + 25 > planeRect.Y && p.planeRect.Y - 25 < planeRect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.planeRect.Y > planeRect.Y && p.planeRect.X + 25 > planeRect.X && p.planeRect.X - 25 < planeRect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.planeRect.Y < planeRect.Y && p.planeRect.X + 25 > planeRect.X && p.planeRect.X - 25 < planeRect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.planeRect.X > planeRect.X && p.planeRect.Y > planeRect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.planeRect.X > planeRect.X && p.planeRect.Y < planeRect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y > planeRect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y < planeRect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    turnTimer = 0;
+                }
+            }
+        }
+
         public void Turn(Boolean right)
         {
             if (turnTimer > 10 && right)

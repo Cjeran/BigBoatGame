@@ -113,7 +113,7 @@ namespace BigBoatGame.Screens
                 {
                     for (int i = 0; i <= waves * 2; i++)
                     {
-                        enemies.Add(enemy = new Plane(1, 250, 550, 0, "B7A2"));
+                        enemies.Add(enemy = new Plane(1, -100, this.Height / 2, 0, "B7A2"));
                     }
                 }
                 else
@@ -133,6 +133,13 @@ namespace BigBoatGame.Screens
             else if (leftKeyDown)
             {
                 players[0].Turn(false);
+            }
+
+            foreach (Plane p in enemies)
+            {
+                p.Update();
+                p.AutoTurn(players[0]);
+                p.Move();
             }
 
             foreach (Plane p in players)
