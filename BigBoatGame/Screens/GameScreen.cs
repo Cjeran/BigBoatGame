@@ -49,7 +49,7 @@ namespace BigBoatGame.Screens
             {
                 players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
-            carriers.Add(carrier = new Carrier(400, 400));
+            carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
 
 
 
@@ -113,7 +113,7 @@ namespace BigBoatGame.Screens
                 {
                     for (int i = 0; i <= waves * 2; i++)
                     {
-                        enemies.Add(enemy = new Plane(1, 250, 550, 0, "B7A2"));
+                        enemies.Add(enemy = new Plane(1, -100, this.Height / 2, 0, "B7A2"));
                     }
                 }
                 else
@@ -135,13 +135,29 @@ namespace BigBoatGame.Screens
                 players[0].Turn(false);
             }
 
+            foreach (Plane p in enemies)
+            {
+                p.Update();
+                p.AutoTurn(players[0]);
+                p.Move();
+            }
+
             foreach (Plane p in players)
             {
                 p.Update();
+                p.GunPosition();
                 p.Move();
-                if (spaceKeyDown)
+                if (spaceKeyDown && p.shotClock > p.fireRate)
                 {
-                    bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
+                    if (p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                    } 
+                    else if (!p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                    }
+                    p.gunSide = !p.gunSide;
                 }
                 foreach (Plane en in enemies)
                 {
@@ -169,6 +185,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane p in players)
             {
+                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.planeRect);
                 e.Graphics.DrawImage(p.playerImage(), p.planeRect);
             }
             foreach (Plane p in enemies)

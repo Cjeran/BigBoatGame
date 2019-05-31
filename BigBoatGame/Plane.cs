@@ -10,10 +10,11 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, ammo1, ammo2;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate;
         int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult;
-        public bool cannon;
+        public bool cannon, gunSide;
         public Rectangle planeRect;
+        public Point leftGun, rightGun;
         string name;
 
 
@@ -44,6 +45,9 @@ namespace BigBoatGame
             planeRect = new Rectangle(x, y, 50, 50);
             name = _name;
             turnTimer = 0;
+            shotClock = 0;
+            fireRate = 5;
+
             switch (name)
             {
                 case "F4F_4":
@@ -113,6 +117,52 @@ namespace BigBoatGame
             }
 
 
+        }
+
+        public void AutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+                Direction changer = direction;
+
+                if (p.planeRect.X > planeRect.X && p.planeRect.Y + 25 > planeRect.Y && p.planeRect.Y - 25 < planeRect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y + 25 > planeRect.Y && p.planeRect.Y - 25 < planeRect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.planeRect.Y > planeRect.Y && p.planeRect.X + 25 > planeRect.X && p.planeRect.X - 25 < planeRect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.planeRect.Y < planeRect.Y && p.planeRect.X + 25 > planeRect.X && p.planeRect.X - 25 < planeRect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.planeRect.X > planeRect.X && p.planeRect.Y > planeRect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.planeRect.X > planeRect.X && p.planeRect.Y < planeRect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y > planeRect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.planeRect.X < planeRect.X && p.planeRect.Y < planeRect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    turnTimer = 0;
+                }
+            }
         }
 
         public void Turn(Boolean right)
@@ -200,12 +250,62 @@ namespace BigBoatGame
         {
             return (planeRect.IntersectsWith(p.planeRect));
         }
-        public Bullet Shoot(int shootDirection, bool primary)
+
+        public Bullet Shoot(int shootDirection, bool primary, bool side)
         {
-            Bullet b = new Bullet(planeRect.X, planeRect.Y, true,shootDirection);
-            return b;
+            if (side)
+            {
+                shotClock = 0;
+                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, true, shootDirection);
+                return b;
+            }
+            else if (!side) {
+                shotClock = 0;
+                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, true, shootDirection);
+                return b;
+            }
+            Bullet bullet = new Bullet(planeRect.X + 23, rightGun.Y + 23, true, shootDirection);
+            return bullet;
         }
 
+        public void GunPosition()
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    leftGun = new Point(planeRect.X + 8, planeRect.Y + 12);
+                    rightGun = new Point(planeRect.X + 42, planeRect.Y + 12);
+                    break;
+                case Direction.UpRight:
+                    leftGun = new Point(planeRect.X + 20, planeRect.Y + 7);
+                    rightGun = new Point(planeRect.X + 43, planeRect.Y + 30);
+                    break;
+                case Direction.Right:
+                    leftGun = new Point(planeRect.X + 38 , planeRect.Y + 8);
+                    rightGun = new Point(planeRect.X + 38, planeRect.Y + 42);
+                    break;
+                case Direction.DownRight:
+                    leftGun = new Point(planeRect.X + 43, planeRect.Y + 20);
+                    rightGun = new Point(planeRect.X + 20, planeRect.Y + 43);
+                    break;
+                case Direction.Down:
+                    leftGun = new Point(planeRect.X + 8, planeRect.Y + 38);
+                    rightGun = new Point(planeRect.X + 42, planeRect.Y + 38);
+                    break;
+                case Direction.DownLeft:
+                    leftGun = new Point(planeRect.X + 7, planeRect.Y + 20);
+                    rightGun = new Point(planeRect.X + 30, planeRect.Y + 43);
+                    break;
+                case Direction.Left:
+                    leftGun = new Point(planeRect.X + 8, planeRect.Y + 12);
+                    rightGun = new Point(planeRect.X + 8, planeRect.Y + 38);
+                    break;
+                case Direction.UpLeft:
+                    leftGun = new Point(planeRect.X + 7, planeRect.Y + 30);
+                    rightGun = new Point(planeRect.X + 30, planeRect.Y + 7);
+                    break;
+            }
+        }
 
         public Image playerImage()             // i hate this but it works
         {
@@ -308,6 +408,7 @@ namespace BigBoatGame
         public void Update()
         {
             turnTimer++;
+            shotClock++;
         }
     }
 }
