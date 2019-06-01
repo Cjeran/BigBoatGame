@@ -11,7 +11,7 @@ namespace BigBoatGame
     {
         public int x, y, speed, direction;
         public bool cannon;
-        public Rectangle bulletRect;
+        public Rectangle rect;
 
         public Bullet(int _x, int _y, bool _cannon,int _direction)// need some way to know if the plane has power up 
         {
@@ -19,7 +19,7 @@ namespace BigBoatGame
             y = _y;
             speed = 15;  // * by power ups 
             cannon = _cannon;
-            bulletRect = new Rectangle(x, y, 5, 5);
+            rect = new Rectangle(x, y, 5, 5);
             direction = _direction;
         }
 
@@ -28,32 +28,32 @@ namespace BigBoatGame
             switch (direction)
             {
                 case 0: //up
-                    bulletRect.Y -= speed;
+                    rect.Y -= speed;
                     break;
                 case 1: //upRight
-                    bulletRect.Y -= speed/2;
-                    bulletRect.X += speed / 2;
+                    rect.Y -= speed/2;
+                    rect.X += speed / 2;
                     break;
                 case 2: //right
-                    bulletRect.X += speed;
+                    rect.X += speed;
                     break;
                 case 3: //downRight
-                    bulletRect.Y += speed / 2;
-                    bulletRect.X += speed / 2;
+                    rect.Y += speed / 2;
+                    rect.X += speed / 2;
                     break;
                 case 4: //down
-                    bulletRect.Y += speed;
+                    rect.Y += speed;
                     break;
                 case 5: //downLeft
-                    bulletRect.Y += speed/2;
-                    bulletRect.X -= speed / 2;
+                    rect.Y += speed/2;
+                    rect.X -= speed / 2;
                     break;
                 case 6: //left
-                    bulletRect.X -= speed;
+                    rect.X -= speed;
                     break;
                 case 7: //upLeft
-                    bulletRect.Y -= speed / 2;
-                    bulletRect.X -= speed / 2;
+                    rect.Y -= speed / 2;
+                    rect.X -= speed / 2;
                     break;
             }
         }
