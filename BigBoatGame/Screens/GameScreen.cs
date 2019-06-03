@@ -220,6 +220,7 @@ namespace BigBoatGame.Screens
 
         public void GameOver()
         {
+            GameForm.score = carrier.hp+"";
             GameForm.ChangeScreen(this, "EndScreen");
         }
 

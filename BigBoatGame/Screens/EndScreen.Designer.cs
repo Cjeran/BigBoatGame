@@ -46,8 +46,9 @@
             // 
             // carrierBox
             // 
-            this.carrierBox.Image = global::BigBoatGame.Properties.Resources.F4F_4_Up;
-            this.carrierBox.Location = new System.Drawing.Point(167, 165);
+            this.carrierBox.BackgroundImage = global::BigBoatGame.Properties.Resources.Dauntless_Down;
+            this.carrierBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.carrierBox.Location = new System.Drawing.Point(140, 132);
             this.carrierBox.Name = "carrierBox";
             this.carrierBox.Size = new System.Drawing.Size(168, 350);
             this.carrierBox.TabIndex = 1;
@@ -56,7 +57,7 @@
             // scoreLabel
             // 
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(784, 249);
+            this.scoreLabel.Location = new System.Drawing.Point(383, 132);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(100, 23);
             this.scoreLabel.TabIndex = 2;
