@@ -16,7 +16,7 @@ namespace BigBoatGame
         }
         public Boolean Colision(Plane p)
         {
-            return (rect.IntersectsWith(p.planeRect));
+            return (rect.IntersectsWith(p.rect));
         }
     }
 }
