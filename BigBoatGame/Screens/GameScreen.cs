@@ -12,6 +12,7 @@ namespace BigBoatGame.Screens
 {
     public partial class GameScreen : UserControl
     {
+        Random randGen = new Random();
         SolidBrush hudBrush = new SolidBrush(Color.Moccasin);
         Brush textBrush = new SolidBrush(Color.Black);
         Font textFont = new Font("Mongolian Baiti", 12);
@@ -126,17 +127,11 @@ namespace BigBoatGame.Screens
                 }
                 if (GameForm.yank)
                 {
-                    for (int i = 0; i <= waves * 2; i++)
-                    {
-                        enemies.Add(enemy = new Plane(1, -100, this.Height / 2, 0, "B7A2"));
-                    }
+                    EnemySpawn("B7A2");
                 }
                 else
                 {
-                    for (int i = 0; i <= waves * 2; i++)
-                    {
-                        enemies.Add(enemy = new Plane(2, 250, 550, 0, "Dauntless"));
-                    }
+                    EnemySpawn("Dauntless");
                 }
 
             }
@@ -186,6 +181,41 @@ namespace BigBoatGame.Screens
             }
 
             Refresh();
+        }
+
+        public void EnemySpawn(string type)
+        {
+            for (int i = 0; i <= waves * 2; i++)
+            {
+                int side = randGen.Next(1, 3);
+                int position = randGen.Next(1, 4);
+                if (side == 1)
+                {
+                    side = -100;
+                }
+                else
+                {
+                    side = this.Width + 100;
+                }
+                if (position == 1)
+                {
+                    position = this.Height / 4;
+                }
+                if (position == 1)
+                {
+                    position = this.Height / 4;
+                }
+                else if (position == 2)
+                {
+                    position = this.Height / 2;
+                }
+                else
+                {
+                    position = this.Height * (3 / 4);
+                }
+                enemies.Add(enemy = new Plane(2, side, position, 0, type));
+            }
+                
         }
 
         public void GameOver()
