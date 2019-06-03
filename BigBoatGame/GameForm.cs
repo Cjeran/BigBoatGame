@@ -59,7 +59,7 @@ namespace BigBoatGame
                 }
             }
             reader.Close();
-            scores.RemoveAt(10); // fix bug 
+           // scores.RemoveAt(10); // fix bug 
         }
     
 

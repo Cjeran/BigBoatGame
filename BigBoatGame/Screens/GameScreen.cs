@@ -12,6 +12,7 @@ namespace BigBoatGame.Screens
 {
     public partial class GameScreen : UserControl
     {
+        Random randGen = new Random();
         SolidBrush hudBrush = new SolidBrush(Color.Moccasin);
         Brush textBrush = new SolidBrush(Color.Black);
         Font textFont = new Font("Mongolian Baiti", 12);
@@ -23,6 +24,7 @@ namespace BigBoatGame.Screens
 
         int waves;
         public static int carrierHP;
+        int gameTime;
         public Carrier carrier;
         public Plane player;
         public Plane enemy;
@@ -37,6 +39,7 @@ namespace BigBoatGame.Screens
 
         public void OnStart()
         {
+            gameTime = 0;
             waves = 0;
             carrierHP = 100;
             gameTimer.Start();
@@ -102,6 +105,19 @@ namespace BigBoatGame.Screens
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            gameTime++;
+            foreach (Bullet b in bullets)
+            {
+                foreach (Plane en in enemies)
+                {
+                    if (en.Colision(b))
+                    {
+                        enemies.Remove(en);
+                        break;
+                    }
+                }
+            }
+
             if (enemies.Count == 0) //New Wave
             {
                 waves++;
@@ -111,19 +127,13 @@ namespace BigBoatGame.Screens
                 }
                 if (GameForm.yank)
                 {
-                    for (int i = 0; i <= waves * 2; i++)
-                    {
-                        enemies.Add(enemy = new Plane(1, -100, this.Height / 2, 0, "B7A2"));
-                    }
+                    EnemySpawn("B7A2");
                 }
                 else
                 {
-                    for (int i = 0; i <= waves * 2; i++)
-                    {
-                        enemies.Add(enemy = new Plane(2, 250, 550, 0, "Dauntless"));
-                    }
+                    EnemySpawn("Dauntless");
                 }
-                
+
             }
 
             if (rightKeyDown)
@@ -144,6 +154,7 @@ namespace BigBoatGame.Screens
 
             foreach (Plane p in players)
             {
+                p.OnScreen(gameTime);
                 p.Update();
                 p.GunPosition();
                 p.Move();
@@ -152,7 +163,7 @@ namespace BigBoatGame.Screens
                     if (p.gunSide)
                     {
                         bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
-                    } 
+                    }
                     else if (!p.gunSide)
                     {
                         bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
@@ -166,10 +177,45 @@ namespace BigBoatGame.Screens
             }
             foreach (Bullet b in bullets)
             {
-               b.Move();
+                b.Move();
             }
 
             Refresh();
+        }
+
+        public void EnemySpawn(string type)
+        {
+            for (int i = 0; i <= waves * 2; i++)
+            {
+                int side = randGen.Next(1, 3);
+                int position = randGen.Next(1, 4);
+                if (side == 1)
+                {
+                    side = -100;
+                }
+                else
+                {
+                    side = this.Width + 100;
+                }
+                if (position == 1)
+                {
+                    position = this.Height / 4;
+                }
+                if (position == 1)
+                {
+                    position = this.Height / 4;
+                }
+                else if (position == 2)
+                {
+                    position = this.Height / 2;
+                }
+                else
+                {
+                    position = this.Height * (3 / 4);
+                }
+                enemies.Add(enemy = new Plane(2, side, position, 0, type));
+            }
+                
         }
 
         public void GameOver()
@@ -185,16 +231,16 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane p in players)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.planeRect);
-                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.rect);
+                e.Graphics.DrawImage(p.playerImage(), p.rect);
             }
             foreach (Plane p in enemies)
             {
-                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
+                e.Graphics.DrawImage(p.playerImage(), p.rect);
             }
             foreach (Bullet b in bullets)
             {
-                e.Graphics.FillRectangle(hudBrush, b.bulletRect);
+                e.Graphics.FillRectangle(hudBrush, b.rect);
             }
 
             //HUD

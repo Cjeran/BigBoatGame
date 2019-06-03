@@ -57,6 +57,7 @@ namespace BigBoatGame.Screens
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            GameForm.scores.Add(new Score { name = "DIE", number = "12" });
             writer = XmlWriter.Create("Resources/HighScores.xml"); // make reader
             writer.WriteStartElement("HighScores");
 
