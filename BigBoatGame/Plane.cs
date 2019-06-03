@@ -257,7 +257,7 @@ namespace BigBoatGame
         public void OnScreen(int time)
         {
 
-            if (rect.X > 1300)
+            if (rect.X > 1100)
             {
 
                 direction = Direction.Left;
@@ -270,12 +270,12 @@ namespace BigBoatGame
             if (rect.Y > 750)
             {
 
-                direction = Direction.Down;
+                direction = Direction.Up;
             }
             if (rect.Y < -0)
             {
 
-                direction = Direction.Up;
+                direction = Direction.Down;
             }
 
         }
