@@ -23,6 +23,7 @@ namespace BigBoatGame.Screens
 
         int waves;
         public static int carrierHP;
+        int gameTime;
         public Carrier carrier;
         public Plane player;
         public Plane enemy;
@@ -37,6 +38,7 @@ namespace BigBoatGame.Screens
 
         public void OnStart()
         {
+            gameTime = 0;
             waves = 0;
             carrierHP = 100;
             gameTimer.Start();
@@ -49,7 +51,7 @@ namespace BigBoatGame.Screens
             {
                 players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
-            carriers.Add(carrier = new Carrier(400, 400));
+            carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
 
 
 
@@ -102,6 +104,19 @@ namespace BigBoatGame.Screens
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            gameTime++;
+            foreach (Bullet b in bullets)
+            {
+                foreach (Plane en in enemies)
+                {
+                    if (en.Colision(b))
+                    {
+                        enemies.Remove(en);
+                        break;
+                    }
+                }
+            }
+
             if (enemies.Count == 0) //New Wave
             {
                 waves++;
@@ -113,7 +128,7 @@ namespace BigBoatGame.Screens
                 {
                     for (int i = 0; i <= waves * 2; i++)
                     {
-                        enemies.Add(enemy = new Plane(1, 250, 550, 0, "B7A2"));
+                        enemies.Add(enemy = new Plane(1, -100, this.Height / 2, 0, "B7A2"));
                     }
                 }
                 else
@@ -123,7 +138,7 @@ namespace BigBoatGame.Screens
                         enemies.Add(enemy = new Plane(2, 250, 550, 0, "Dauntless"));
                     }
                 }
-                
+
             }
 
             if (rightKeyDown)
@@ -135,18 +150,39 @@ namespace BigBoatGame.Screens
                 players[0].Turn(false);
             }
 
-            foreach (Plane p in players)
+            foreach (Plane p in enemies)
             {
                 p.Update();
+                p.AutoTurn(players[0]);
                 p.Move();
-                if (spaceKeyDown)
+            }
+
+            foreach (Plane p in players)
+            {
+                p.OnScreen(gameTime);
+                p.Update();
+                p.GunPosition();
+                p.Move();
+                if (spaceKeyDown && p.shotClock > p.fireRate)
                 {
-                    bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true));
+                    if (p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                    }
+                    else if (!p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                    }
+                    p.gunSide = !p.gunSide;
+                }
+                foreach (Plane en in enemies)
+                {
+                    p.Colision(en);
                 }
             }
             foreach (Bullet b in bullets)
             {
-               b.Move();
+                b.Move();
             }
 
             Refresh();
@@ -165,15 +201,16 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane p in players)
             {
-                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.rect);
+                e.Graphics.DrawImage(p.playerImage(), p.rect);
             }
             foreach (Plane p in enemies)
             {
-                e.Graphics.DrawImage(p.playerImage(), p.planeRect);
+                e.Graphics.DrawImage(p.playerImage(), p.rect);
             }
             foreach (Bullet b in bullets)
             {
-                e.Graphics.FillRectangle(hudBrush, b.bulletRect);
+                e.Graphics.FillRectangle(hudBrush, b.rect);
             }
 
             //HUD
