@@ -36,9 +36,9 @@
             // 
             // continueButton
             // 
-            this.continueButton.Location = new System.Drawing.Point(936, 492);
+            this.continueButton.Location = new System.Drawing.Point(826, 461);
             this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(75, 23);
+            this.continueButton.Size = new System.Drawing.Size(185, 54);
             this.continueButton.TabIndex = 0;
             this.continueButton.Text = "CONTINUE";
             this.continueButton.UseVisualStyleBackColor = true;

@@ -112,7 +112,7 @@ namespace BigBoatGame.Screens
                 {
                     if (en.Colision(b))
                     {
-                        if (b.cannon) { en.hp -= 2; }
+                        if (b.cannon) { en.hp -= 2; }/// bullet and enemie plane collision
                         else { en.hp -= 1; }
                         if(en.hp <= 0)
                         {
@@ -179,6 +179,14 @@ namespace BigBoatGame.Screens
                 foreach (Plane en in enemies)
                 {
                     p.Colision(en);
+
+                }
+            }
+            foreach (Plane en in enemies)
+            {
+                if (en.Colision(carrier))
+                {
+                    carrier.hp -= 10;
                 }
             }
            

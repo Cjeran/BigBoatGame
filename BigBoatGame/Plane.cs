@@ -125,7 +125,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10)
             {
-                speed -= 3;
+                
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
@@ -163,6 +163,7 @@ namespace BigBoatGame
 
                 if (changer != direction)
                 {
+                    speed -= 3;
                     turnTimer = 0;
                 }
             }
@@ -256,6 +257,10 @@ namespace BigBoatGame
         public Boolean Colision(Bullet b)
         {
             return (rect.IntersectsWith(b.rect));
+        }
+        public Boolean Colision(Carrier c)
+        {
+            return (rect.IntersectsWith(c.rect));
         }
         public void OnScreen(int time)
         {
