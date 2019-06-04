@@ -185,5 +185,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AmericanFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JapaneseFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Menu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
