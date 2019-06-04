@@ -83,6 +83,16 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap A6M2_Menu {
+            get {
+                object obj = ResourceManager.GetObject("A6M2_Menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap A6M2_Up {
             get {
                 object obj = ResourceManager.GetObject("A6M2_Up", resourceCulture);
@@ -106,6 +116,16 @@ namespace BigBoatGame.Properties {
         internal static System.Drawing.Bitmap A6M2_UpRight {
             get {
                 object obj = ResourceManager.GetObject("A6M2_UpRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AmericanFlag {
+            get {
+                object obj = ResourceManager.GetObject("AmericanFlag", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,6 +263,16 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap F4F_4_Menu {
+            get {
+                object obj = ResourceManager.GetObject("F4F_4_Menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap F4F_4_Right {
             get {
                 object obj = ResourceManager.GetObject("F4F_4_Right", resourceCulture);
@@ -298,6 +328,16 @@ namespace BigBoatGame.Properties {
         internal static string Highscores {
             get {
                 return ResourceManager.GetString("Highscores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap JapaneseFlag {
+            get {
+                object obj = ResourceManager.GetObject("JapaneseFlag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

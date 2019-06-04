@@ -17,7 +17,10 @@ namespace BigBoatGame.Screens
         public MenuScreen()
         {
             InitializeComponent();
-            displayBox.Image = Properties.Resources.F4F_4_UpRight;
+            GameForm.yank = true;
+            flipperButton.Text = "USA";
+            flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+            displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -46,12 +49,14 @@ namespace BigBoatGame.Screens
             if (GameForm.yank)
             {
                 flipperButton.Text = "USA";
-                flipperButton.BackColor = Color.Navy;
+                flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+                displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
             }
             else
             {
-                flipperButton.Text = "japapapapapanes";
-                flipperButton.BackColor = Color.Red;
+                flipperButton.Text = "Japan";
+                flipperButton.BackgroundImage = Properties.Resources.JapaneseFlag;
+                displayBox.BackgroundImage = Properties.Resources.A6M2_Menu;
             }
         }
 

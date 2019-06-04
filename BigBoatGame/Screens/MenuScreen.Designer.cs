@@ -40,64 +40,70 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(63, 649);
+            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.Location = new System.Drawing.Point(864, 173);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(79, 42);
+            this.startButton.Size = new System.Drawing.Size(308, 46);
             this.startButton.TabIndex = 0;
-            this.startButton.Text = "stort button";
+            this.startButton.Text = "Start Game";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // highscoreButton
             // 
-            this.highscoreButton.Location = new System.Drawing.Point(520, 649);
+            this.highscoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highscoreButton.Location = new System.Drawing.Point(864, 314);
             this.highscoreButton.Name = "highscoreButton";
-            this.highscoreButton.Size = new System.Drawing.Size(106, 42);
-            this.highscoreButton.TabIndex = 1;
-            this.highscoreButton.Text = "HIGH button";
+            this.highscoreButton.Size = new System.Drawing.Size(308, 46);
+            this.highscoreButton.TabIndex = 2;
+            this.highscoreButton.Text = "Aces Lounge   (Highscores)";
             this.highscoreButton.UseVisualStyleBackColor = true;
             this.highscoreButton.Click += new System.EventHandler(this.highscoreButton_Click);
             // 
             // howButton
             // 
-            this.howButton.Location = new System.Drawing.Point(800, 649);
+            this.howButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.howButton.Location = new System.Drawing.Point(864, 381);
             this.howButton.Name = "howButton";
-            this.howButton.Size = new System.Drawing.Size(91, 42);
-            this.howButton.TabIndex = 2;
-            this.howButton.Text = "sHow";
+            this.howButton.Size = new System.Drawing.Size(308, 46);
+            this.howButton.TabIndex = 3;
+            this.howButton.Text = "Flight School   (How To Play)";
             this.howButton.UseVisualStyleBackColor = true;
             this.howButton.Click += new System.EventHandler(this.howButton_Click);
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(1106, 649);
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.exitButton.Location = new System.Drawing.Point(885, 665);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(99, 42);
-            this.exitButton.TabIndex = 3;
-            this.exitButton.Text = "leave";
+            this.exitButton.Size = new System.Drawing.Size(265, 46);
+            this.exitButton.TabIndex = 4;
+            this.exitButton.Text = "Retire   (Exit Game)";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // flipperButton
             // 
             this.flipperButton.BackColor = System.Drawing.Color.Navy;
-            this.flipperButton.Font = new System.Drawing.Font("Mongolian Baiti", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flipperButton.ForeColor = System.Drawing.Color.White;
-            this.flipperButton.Location = new System.Drawing.Point(1078, 73);
+            this.flipperButton.Font = new System.Drawing.Font("Mixage Bk BT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipperButton.ForeColor = System.Drawing.Color.Black;
+            this.flipperButton.Location = new System.Drawing.Point(918, 20);
             this.flipperButton.Name = "flipperButton";
-            this.flipperButton.Size = new System.Drawing.Size(127, 74);
-            this.flipperButton.TabIndex = 4;
+            this.flipperButton.Size = new System.Drawing.Size(200, 121);
+            this.flipperButton.TabIndex = 5;
             this.flipperButton.Text = "Flop";
             this.flipperButton.UseVisualStyleBackColor = false;
             this.flipperButton.Click += new System.EventHandler(this.flipperButton_Click);
             // 
             // vsButton
             // 
-            this.vsButton.Location = new System.Drawing.Point(243, 649);
+            this.vsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vsButton.Location = new System.Drawing.Point(864, 245);
             this.vsButton.Name = "vsButton";
-            this.vsButton.Size = new System.Drawing.Size(79, 42);
-            this.vsButton.TabIndex = 5;
-            this.vsButton.Text = "VS MODE";
+            this.vsButton.Size = new System.Drawing.Size(308, 46);
+            this.vsButton.TabIndex = 1;
+            this.vsButton.Text = "Dogfight   (Vs. Mode)";
             this.vsButton.UseVisualStyleBackColor = true;
             this.vsButton.Click += new System.EventHandler(this.vsButton_Click);
             // 
@@ -105,9 +111,9 @@
             // 
             this.displayBox.BackgroundImage = global::BigBoatGame.Properties.Resources.A6M2_UpRight;
             this.displayBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.displayBox.Location = new System.Drawing.Point(189, 20);
+            this.displayBox.Location = new System.Drawing.Point(84, 3);
             this.displayBox.Name = "displayBox";
-            this.displayBox.Size = new System.Drawing.Size(600, 600);
+            this.displayBox.Size = new System.Drawing.Size(720, 720);
             this.displayBox.TabIndex = 6;
             this.displayBox.TabStop = false;
             // 
@@ -115,7 +121,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Moccasin;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::BigBoatGame.Properties.Resources.Background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.displayBox);
             this.Controls.Add(this.vsButton);
             this.Controls.Add(this.flipperButton);
