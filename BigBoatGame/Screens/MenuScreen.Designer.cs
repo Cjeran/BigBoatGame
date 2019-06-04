@@ -34,6 +34,8 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.flipperButton = new System.Windows.Forms.Button();
             this.vsButton = new System.Windows.Forms.Button();
+            this.displayBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.displayBox)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
@@ -79,7 +81,7 @@
             // flipperButton
             // 
             this.flipperButton.BackColor = System.Drawing.Color.Navy;
-            this.flipperButton.Font = new System.Drawing.Font("OfficePlanning", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.flipperButton.Font = new System.Drawing.Font("Mongolian Baiti", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipperButton.ForeColor = System.Drawing.Color.White;
             this.flipperButton.Location = new System.Drawing.Point(1078, 73);
             this.flipperButton.Name = "flipperButton";
@@ -99,11 +101,22 @@
             this.vsButton.UseVisualStyleBackColor = true;
             this.vsButton.Click += new System.EventHandler(this.vsButton_Click);
             // 
+            // displayBox
+            // 
+            this.displayBox.BackgroundImage = global::BigBoatGame.Properties.Resources.A6M2_UpRight;
+            this.displayBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.displayBox.Location = new System.Drawing.Point(189, 20);
+            this.displayBox.Name = "displayBox";
+            this.displayBox.Size = new System.Drawing.Size(600, 600);
+            this.displayBox.TabIndex = 6;
+            this.displayBox.TabStop = false;
+            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
+            this.Controls.Add(this.displayBox);
             this.Controls.Add(this.vsButton);
             this.Controls.Add(this.flipperButton);
             this.Controls.Add(this.exitButton);
@@ -112,6 +125,7 @@
             this.Controls.Add(this.startButton);
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(1300, 734);
+            ((System.ComponentModel.ISupportInitialize)(this.displayBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -124,5 +138,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button flipperButton;
         private System.Windows.Forms.Button vsButton;
+        private System.Windows.Forms.PictureBox displayBox;
     }
 }

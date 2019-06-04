@@ -17,6 +17,7 @@ namespace BigBoatGame.Screens
         public MenuScreen()
         {
             InitializeComponent();
+            displayBox.Image = Properties.Resources.F4F_4_UpRight;
         }
 
         private void startButton_Click(object sender, EventArgs e)
