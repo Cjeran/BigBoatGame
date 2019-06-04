@@ -23,7 +23,7 @@ namespace BigBoatGame.Screens
         {
             Score s = new Score();
             s.number = GameForm.score;
-            scoreLabel.Text = Convert.ToInt16(s.number)*5+"winning points";
+            scoreLabel.Text = Convert.ToInt16(s.number)*5+" winning points";
         }
 
         private void continueButton_Click(object sender, EventArgs e)

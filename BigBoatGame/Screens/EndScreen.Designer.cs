@@ -57,9 +57,9 @@
             // scoreLabel
             // 
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(383, 132);
+            this.scoreLabel.Location = new System.Drawing.Point(423, 132);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(100, 23);
+            this.scoreLabel.Size = new System.Drawing.Size(293, 55);
             this.scoreLabel.TabIndex = 2;
             this.scoreLabel.Text = "la ywyeyy";
             // 

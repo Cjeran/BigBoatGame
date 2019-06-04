@@ -114,6 +114,10 @@ namespace BigBoatGame.Screens
                     {
                         if (b.cannon) { en.hp -= 2; }
                         else { en.hp -= 1; }
+                        if(en.hp <= 0)
+                        {
+                            enemies.Remove(en);
+                        }
                         break;
                     }
                 }
