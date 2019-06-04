@@ -11,7 +11,7 @@ namespace BigBoatGame
     {
         public Direction direction;
         public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate;
-        int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult;
+        int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult, speedTimer;
         public bool cannon, gunSide;
         public Rectangle rect;
         public Point leftGun, rightGun;
@@ -37,7 +37,7 @@ namespace BigBoatGame
             y = _y;
             speed = 0;
             direction = (Direction)_direction;
-            maxSpeed = 6;
+            maxSpeed = 10;
 
 
             ammo1 = 40;
@@ -46,6 +46,7 @@ namespace BigBoatGame
             name = _name;
             turnTimer = 0;
             shotClock = 0;
+            speedTimer = 0;
             fireRate = 5;
 
             switch (name)
@@ -80,9 +81,10 @@ namespace BigBoatGame
 
         public void Move()
         {
-            if (speed < maxSpeed)
+            if (speed < maxSpeed && speedTimer > 3)
             {
                 speed++;
+                speedTimer = 0;
             }
             switch (direction)
             {
@@ -123,6 +125,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10)
             {
+                speed -= 3;
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
@@ -169,7 +172,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10 && right)
             {
-                speed--;
+                speed -= 3;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -208,7 +211,7 @@ namespace BigBoatGame
             }
             else if (turnTimer > 10 & !right)
             {
-                speed--;
+                speed -= 3;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -439,6 +442,7 @@ namespace BigBoatGame
         {
             turnTimer++;
             shotClock++;
+            speedTimer++;
         }
     }
 }
