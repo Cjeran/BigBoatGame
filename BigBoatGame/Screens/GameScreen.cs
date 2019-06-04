@@ -112,10 +112,12 @@ namespace BigBoatGame.Screens
                 {
                     if (en.Colision(b))
                     {
-                        enemies.Remove(en);
+                        if (b.cannon) { en.hp -= 2; }
+                        else { en.hp -= 1; }
                         break;
                     }
                 }
+                b.Move();
             }
 
             if (enemies.Count == 0) //New Wave
@@ -175,10 +177,7 @@ namespace BigBoatGame.Screens
                     p.Colision(en);
                 }
             }
-            foreach (Bullet b in bullets)
-            {
-                b.Move();
-            }
+           
 
             Refresh();
         }
