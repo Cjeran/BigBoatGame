@@ -23,7 +23,7 @@ namespace BigBoatGame.Screens
         List<Bullet> bullets = new List<Bullet>();
 
         int waves;
-        public static int carrierHP;
+       
         int gameTime;
         public Carrier carrier;
         public Plane player;
@@ -41,7 +41,7 @@ namespace BigBoatGame.Screens
         {
             gameTime = 0;
             waves = 0;
-            carrierHP = 100;
+           
             gameTimer.Start();
 
             if (GameForm.yank == true)
@@ -258,7 +258,7 @@ namespace BigBoatGame.Screens
             //HUD
             e.Graphics.FillRectangle(hudBrush, this.Width - 200, 0, 200, this.Height);
             e.Graphics.DrawString("Score: " + GameForm.score, textFont, textBrush, this.Width - 150, 50);
-            e.Graphics.DrawString("Carrier HP: " + carrierHP, textFont, textBrush, this.Width - 150, 75);
+            e.Graphics.DrawString("Carrier HP: " + carrier.hp, textFont, textBrush, this.Width - 150, 75);
             e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
             if (GameForm.yank)
             {
