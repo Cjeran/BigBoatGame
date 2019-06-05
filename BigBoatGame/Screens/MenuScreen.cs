@@ -21,6 +21,11 @@ namespace BigBoatGame.Screens
             flipperButton.Text = "USA";
             flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
             displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
+            foreach(var button in Controls.OfType<Button>())
+            {
+                button.GotFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Yellow; };
+                button.LostFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Black; };
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -29,7 +34,8 @@ namespace BigBoatGame.Screens
         }
         private void vsButton_Click(object sender, EventArgs e)
         {
-
+            GameForm.vs = true;
+            GameForm.ChangeScreen(this, "GameScreen");
         }
 
         private void highscoreButton_Click(object sender, EventArgs e)
@@ -62,11 +68,10 @@ namespace BigBoatGame.Screens
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            GameForm.scores.Add(new Score { name = "DIE", number = "12" });
             writer = XmlWriter.Create("Resources/HighScores.xml"); // make reader
             writer.WriteStartElement("HighScores");
 
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < GameForm.scores.Count; i++)
             { 
 
                 //Write sub-elements

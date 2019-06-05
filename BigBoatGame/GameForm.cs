@@ -13,10 +13,12 @@ namespace BigBoatGame
 {
     public partial class GameForm : Form
     {
+
         public static List<Score> scores;
-        public static int score;
+        public static string score;
         XmlReader reader; 
         public static bool yank = true;
+        public static bool vs;
         public GameForm()
         {
             InitializeComponent();
@@ -40,26 +42,22 @@ namespace BigBoatGame
             scores = new List<Score>();
             reader = XmlReader.Create("Resources/HighScores.xml");
 
-            reader.ReadToFollowing("HighScores");
             while (reader.Read())
             {
-                
-                // create a score object
-                Score s = new Score();
-                // fill score object with required data
-               
-                reader.ReadToFollowing("player");
-                s.name = reader.GetAttribute("name"); 
-                s.number = reader.GetAttribute("score");
-
-                //
-                if (s != null)
+                if (reader.Name == "player")
                 {
+                    // create a score object
+                    Score s = new Score();
+                    
+                    // fill score object with required data
+                    s.number = reader.GetAttribute("number");
+                    s.name = reader.GetAttribute("name");
+
                     scores.Add(s);
                 }
+
             }
             reader.Close();
-           // scores.RemoveAt(10); // fix bug 
         }
     
 

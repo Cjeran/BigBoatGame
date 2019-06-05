@@ -40,6 +40,7 @@
             // 
             // startButton
             // 
+            this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startButton.Location = new System.Drawing.Point(864, 173);
             this.startButton.Name = "startButton";
@@ -51,6 +52,7 @@
             // 
             // highscoreButton
             // 
+            this.highscoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.highscoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreButton.Location = new System.Drawing.Point(864, 314);
             this.highscoreButton.Name = "highscoreButton";
@@ -62,6 +64,7 @@
             // 
             // howButton
             // 
+            this.howButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.howButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.howButton.Location = new System.Drawing.Point(864, 381);
             this.howButton.Name = "howButton";
@@ -73,6 +76,7 @@
             // 
             // exitButton
             // 
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.exitButton.Location = new System.Drawing.Point(885, 665);
@@ -86,6 +90,7 @@
             // flipperButton
             // 
             this.flipperButton.BackColor = System.Drawing.Color.Navy;
+            this.flipperButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.flipperButton.Font = new System.Drawing.Font("Mixage Bk BT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipperButton.ForeColor = System.Drawing.Color.Black;
             this.flipperButton.Location = new System.Drawing.Point(918, 20);
@@ -98,6 +103,7 @@
             // 
             // vsButton
             // 
+            this.vsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vsButton.Location = new System.Drawing.Point(864, 245);
             this.vsButton.Name = "vsButton";
