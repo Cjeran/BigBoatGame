@@ -14,7 +14,7 @@ namespace BigBoatGame
         int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
         public bool cannon, gunSide, reload1, reload2;
         public Rectangle rect;
-        public Point leftGun, rightGun;
+        public Point leftGun, rightGun, backGun;
         string name;
 
 
@@ -306,6 +306,14 @@ namespace BigBoatGame
             return bullet;
         }
 
+        public Bullet BackShoot(int shootDirection)
+        {
+                shotClock = 0;
+                Bullet b = new Bullet(backGun.X, backGun.Y, false, shootDirection);
+                return b;
+        }
+
+
         public void GunPosition()
         {
             switch (direction)
@@ -313,34 +321,42 @@ namespace BigBoatGame
                 case Direction.Up:
                     leftGun = new Point(rect.X + 8, rect.Y + 12);
                     rightGun = new Point(rect.X + 42, rect.Y + 12);
+                    backGun = new Point(rect.X + 25, rect.Y + 56);
                     break;
                 case Direction.UpRight:
                     leftGun = new Point(rect.X + 20, rect.Y + 7);
                     rightGun = new Point(rect.X + 43, rect.Y + 30);
+                    backGun = new Point(rect.X - 6, rect.Y + 56);
                     break;
                 case Direction.Right:
                     leftGun = new Point(rect.X + 38, rect.Y + 8);
                     rightGun = new Point(rect.X + 38, rect.Y + 42);
+                    backGun = new Point(rect.X - 6, rect.Y + 25);
                     break;
                 case Direction.DownRight:
                     leftGun = new Point(rect.X + 43, rect.Y + 20);
                     rightGun = new Point(rect.X + 20, rect.Y + 43);
+                    backGun = new Point(rect.X - 6, rect.Y - 6);
                     break;
                 case Direction.Down:
                     leftGun = new Point(rect.X + 8, rect.Y + 38);
                     rightGun = new Point(rect.X + 42, rect.Y + 38);
+                    backGun = new Point(rect.X + 25, rect.Y - 6);
                     break;
                 case Direction.DownLeft:
                     leftGun = new Point(rect.X + 7, rect.Y + 20);
                     rightGun = new Point(rect.X + 30, rect.Y + 43);
+                    backGun = new Point(rect.X + 56, rect.Y - 6);
                     break;
                 case Direction.Left:
                     leftGun = new Point(rect.X + 8, rect.Y + 12);
                     rightGun = new Point(rect.X + 8, rect.Y + 38);
+                    backGun = new Point(rect.X + 56, rect.Y + 25);
                     break;
                 case Direction.UpLeft:
                     leftGun = new Point(rect.X + 7, rect.Y + 30);
                     rightGun = new Point(rect.X + 30, rect.Y + 7);
+                    backGun = new Point(rect.X + 56, rect.Y + 56);
                     break;
             }
         }
