@@ -14,6 +14,7 @@ namespace BigBoatGame.Screens
     {
         Random randGen = new Random();
         SolidBrush hudBrush = new SolidBrush(Color.Moccasin);
+        SolidBrush reloadBrush = new SolidBrush(Color.IndianRed);
         Brush textBrush = new SolidBrush(Color.Black);
         Font textFont = new Font("Mongolian Baiti", 12);
 
@@ -21,6 +22,7 @@ namespace BigBoatGame.Screens
         List<Plane> enemies = new List<Plane>();
         List<Carrier> carriers = new List<Carrier>();
         List<Bullet> bullets = new List<Bullet>();
+        List<Bullet> enemyBullets = new List<Bullet>();
 
         int waves;
        
@@ -121,6 +123,14 @@ namespace BigBoatGame.Screens
                         break;
                     }
                 }
+                b.Move();
+            }
+            foreach (Plane en in enemies) //Enemy Shooting
+            {
+                enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction)-5));
+            }
+            foreach (Bullet b in enemyBullets)
+            {
                 b.Move();
             }
 
@@ -259,6 +269,10 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.FillRectangle(hudBrush, b.rect);
             }
+            foreach (Bullet b in enemyBullets)
+            {
+                e.Graphics.FillRectangle(reloadBrush, b.rect);
+            }
 
             //HUD
             e.Graphics.FillRectangle(hudBrush, this.Width - 200, 0, 200, this.Height);
@@ -275,7 +289,7 @@ namespace BigBoatGame.Screens
             }
             if (player.reload1)
             {
-                e.Graphics.DrawString("Reload: " + player.primaryCounter, textFont, textBrush, this.Width - 150, 225);
+                e.Graphics.DrawString("Reload: " + player.primaryCounter, textFont, reloadBrush, this.Width - 150, 225);
             }
             else
             {
