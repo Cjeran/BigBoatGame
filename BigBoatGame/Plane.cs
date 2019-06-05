@@ -10,9 +10,9 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate;
-        int gunNumber, primaryCounter, secondaryCounter, maxSpeed, turnTimer, speedMult, speedTimer;
-        public bool cannon, gunSide;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter;
+        int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
+        public bool cannon, gunSide, reload1, reload2;
         public Rectangle rect;
         public Point leftGun, rightGun;
         string name;
@@ -342,6 +342,25 @@ namespace BigBoatGame
                     leftGun = new Point(rect.X + 7, rect.Y + 30);
                     rightGun = new Point(rect.X + 30, rect.Y + 7);
                     break;
+            }
+        }
+
+        public void PrimaryReload()
+        {
+            if (reload1)
+            {
+                primaryCounter--;
+            }
+            else
+            {
+                reload1 = true;
+                primaryCounter = 100;
+            }
+
+            if (primaryCounter == 0 && reload1 == true)
+            {
+                reload1 = false;
+                ammo1 = 40;
             }
         }
 
