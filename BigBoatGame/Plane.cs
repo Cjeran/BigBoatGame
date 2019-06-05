@@ -9,11 +9,12 @@ namespace BigBoatGame
 {
     public class Plane
     {
-        Direction direction;
-        public int hp, x, y, speed, gunNumber, ammo1, ammo2, primaryCounter, secondaryCounter,maxSpeed, turnTimer;
-
-        public bool cannon;
-        public Rectangle planeRect;
+        public Direction direction;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter;
+        int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
+        public bool cannon, gunSide, reload1, reload2;
+        public Rectangle rect;
+        public Point leftGun, rightGun, backGun;
         string name;
 
 
@@ -36,13 +37,18 @@ namespace BigBoatGame
             y = _y;
             speed = 0;
             direction = (Direction)_direction;
-            
-           
+            maxSpeed = 10;
+
+
             ammo1 = 40;
             ammo2 = 20;
-            planeRect = new Rectangle(x, y, 50, 50);
+            rect = new Rectangle(x, y, 50, 50);
             name = _name;
             turnTimer = 0;
+            shotClock = 0;
+            speedTimer = 0;
+            fireRate = 5;
+
             switch (name)
             {
                 case "F4F_4":
@@ -75,49 +81,99 @@ namespace BigBoatGame
 
         public void Move()
         {
-            if (speed < 10)
+            if (speed < maxSpeed && speedTimer > 3)
             {
                 speed++;
+                speedTimer = 0;
             }
             switch (direction)
             {
                 case Direction.Up:
-                    planeRect.Y -= speed / 2;
+                    rect.Y -= speed;
                     break;
                 case Direction.UpRight:
-                    planeRect.Y -= speed / 3;
-                    planeRect.X += speed / 3;
+                    rect.Y -= speed * 2 / 3;
+                    rect.X += speed * 2 / 3;
                     break;
                 case Direction.Right:
-                    planeRect.X += speed / 2;
+                    rect.X += speed;
                     break;
                 case Direction.DownRight:
-                    planeRect.Y += speed / 3;
-                    planeRect.X += speed / 3;
+                    rect.Y += speed * 2 / 3;
+                    rect.X += speed * 2 / 3;
                     break;
                 case Direction.Down:
-                    planeRect.Y += speed / 2;
+                    rect.Y += speed;
                     break;
                 case Direction.DownLeft:
-                    planeRect.Y += speed / 3;
-                    planeRect.X -= speed / 3;
+                    rect.Y += speed * 2 / 3;
+                    rect.X -= speed * 2 / 3;
                     break;
                 case Direction.Left:
-                    planeRect.X -= speed / 2;
+                    rect.X -= speed;
                     break;
                 case Direction.UpLeft:
-                    planeRect.Y -= speed / 3;
-                    planeRect.X -= speed / 3;
+                    rect.Y -= speed * 2 / 3;
+                    rect.X -= speed * 2 / 3;
                     break;
             }
 
 
         }
 
+        public void AutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+                
+                Direction changer = direction;
+
+                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    speed -= 3;
+                    turnTimer = 0;
+                }
+            }
+        }
+
         public void Turn(Boolean right)
         {
             if (turnTimer > 10 && right)
             {
+                speed -= 3;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -156,6 +212,7 @@ namespace BigBoatGame
             }
             else if (turnTimer > 10 & !right)
             {
+                speed -= 3;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -193,12 +250,135 @@ namespace BigBoatGame
                 }
             }
         }
-
-        public void Shoot(int shootDirection, bool primary)
+        public Boolean Colision(Plane p)
         {
-            Bullet b = new Bullet(x, y, true);
+            return (rect.IntersectsWith(p.rect));
+        }
+        public Boolean Colision(Bullet b)
+        {
+            return (rect.IntersectsWith(b.rect));
+        }
+        public Boolean Colision(Carrier c)
+        {
+            return (rect.IntersectsWith(c.rect));
+        }
+        public void OnScreen(int time)
+        {
+
+            if (rect.X > 1100)
+            {
+
+                direction = Direction.Left;
+            }
+            if (rect.X < -0)
+            {
+
+                direction = Direction.Right;
+            }
+            if (rect.Y > 750)
+            {
+
+                direction = Direction.Up;
+            }
+            if (rect.Y < -0)
+            {
+
+                direction = Direction.Down;
+            }
+
         }
 
+        public Bullet Shoot(int shootDirection, bool primary, bool side)
+        {
+            if (side)
+            {
+                shotClock = 0;
+                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, true, shootDirection);
+                return b;
+            }
+            else if (!side)
+            {
+                shotClock = 0;
+                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, true, shootDirection);
+                return b;
+            }
+            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, true, shootDirection);
+            return bullet;
+        }
+
+        public Bullet BackShoot(int shootDirection)
+        {
+                shotClock = 0;
+                Bullet b = new Bullet(backGun.X, backGun.Y, false, shootDirection);
+                return b;
+        }
+
+
+        public void GunPosition()
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    leftGun = new Point(rect.X + 8, rect.Y + 12);
+                    rightGun = new Point(rect.X + 42, rect.Y + 12);
+                    backGun = new Point(rect.X + 25, rect.Y + 56);
+                    break;
+                case Direction.UpRight:
+                    leftGun = new Point(rect.X + 20, rect.Y + 7);
+                    rightGun = new Point(rect.X + 43, rect.Y + 30);
+                    backGun = new Point(rect.X - 6, rect.Y + 56);
+                    break;
+                case Direction.Right:
+                    leftGun = new Point(rect.X + 38, rect.Y + 8);
+                    rightGun = new Point(rect.X + 38, rect.Y + 42);
+                    backGun = new Point(rect.X - 6, rect.Y + 25);
+                    break;
+                case Direction.DownRight:
+                    leftGun = new Point(rect.X + 43, rect.Y + 20);
+                    rightGun = new Point(rect.X + 20, rect.Y + 43);
+                    backGun = new Point(rect.X - 6, rect.Y - 6);
+                    break;
+                case Direction.Down:
+                    leftGun = new Point(rect.X + 8, rect.Y + 38);
+                    rightGun = new Point(rect.X + 42, rect.Y + 38);
+                    backGun = new Point(rect.X + 25, rect.Y - 6);
+                    break;
+                case Direction.DownLeft:
+                    leftGun = new Point(rect.X + 7, rect.Y + 20);
+                    rightGun = new Point(rect.X + 30, rect.Y + 43);
+                    backGun = new Point(rect.X + 56, rect.Y - 6);
+                    break;
+                case Direction.Left:
+                    leftGun = new Point(rect.X + 8, rect.Y + 12);
+                    rightGun = new Point(rect.X + 8, rect.Y + 38);
+                    backGun = new Point(rect.X + 56, rect.Y + 25);
+                    break;
+                case Direction.UpLeft:
+                    leftGun = new Point(rect.X + 7, rect.Y + 30);
+                    rightGun = new Point(rect.X + 30, rect.Y + 7);
+                    backGun = new Point(rect.X + 56, rect.Y + 56);
+                    break;
+            }
+        }
+
+        public void PrimaryReload()
+        {
+            if (reload1)
+            {
+                primaryCounter--;
+            }
+            else
+            {
+                reload1 = true;
+                primaryCounter = 100;
+            }
+
+            if (primaryCounter == 0 && reload1 == true)
+            {
+                reload1 = false;
+                ammo1 = 40;
+            }
+        }
 
         public Image playerImage()             // i hate this but it works
         {
@@ -301,6 +481,8 @@ namespace BigBoatGame
         public void Update()
         {
             turnTimer++;
+            shotClock++;
+            speedTimer++;
         }
     }
 }

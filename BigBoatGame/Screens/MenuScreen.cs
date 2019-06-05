@@ -17,10 +17,24 @@ namespace BigBoatGame.Screens
         public MenuScreen()
         {
             InitializeComponent();
+            GameForm.yank = true;
+            flipperButton.Text = "USA";
+            flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+            displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
+            foreach(var button in Controls.OfType<Button>())
+            {
+                button.GotFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Yellow; };
+                button.LostFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Black; };
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            GameForm.ChangeScreen(this, "GameScreen");
+        }
+        private void vsButton_Click(object sender, EventArgs e)
+        {
+            GameForm.vs = true;
             GameForm.ChangeScreen(this, "GameScreen");
         }
 
@@ -36,7 +50,20 @@ namespace BigBoatGame.Screens
 
         private void flipperButton_Click(object sender, EventArgs e)
         {
+          
             GameForm.yank = !GameForm.yank;
+            if (GameForm.yank)
+            {
+                flipperButton.Text = "USA";
+                flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+                displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
+            }
+            else
+            {
+                flipperButton.Text = "Japan";
+                flipperButton.BackgroundImage = Properties.Resources.JapaneseFlag;
+                displayBox.BackgroundImage = Properties.Resources.A6M2_Menu;
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -44,7 +71,7 @@ namespace BigBoatGame.Screens
             writer = XmlWriter.Create("Resources/HighScores.xml"); // make reader
             writer.WriteStartElement("HighScores");
 
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < GameForm.scores.Count; i++)
             { 
 
                 //Write sub-elements
@@ -63,5 +90,7 @@ namespace BigBoatGame.Screens
 
             Application.Exit();
         }
+
+      
     }
 }
