@@ -63,6 +63,16 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap A6M2_Down {
+            get {
+                object obj = ResourceManager.GetObject("A6M2_Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap A6M2_DownLeft {
             get {
                 object obj = ResourceManager.GetObject("A6M2_DownLeft", resourceCulture);
@@ -76,6 +86,26 @@ namespace BigBoatGame.Properties {
         internal static System.Drawing.Bitmap A6M2_DownRight {
             get {
                 object obj = ResourceManager.GetObject("A6M2_DownRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap A6M2_Left {
+            get {
+                object obj = ResourceManager.GetObject("A6M2_Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap A6M2_Right {
+            get {
+                object obj = ResourceManager.GetObject("A6M2_Right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,7 +303,7 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;HighScores&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;aac&quot;/&gt;
+        ///  &lt;player score =&quot;6&quot; name =&quot;aac&quot;/&gt;
         ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
         ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
         ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
@@ -283,7 +313,6 @@ namespace BigBoatGame.Properties {
         ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
         ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
         ///  &lt;player score =&quot;1&quot; name =&quot;acc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abb&quot;/&gt;
         ///&lt;/HighScores&gt;.
         /// </summary>
         internal static string Highscores {

@@ -82,32 +82,32 @@ namespace BigBoatGame
             switch (direction)
             {
                 case Direction.Up:
-                    planeRect.Y -= speed;
+                    planeRect.Y -= speed / 2;
                     break;
                 case Direction.UpRight:
-                    planeRect.Y -= speed / 2;
-                    planeRect.X += speed / 2;
+                    planeRect.Y -= speed / 3;
+                    planeRect.X += speed / 3;
                     break;
                 case Direction.Right:
-                    planeRect.X += speed;
-                    break;
-                case Direction.DownRight:
-                    planeRect.Y += speed / 2;
                     planeRect.X += speed / 2;
                     break;
+                case Direction.DownRight:
+                    planeRect.Y += speed / 3;
+                    planeRect.X += speed / 3;
+                    break;
                 case Direction.Down:
-                    planeRect.Y += speed;
+                    planeRect.Y += speed / 2;
                     break;
                 case Direction.DownLeft:
-                    planeRect.Y += speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y += speed / 3;
+                    planeRect.X -= speed / 3;
                     break;
                 case Direction.Left:
-                    planeRect.X -= speed;
+                    planeRect.X -= speed / 2;
                     break;
                 case Direction.UpLeft:
-                    planeRect.Y -= speed / 2;
-                    planeRect.X -= speed / 2;
+                    planeRect.Y -= speed / 3;
+                    planeRect.X -= speed / 3;
                     break;
             }
 
@@ -204,7 +204,7 @@ namespace BigBoatGame
         {
             switch (name)
             {
-                case "F4F-4":
+                case "F4F_4":
                     switch (direction)
                     {
                         case Direction.Up:
