@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BigBoatGame
+namespace BigBoatGame.Screens
 {
-    public partial class Form1 : Form
+    public partial class HowScreen : UserControl
     {
-        public Form1()
+        public HowScreen()
         {
             InitializeComponent();
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            GameForm.ChangeScreen(this, "MenuScreen");
         }
     }
 }
