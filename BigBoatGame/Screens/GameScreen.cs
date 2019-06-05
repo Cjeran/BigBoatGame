@@ -164,8 +164,9 @@ namespace BigBoatGame.Screens
                 p.Update();
                 p.GunPosition();
                 p.Move();
-                if (spaceKeyDown && p.shotClock > p.fireRate)
+                if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
                 {
+                    p.ammo1--;
                     if (p.gunSide)
                     {
                         bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
@@ -175,6 +176,10 @@ namespace BigBoatGame.Screens
                         bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
                     }
                     p.gunSide = !p.gunSide;
+                }
+                else if (p.ammo1 <= 0)
+                {
+                    p.PrimaryReload();
                 }
                 foreach (Plane en in enemies)
                 {
@@ -268,7 +273,14 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
             }
-            e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
+            if (player.reload1)
+            {
+                e.Graphics.DrawString("Reload: " + player.primaryCounter, textFont, textBrush, this.Width - 150, 225);
+            }
+            else
+            {
+                e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
+            }
             e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
         }
     }
