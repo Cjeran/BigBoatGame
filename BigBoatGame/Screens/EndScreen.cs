@@ -18,10 +18,10 @@ namespace BigBoatGame.Screens
             InitializeComponent();
             OnStart();
         }
-    
+        
         private void OnStart()
         {
-            Score s = new Score();
+            s = new Score();
             s.number = GameForm.score;
             scoreLabel.Text = Convert.ToInt16(s.number)*5+" winning points";
         }
