@@ -211,7 +211,13 @@ namespace BigBoatGame.Screens
                 if (en.Colision(carrier) && en.bombed == false)
                 {
                     en.bombed = true;
+                    en.maxSpeed = 8;
                     carrier.hp -= 10;
+                }
+                if (carrier.hp <= 0)
+                {
+                    carrier.hp = 0;
+                    GameOver();
                 }
             }
            
