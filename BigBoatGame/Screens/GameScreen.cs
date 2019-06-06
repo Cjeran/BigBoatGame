@@ -125,10 +125,12 @@ namespace BigBoatGame.Screens
                 }
                 b.Move();
             }
+
             foreach (Plane en in enemies) //Enemy Shooting
             {
                 enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction)-5));
             }
+
             foreach (Bullet b in enemyBullets)
             {
                 b.Move();
@@ -164,7 +166,14 @@ namespace BigBoatGame.Screens
             foreach (Plane p in enemies)
             {
                 p.Update();
-                p.AutoTurn(players[0]);
+                if (p.bombed == false)
+                {
+                    p.CarrierAutoTurn(carriers[0]);
+                }
+                else
+                {
+                    p.PlayerAutoTurn(players[0]);
+                }
                 p.Move();
             }
 
@@ -199,8 +208,9 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane en in enemies)
             {
-                if (en.Colision(carrier))
+                if (en.Colision(carrier) && en.bombed == false)
                 {
+                    en.bombed = true;
                     carrier.hp -= 10;
                 }
             }

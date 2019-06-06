@@ -13,6 +13,7 @@ namespace BigBoatGame
         public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter;
         int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
         public bool cannon, gunSide, reload1, reload2;
+        public bool bombed = false;
         public Rectangle rect;
         public Point leftGun, rightGun, backGun;
         string name;
@@ -121,11 +122,59 @@ namespace BigBoatGame
 
         }
 
-        public void AutoTurn(Plane p)
+        public void CarrierAutoTurn(Carrier p)
         {
             if (turnTimer > 10)
             {
                 
+                Direction changer = direction;
+
+                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    speed -= 3;
+                    turnTimer = 0;
+                }
+            }
+        }
+
+        public void PlayerAutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
