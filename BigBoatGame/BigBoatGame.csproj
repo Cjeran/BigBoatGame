@@ -197,5 +197,17 @@
   <ItemGroup>
     <None Include="Resources\F4F-4_Menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Up.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
