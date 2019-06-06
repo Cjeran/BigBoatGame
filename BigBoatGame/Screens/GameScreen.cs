@@ -127,7 +127,7 @@ namespace BigBoatGame.Screens
                 }
                 if (GameForm.yank)
                 {
-                    EnemySpawn("B7A2");
+                    EnemySpawn("A6M2");
                 }
                 else
                 {
