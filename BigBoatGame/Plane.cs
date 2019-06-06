@@ -293,16 +293,16 @@ namespace BigBoatGame
             if (side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, false, shootDirection);
                 return b;
             }
             else if (!side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, false, shootDirection);
                 return b;
             }
-            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, true, shootDirection);
+            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, false, shootDirection);
             return bullet;
         }
 

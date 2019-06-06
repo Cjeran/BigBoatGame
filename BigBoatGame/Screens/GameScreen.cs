@@ -54,7 +54,7 @@ namespace BigBoatGame.Screens
             {
                 players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
-            carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
+            carriers.Add(carrier = new Carrier(510, this.Height / 2 - 225));
 
 
 
@@ -104,6 +104,10 @@ namespace BigBoatGame.Screens
             }
         }
 
+        private void GameScreen_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -114,7 +118,7 @@ namespace BigBoatGame.Screens
                 {
                     if (en.Colision(b))
                     {
-                        if (b.cannon) { en.hp -= 2; }/// bullet and enemie plane collision
+                        if (b.cannon) { en.hp -= 2; } // bullet and enemie plane collision
                         else { en.hp -= 1; }
                         if(en.hp <= 0)
                         {
