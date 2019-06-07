@@ -10,9 +10,10 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter;
-        int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter, maxSpeed;
+        int gunNumber,turnTimer, speedMult, speedTimer;
         public bool cannon, gunSide, reload1, reload2;
+        public bool bombed = false;
         public Rectangle rect;
         public Point leftGun, rightGun, backGun;
         string name;
@@ -68,12 +69,14 @@ namespace BigBoatGame
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
+                    maxSpeed = 5;
                     break;
                 case "B7A2":
                     cannon = false;
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
+                    maxSpeed = 5;
                     break;
             }
 
@@ -121,11 +124,59 @@ namespace BigBoatGame
 
         }
 
-        public void AutoTurn(Plane p)
+        public void CarrierAutoTurn(Carrier p)
         {
             if (turnTimer > 10)
             {
                 
+                Direction changer = direction;
+
+                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    speed -= 3;
+                    turnTimer = 0;
+                }
+            }
+        }
+
+        public void PlayerAutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
@@ -410,21 +461,21 @@ namespace BigBoatGame
                     switch (direction)                // TODO chage images
                     {
                         case Direction.Up:
-                            return Properties.Resources.F4F_4_Up;
+                            return Properties.Resources.A6M2_Up;
                         case Direction.UpRight:
-                            return Properties.Resources.F4F_4_UpRight;
+                            return Properties.Resources.A6M2_UpRight;
                         case Direction.Right:
-                            return Properties.Resources.F4F_4_Right;
+                            return Properties.Resources.A6M2_Right;
                         case Direction.DownRight:
-                            return Properties.Resources.F4F_4_DownRight;
+                            return Properties.Resources.A6M2_DownRight;
                         case Direction.Down:
-                            return Properties.Resources.F4F_4_Down;
+                            return Properties.Resources.A6M2_Down;
                         case Direction.DownLeft:
-                            return Properties.Resources.F4F_4_DownLeft;
+                            return Properties.Resources.A6M2_DownLeft;
                         case Direction.Left:
-                            return Properties.Resources.F4F_4_Left;
+                            return Properties.Resources.A6M2_Left;
                         case Direction.UpLeft:
-                            return Properties.Resources.F4F_4_UpLeft;
+                            return Properties.Resources.A6M2_UpLeft;
                     }
                     return Properties.Resources.F4F_4_Up;
 
