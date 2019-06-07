@@ -30,7 +30,7 @@ namespace BigBoatGame.Screens
         public Carrier carrier;
         public Plane player;
         public Plane enemy;
-        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, spaceKeyDown;
+        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown;
 
         public GameScreen()
         {
@@ -162,6 +162,24 @@ namespace BigBoatGame.Screens
                 }
                 b.Move();
             }
+            foreach (Bullet b in enemyBullets)
+            {
+                foreach (Plane en in players)
+                {
+                    if (en.Colision(b))
+                    {
+                        if (b.cannon) { en.hp -= 2; }/// bullet and enemie plane collision
+                        else { en.hp -= 1; }
+                        if (en.hp <= 0)
+                        {
+                            enemies.Remove(en);
+                        }
+                        break;
+                    }
+                }
+                b.Move();
+            }
+            
             if (GameForm.vs) // vs mode checks/////////////////////////////////////////////////////////////////////////////////
             {
 
@@ -241,11 +259,7 @@ namespace BigBoatGame.Screens
                     enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction) - 5));
                 }
 
-                foreach (Bullet b in enemyBullets)
-                {
-                    b.Move();
-                }
-
+              
                 if (enemies.Count == 0) //New Wave
                 {
                     waves++;
@@ -287,54 +301,54 @@ namespace BigBoatGame.Screens
                     p.Move();
                 }
 
-            foreach (Plane p in players)
-            {
-                p.OnScreen(gameTime);
-                p.Update();
-                p.GunPosition();
-                p.Move();
-                if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
+                foreach (Plane p in players)
                 {
-                    p.ammo1--;
-                    if (p.gunSide)
+                    p.OnScreen(gameTime);
+                    p.Update();
+                    p.GunPosition();
+                    p.Move();
+                    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
                     {
-                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                        p.ammo1--;
+                        if (p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                        }
+                        else if (!p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                        }
+                        p.gunSide = !p.gunSide;
                     }
-                    else if (!p.gunSide)
+                    else if (p.ammo1 <= 0)
                     {
-                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                        p.PrimaryReload();
                     }
-                    p.gunSide = !p.gunSide;
-                }
-                else if (p.ammo1 <= 0)
-                {
-                    p.PrimaryReload();
+                    foreach (Plane en in enemies)
+                    {
+                        p.Colision(en);
+
+                    }
                 }
                 foreach (Plane en in enemies)
                 {
-                    p.Colision(en);
+                    if (en.Colision(carrier) && en.bombed == false)
+                    {
+                        en.bombed = true;
+                        en.maxSpeed = 8;
+                        carrier.hp -= 10;
+                    }
+                    if (carrier.hp <= 0)
+                    {
+                        carrier.hp = 0;
+                        GameOver();
+                    }
+                }
 
-                }
             }
-            foreach (Plane en in enemies)
-            {
-                if (en.Colision(carrier) && en.bombed == false)
-                {
-                    en.bombed = true;
-                    en.maxSpeed = 8;
-                    carrier.hp -= 10;
-                }
-                if (carrier.hp <= 0)
-                {
-                    carrier.hp = 0;
-                    GameOver();
-                }
-            }
-           
-
-            Refresh();
+             Refresh();
+            
         }
-
         public void EnemySpawn(string type)
         {
             for (int i = 0; i <= waves * 2; i++)
