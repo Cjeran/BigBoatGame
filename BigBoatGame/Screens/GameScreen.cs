@@ -25,7 +25,7 @@ namespace BigBoatGame.Screens
         List<Bullet> enemyBullets = new List<Bullet>();
 
         int waves;
-       
+
         int gameTime;
         public Carrier carrier;
         public Plane player;
@@ -43,7 +43,7 @@ namespace BigBoatGame.Screens
         {
             gameTime = 0;
             waves = 0;
-           
+
             gameTimer.Start();
             if (GameForm.vs)
             {
@@ -179,7 +179,8 @@ namespace BigBoatGame.Screens
                 }
                 b.Move();
             }
-            
+
+
             if (GameForm.vs) // vs mode checks/////////////////////////////////////////////////////////////////////////////////
             {
 
@@ -222,7 +223,42 @@ namespace BigBoatGame.Screens
                     {
                         p.PrimaryReload();
                     }
+                    //Secondary Shooting
+                    if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
+                    {
+                        p.ammo2--;
+                        if (GameForm.yank)
+                        {
+                            if (p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                            }
+                            else if (!p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                            }
+                            p.gunSide = !p.gunSide;
+                        }
+                        else
+                        {
+                            if (p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                            }
+                            else if (!p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                            }
+                            p.gunSide = !p.gunSide;
+                        }
+
+                    }
+                    else if (p.ammo2 <= 0)
+                    {
+                        p.SecondaryReload();
+                    }
                 }
+
                 foreach (Plane p in enemies)
                 {
                     p.OnScreen(gameTime);
@@ -246,6 +282,41 @@ namespace BigBoatGame.Screens
                     {
                         p.PrimaryReload();
                     }
+                    //Secondary Shooting
+                    if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
+                    {
+                        p.ammo2--;
+                        if (GameForm.yank)
+                        {
+                            if (p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                            }
+                            else if (!p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                            }
+                            p.gunSide = !p.gunSide;
+                        }
+                        else
+                        {
+                            if (p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                            }
+                            else if (!p.gunSide)
+                            {
+                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                            }
+                            p.gunSide = !p.gunSide;
+                        }
+
+                    }
+                    else if (p.ammo2 <= 0)
+                    {
+                        p.SecondaryReload();
+                    }
+
                 }
 
 
@@ -259,7 +330,7 @@ namespace BigBoatGame.Screens
                     enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction) - 5));
                 }
 
-              
+
                 if (enemies.Count == 0) //New Wave
                 {
                     waves++;
@@ -346,8 +417,8 @@ namespace BigBoatGame.Screens
                 }
 
             }
-             Refresh();
-            
+            Refresh();
+
         }
         public void EnemySpawn(string type)
         {
@@ -381,13 +452,13 @@ namespace BigBoatGame.Screens
                 }
                 enemies.Add(enemy = new Plane(2, side, position, 0, type));
             }
-                
+
         }
 
         public void GameOver()
         {
             gameTimer.Enabled = false;
-            GameForm.score = carrier.hp+"";
+            GameForm.score = carrier.hp + "";
             GameForm.ChangeScreen(this, "EndScreen");
         }
 
@@ -447,7 +518,7 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
             }
-            
+
         }
     }
 }
