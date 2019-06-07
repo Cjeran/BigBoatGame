@@ -34,7 +34,7 @@ namespace BigBoatGame.Screens
         }
         private void vsButton_Click(object sender, EventArgs e)
         {
-            GameForm.vs = true;
+            GameForm.vs =! GameForm.vs;
             GameForm.ChangeScreen(this, "EndScreen");
         }
 
