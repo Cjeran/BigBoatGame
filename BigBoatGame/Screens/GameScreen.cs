@@ -386,6 +386,7 @@ namespace BigBoatGame.Screens
 
         public void GameOver()
         {
+            gameTimer.Enabled = false;
             GameForm.score = carrier.hp+"";
             GameForm.ChangeScreen(this, "EndScreen");
         }

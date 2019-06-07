@@ -66,6 +66,7 @@ namespace BigBoatGame
                     break;
                 case "Dauntless":
                     cannon = false;
+                    hp = 2;
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
@@ -73,6 +74,7 @@ namespace BigBoatGame
                     break;
                 case "B7A2":
                     cannon = false;
+                    hp = 1;
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
