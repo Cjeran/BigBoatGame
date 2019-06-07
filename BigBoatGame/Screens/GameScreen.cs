@@ -48,11 +48,11 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank == true)
             {
-                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4"));
+                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4", 0));
             }
             else
             {
-                players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
+                players.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
             }
             carriers.Add(carrier = new Carrier(510, this.Height / 2 - 225));
 
@@ -259,7 +259,7 @@ namespace BigBoatGame.Screens
                 {
                     position = this.Height * (3 / 4);
                 }
-                enemies.Add(enemy = new Plane(2, side, position, 0, type));
+                enemies.Add(enemy = new Plane(2, side, position, 0, type, randGen.Next(150, 600)));
             }
                 
         }

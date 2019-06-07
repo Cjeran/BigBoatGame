@@ -11,7 +11,7 @@ namespace BigBoatGame
     {
         public Direction direction;
         public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter, maxSpeed;
-        int gunNumber,turnTimer, speedMult, speedTimer;
+        int gunNumber,turnTimer, speedMult, speedTimer, target;
         public bool cannon, gunSide, reload1, reload2;
         public bool bombed = false;
         public Rectangle rect;
@@ -31,7 +31,7 @@ namespace BigBoatGame
             UpLeft = 7
         }
 
-        public Plane(int _hp, int _x, int _y, int _direction, string _name)
+        public Plane(int _hp, int _x, int _y, int _direction, string _name, int _target)
         {
             hp = _hp;
             x = _x;
@@ -39,6 +39,7 @@ namespace BigBoatGame
             speed = 0;
             direction = (Direction)_direction;
             maxSpeed = 10;
+            target = _target;
 
 
             ammo1 = 40;
@@ -131,35 +132,35 @@ namespace BigBoatGame
                 
                 Direction changer = direction;
 
-                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                if (p.rect.X > rect.X && target + 25 > rect.Y && target - 25 < rect.Y)
                 {
                     direction = Direction.Right;
                 }
-                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                else if (p.rect.X < rect.X && target + 25 > rect.Y && target - 25 < rect.Y)
                 {
                     direction = Direction.Left;
                 }
-                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                else if (target > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
                 {
                     direction = Direction.Down;
                 }
-                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                else if (target < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
                 {
                     direction = Direction.Up;
                 }
-                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
+                else if (p.rect.X > rect.X && target > rect.Y)
                 {
                     direction = Direction.DownRight;
                 }
-                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
+                else if (p.rect.X > rect.X && target < rect.Y)
                 {
                     direction = Direction.UpRight;
                 }
-                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
+                else if (p.rect.X < rect.X && target > rect.Y)
                 {
                     direction = Direction.DownLeft;
                 }
-                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
+                else if (p.rect.X < rect.X && target < rect.Y)
                 {
                     direction = Direction.UpLeft;
                 }
