@@ -97,6 +97,9 @@ namespace BigBoatGame.Screens
                 case Keys.Space:
                     spaceKeyDown = true;
                     break;
+                case Keys.M:
+                    mKeyDown = true;
+                    break;
             }
         }
 
@@ -131,6 +134,9 @@ namespace BigBoatGame.Screens
                     break;
                 case Keys.Space:
                     spaceKeyDown = false;
+                    break;
+                case Keys.M:
+                    mKeyDown = false;
                     break;
             }
         }
@@ -281,54 +287,53 @@ namespace BigBoatGame.Screens
                     p.Move();
                 }
 
-                foreach (Plane p in players)
+            foreach (Plane p in players)
+            {
+                p.OnScreen(gameTime);
+                p.Update();
+                p.GunPosition();
+                p.Move();
+                if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
                 {
-                    p.OnScreen(gameTime);
-                    p.Update();
-                    p.GunPosition();
-                    p.Move();
-                    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
+                    p.ammo1--;
+                    if (p.gunSide)
                     {
-                        p.ammo1--;
-                        if (p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
-                        }
-                        else if (!p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
-                        }
-                        p.gunSide = !p.gunSide;
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
                     }
-                    else if (p.ammo1 <= 0)
+                    else if (!p.gunSide)
                     {
-                        p.PrimaryReload();
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
                     }
-                    foreach (Plane en in enemies)
-                    {
-                        p.Colision(en);
-
-                    }
+                    p.gunSide = !p.gunSide;
+                }
+                else if (p.ammo1 <= 0)
+                {
+                    p.PrimaryReload();
                 }
                 foreach (Plane en in enemies)
                 {
-                    if (en.Colision(carrier) && en.bombed == false)
-                    {
-                        en.bombed = true;
-                        en.maxSpeed = 8;
-                        carrier.hp -= 10;
-                    }
-                    if (carrier.hp <= 0)
-                    {
-                        carrier.hp = 1;
-                        GameOver();
-                    }
-                }
+                    p.Colision(en);
 
+                }
             }
-                Refresh();
+            foreach (Plane en in enemies)
+            {
+                if (en.Colision(carrier) && en.bombed == false)
+                {
+                    en.bombed = true;
+                    en.maxSpeed = 8;
+                    carrier.hp -= 10;
+                }
+                if (carrier.hp <= 0)
+                {
+                    carrier.hp = 0;
+                    GameOver();
+                }
             }
-        
+           
+
+            Refresh();
+        }
 
         public void EnemySpawn(string type)
         {
@@ -419,7 +424,15 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
             }
-            e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+            if (player.reload2)
+            {
+                e.Graphics.DrawString("Secondary: " + player.secondaryCounter, textFont, reloadBrush, this.Width - 150, 250);
+            }
+            else
+            {
+                e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+            }
+            
         }
     }
 }
