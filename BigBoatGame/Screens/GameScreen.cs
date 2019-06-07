@@ -261,6 +261,7 @@ namespace BigBoatGame.Screens
                 {
                     carrier.hp = 0;
                     GameOver();
+                    break;
                 }
             }
            
@@ -305,6 +306,7 @@ namespace BigBoatGame.Screens
 
         public void GameOver()
         {
+            gameTimer.Enabled = false;
             GameForm.score = carrier.hp+"";
             GameForm.ChangeScreen(this, "EndScreen");
         }
