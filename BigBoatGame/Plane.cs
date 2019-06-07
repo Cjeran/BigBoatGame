@@ -339,21 +339,21 @@ namespace BigBoatGame
 
         }
 
-        public Bullet Shoot(int shootDirection, bool primary, bool side)
+        public Bullet Shoot(int shootDirection, bool cannon, bool side)
         {
             if (side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, cannon, shootDirection);
                 return b;
             }
             else if (!side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, cannon, shootDirection);
                 return b;
             }
-            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, true, shootDirection);
+            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, false, shootDirection);
             return bullet;
         }
 
@@ -428,6 +428,33 @@ namespace BigBoatGame
             {
                 reload1 = false;
                 ammo1 = 40;
+            }
+        }
+
+        public void SecondaryReload()
+        {
+            if (reload2)
+            {
+                secondaryCounter--;
+            }
+            else
+            {
+                reload2 = true;
+                secondaryCounter = 100;
+            }
+
+            if (secondaryCounter == 0 && reload2 == true)
+            {
+                reload2 = false;
+                if (GameForm.yank)
+                {
+                    ammo2 = 40;
+                }
+                else
+                {
+                    ammo2 = 20;
+                }
+                
             }
         }
 

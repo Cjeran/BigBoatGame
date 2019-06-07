@@ -30,7 +30,7 @@ namespace BigBoatGame.Screens
         public Carrier carrier;
         public Plane player;
         public Plane enemy;
-        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, spaceKeyDown;
+        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, spaceKeyDown, mKeyDown;
 
         public GameScreen()
         {
@@ -78,6 +78,9 @@ namespace BigBoatGame.Screens
                 case Keys.Space:
                     spaceKeyDown = true;
                     break;
+                case Keys.M:
+                    mKeyDown = true;
+                    break;
             }
         }
 
@@ -100,6 +103,9 @@ namespace BigBoatGame.Screens
                     break;
                 case Keys.Space:
                     spaceKeyDown = false;
+                    break;
+                case Keys.M:
+                    mKeyDown = false;
                     break;
             }
         }
@@ -183,16 +189,17 @@ namespace BigBoatGame.Screens
                 p.Update();
                 p.GunPosition();
                 p.Move();
+                //Primary Shooting
                 if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
                 {
                     p.ammo1--;
                     if (p.gunSide)
                     {
-                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
                     }
                     else if (!p.gunSide)
                     {
-                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
                     }
                     p.gunSide = !p.gunSide;
                 }
@@ -205,7 +212,43 @@ namespace BigBoatGame.Screens
                     p.Colision(en);
 
                 }
+
+                //Secondary Shooting
+                if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
+                {
+                    p.ammo2--;
+                    if (GameForm.yank)
+                    {
+                        if (p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                        }
+                        else if (!p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                        }
+                        p.gunSide = !p.gunSide;
+                    }
+                    else
+                    {
+                        if (p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                        }
+                        else if (!p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                        }
+                        p.gunSide = !p.gunSide;
+                    }
+                    
+                }
+                else if (p.ammo2 <= 0)
+                {
+                    p.SecondaryReload();
+                }
             }
+            
             foreach (Plane en in enemies)
             {
                 if (en.Colision(carrier) && en.bombed == false)
@@ -311,7 +354,15 @@ namespace BigBoatGame.Screens
             {
                 e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
             }
-            e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+            if (player.reload2)
+            {
+                e.Graphics.DrawString("Secondary: " + player.secondaryCounter, textFont, reloadBrush, this.Width - 150, 250);
+            }
+            else
+            {
+                e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+            }
+            
         }
     }
 }
