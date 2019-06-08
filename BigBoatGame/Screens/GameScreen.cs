@@ -30,7 +30,7 @@ namespace BigBoatGame.Screens
         public Carrier carrier;
         public Plane player;
         public Plane enemy;
-        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown;
+        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown, zKeyDown, xKeyDown;
 
         public GameScreen()
         {
@@ -100,6 +100,12 @@ namespace BigBoatGame.Screens
                 case Keys.M:
                     mKeyDown = true;
                     break;
+                case Keys.Z:
+                    zKeyDown = true;
+                    break;
+                case Keys.X:
+                    xKeyDown = true;
+                    break;
             }
         }
 
@@ -138,6 +144,12 @@ namespace BigBoatGame.Screens
                 case Keys.M:
                     mKeyDown = false;
                     break;
+                case Keys.Z:
+                    zKeyDown = false;
+                    break;
+                case Keys.X:
+                    xKeyDown = false;
+                    break;
             }
         }
 
@@ -145,8 +157,11 @@ namespace BigBoatGame.Screens
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             gameTime++;
+
             foreach (Bullet b in bullets)
             {
+                bool delete = false;
+                b.Move();
                 foreach (Plane en in enemies)
                 {
                     if (en.Colision(b))
@@ -155,29 +170,52 @@ namespace BigBoatGame.Screens
                         else { en.hp -= 1; }
                         if (en.hp <= 0)
                         {
-                            enemies.Remove(en);
+                            if (GameForm.vs)
+                            {
+                                GameOver("you lose carrier ded", "MenuScreen");
+                            }
+                            else
+                            {
+                                enemies.Remove(en);
+                            }
                         }
+                        delete = true;
+                        bullets.Remove(b);
                         break;
                     }
                 }
-                b.Move();
+                if (delete) { break; }
             }
+
             foreach (Bullet b in enemyBullets)
             {
-                foreach (Plane en in players)
+                bool end = false;
+                b.Move();
+                foreach (Plane p in players)
                 {
-                    if (en.Colision(b))
+                    if (p.Colision(b))
                     {
-                        if (b.cannon) { en.hp -= 2; }/// bullet and enemie plane collision
-                        else { en.hp -= 1; }
-                        if (en.hp <= 0)
+                        if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
+                        else { p.hp -= 1; }
+                        if (p.hp <= 0)
                         {
-                            enemies.Remove(en);
+                            if (GameForm.vs)
+                            {
+                                end = true;
+                                GameOver("you lose carrier ded", "MenuScreen");
+                                break;
+                            }
+                            else
+                            {
+                                enemies.Remove(p);
+                            }
+
                         }
-                        break;
+                        end = true;
+                        bullets.Remove(b);
                     }
                 }
-                b.Move();
+                if (end) { break; }
             }
 
 
@@ -200,7 +238,7 @@ namespace BigBoatGame.Screens
                 {
                     players[0].Turn(false);
                 }
-                foreach (Plane p in players)
+                foreach (Plane p in players) ///player 1
                 {
                     p.OnScreen(gameTime);
                     p.Update();
@@ -211,11 +249,11 @@ namespace BigBoatGame.Screens
                         p.ammo1--;
                         if (p.gunSide)
                         {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
                         }
                         else if (!p.gunSide)
                         {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
                         }
                         p.gunSide = !p.gunSide;
                     }
@@ -259,18 +297,18 @@ namespace BigBoatGame.Screens
                     }
                 }
 
-                foreach (Plane p in enemies)
+                foreach (Plane p in enemies) ///player 2
                 {
                     p.OnScreen(gameTime);
                     p.Update();
                     p.GunPosition();
                     p.Move();
-                    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
+                    if (zKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
                     {
                         p.ammo1--;
                         if (p.gunSide)
                         {
-                            enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                            enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true)); // alternates sides of shoot
                         }
                         else if (!p.gunSide)
                         {
@@ -283,18 +321,18 @@ namespace BigBoatGame.Screens
                         p.PrimaryReload();
                     }
                     //Secondary Shooting
-                    if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
+                    if (xKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
                     {
                         p.ammo2--;
                         if (GameForm.yank)
                         {
                             if (p.gunSide)
                             {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                                enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
                             }
                             else if (!p.gunSide)
                             {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                                enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false)); //add boollts
                             }
                             p.gunSide = !p.gunSide;
                         }
@@ -302,11 +340,11 @@ namespace BigBoatGame.Screens
                         {
                             if (p.gunSide)
                             {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                                enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
                             }
                             else if (!p.gunSide)
                             {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                                enemyBullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
                             }
                             p.gunSide = !p.gunSide;
                         }
@@ -314,7 +352,7 @@ namespace BigBoatGame.Screens
                     }
                     else if (p.ammo2 <= 0)
                     {
-                        p.SecondaryReload();
+                        p.SecondaryReload(); // reloads when out of ammo
                     }
 
                 }
@@ -330,13 +368,12 @@ namespace BigBoatGame.Screens
                     enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction) - 5));
                 }
 
-
                 if (enemies.Count == 0) //New Wave
                 {
                     waves++;
                     if (waves == 6)
                     {
-                        GameOver();
+                        GameOver("you lose carrier ded", "EndScreen");
                     }
                     if (GameForm.yank)
                     {
@@ -412,14 +449,15 @@ namespace BigBoatGame.Screens
                     if (carrier.hp <= 0)
                     {
                         carrier.hp = 0;
-                        GameOver();
+                        GameOver("you lose carrier ded","EndScreen");
                     }
-                }
 
+                }
+               
             }
             Refresh();
-
         }
+
         public void EnemySpawn(string type)
         {
             for (int i = 0; i <= waves * 2; i++)
@@ -455,11 +493,14 @@ namespace BigBoatGame.Screens
 
         }
 
-        public void GameOver()
+        public void GameOver(string msg,string screen)
         {
             gameTimer.Enabled = false;
-            GameForm.score = carrier.hp + "";
-            GameForm.ChangeScreen(this, "EndScreen");
+            if (!GameForm.vs)
+            {
+                GameForm.score = carrier.hp + "";
+            }
+            GameForm.ChangeScreen(this, screen);
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
@@ -492,8 +533,14 @@ namespace BigBoatGame.Screens
             if (!GameForm.vs)
             {
                 e.Graphics.DrawString("Carrier HP: " + carrier.hp, textFont, textBrush, this.Width - 150, 75);
+                e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
             }
-            e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
+            else
+            {
+                e.Graphics.DrawString("HP: " + players[0].hp, textFont, textBrush, this.Width - 150, 175);
+                e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 145);
+            }
+
             if (GameForm.yank)
             {
                 e.Graphics.DrawString("Speed: " + player.speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
