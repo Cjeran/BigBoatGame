@@ -10,9 +10,10 @@ namespace BigBoatGame
     public class Plane
     {
         public Direction direction;
-        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter;
-        int gunNumber, maxSpeed, turnTimer, speedMult, speedTimer;
+        public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter, maxSpeed;
+        int gunNumber,turnTimer, speedMult, speedTimer;
         public bool cannon, gunSide, reload1, reload2;
+        public bool bombed = false;
         public Rectangle rect;
         public Point leftGun, rightGun, backGun;
         string name;
@@ -65,15 +66,19 @@ namespace BigBoatGame
                     break;
                 case "Dauntless":
                     cannon = false;
+                    hp = 2;
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
+                    maxSpeed = 5;
                     break;
                 case "B7A2":
                     cannon = false;
+                    hp = 1;
                     ammo1 = 40;
                     ammo2 = 0;
                     gunNumber = 1;
+                    maxSpeed = 5;
                     break;
             }
 
@@ -121,11 +126,59 @@ namespace BigBoatGame
 
         }
 
-        public void AutoTurn(Plane p)
+        public void CarrierAutoTurn(Carrier p)
         {
             if (turnTimer > 10)
             {
                 
+                Direction changer = direction;
+
+                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Right;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
+                {
+                    direction = Direction.Left;
+                }
+                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Down;
+                }
+                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
+                {
+                    direction = Direction.Up;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownRight;
+                }
+                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpRight;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
+                {
+                    direction = Direction.DownLeft;
+                }
+                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
+                {
+                    direction = Direction.UpLeft;
+                }
+
+                if (changer != direction)
+                {
+                    speed -= 3;
+                    turnTimer = 0;
+                }
+            }
+        }
+
+        public void PlayerAutoTurn(Plane p)
+        {
+            if (turnTimer > 10)
+            {
+
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
@@ -288,21 +341,21 @@ namespace BigBoatGame
 
         }
 
-        public Bullet Shoot(int shootDirection, bool primary, bool side)
+        public Bullet Shoot(int shootDirection, bool cannon, bool side)
         {
             if (side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(rightGun.X - 2, rightGun.Y - 2, cannon, shootDirection);
                 return b;
             }
             else if (!side)
             {
                 shotClock = 0;
-                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, true, shootDirection);
+                Bullet b = new Bullet(leftGun.X - 2, leftGun.Y - 2, cannon, shootDirection);
                 return b;
             }
-            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, true, shootDirection);
+            Bullet bullet = new Bullet(rect.X + 23, rightGun.Y + 23, false, shootDirection);
             return bullet;
         }
 
@@ -377,6 +430,33 @@ namespace BigBoatGame
             {
                 reload1 = false;
                 ammo1 = 40;
+            }
+        }
+
+        public void SecondaryReload()
+        {
+            if (reload2)
+            {
+                secondaryCounter--;
+            }
+            else
+            {
+                reload2 = true;
+                secondaryCounter = 100;
+            }
+
+            if (secondaryCounter == 0 && reload2 == true)
+            {
+                reload2 = false;
+                if (GameForm.yank)
+                {
+                    ammo2 = 40;
+                }
+                else
+                {
+                    ammo2 = 20;
+                }
+                
             }
         }
 

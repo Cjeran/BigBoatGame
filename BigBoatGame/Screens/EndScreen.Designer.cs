@@ -28,24 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.continueButton = new System.Windows.Forms.Button();
             this.carrierBox = new System.Windows.Forms.PictureBox();
             this.scoreLabel = new System.Windows.Forms.Label();
-            this.fLabel = new System.Windows.Forms.Label();
-            this.sLabel = new System.Windows.Forms.Label();
-            this.lLabel = new System.Windows.Forms.Label();
+            this.oneLabel = new System.Windows.Forms.Label();
+            this.twoLabel = new System.Windows.Forms.Label();
+            this.threeLabel = new System.Windows.Forms.Label();
+            this.ContinueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.carrierBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // continueButton
-            // 
-            this.continueButton.Location = new System.Drawing.Point(826, 461);
-            this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(185, 54);
-            this.continueButton.TabIndex = 0;
-            this.continueButton.Text = "CONTINUE";
-            this.continueButton.UseVisualStyleBackColor = true;
-            this.continueButton.Click += new System.EventHandler(this.continueButton_Click);
             // 
             // carrierBox
             // 
@@ -66,57 +56,66 @@
             this.scoreLabel.TabIndex = 2;
             this.scoreLabel.Text = "la ywyeyy";
             // 
-            // fLabel
+            // oneLabel
             // 
-            this.fLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fLabel.Location = new System.Drawing.Point(704, 223);
-            this.fLabel.Name = "fLabel";
-            this.fLabel.Size = new System.Drawing.Size(70, 75);
-            this.fLabel.TabIndex = 3;
-            this.fLabel.Text = "A";
+            this.oneLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oneLabel.Location = new System.Drawing.Point(704, 223);
+            this.oneLabel.Name = "oneLabel";
+            this.oneLabel.Size = new System.Drawing.Size(70, 75);
+            this.oneLabel.TabIndex = 3;
+            this.oneLabel.Text = "A";
             // 
-            // sLabel
+            // twoLabel
             // 
-            this.sLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sLabel.Location = new System.Drawing.Point(813, 223);
-            this.sLabel.Name = "sLabel";
-            this.sLabel.Size = new System.Drawing.Size(70, 75);
-            this.sLabel.TabIndex = 4;
-            this.sLabel.Text = "A";
+            this.twoLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.twoLabel.Location = new System.Drawing.Point(813, 223);
+            this.twoLabel.Name = "twoLabel";
+            this.twoLabel.Size = new System.Drawing.Size(70, 75);
+            this.twoLabel.TabIndex = 4;
+            this.twoLabel.Text = "A";
             // 
-            // lLabel
+            // threeLabel
             // 
-            this.lLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lLabel.Location = new System.Drawing.Point(922, 223);
-            this.lLabel.Name = "lLabel";
-            this.lLabel.Size = new System.Drawing.Size(70, 75);
-            this.lLabel.TabIndex = 5;
-            this.lLabel.Text = "A";
+            this.threeLabel.Font = new System.Drawing.Font("Kuenst480 Blk BT", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.threeLabel.Location = new System.Drawing.Point(922, 223);
+            this.threeLabel.Name = "threeLabel";
+            this.threeLabel.Size = new System.Drawing.Size(70, 75);
+            this.threeLabel.TabIndex = 5;
+            this.threeLabel.Text = "A";
+            // 
+            // ContinueLabel
+            // 
+            this.ContinueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContinueLabel.Location = new System.Drawing.Point(826, 442);
+            this.ContinueLabel.Name = "ContinueLabel";
+            this.ContinueLabel.Size = new System.Drawing.Size(185, 23);
+            this.ContinueLabel.TabIndex = 6;
+            this.ContinueLabel.Text = "Continue";
             // 
             // EndScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lLabel);
-            this.Controls.Add(this.sLabel);
-            this.Controls.Add(this.fLabel);
+            this.Controls.Add(this.ContinueLabel);
+            this.Controls.Add(this.threeLabel);
+            this.Controls.Add(this.twoLabel);
+            this.Controls.Add(this.oneLabel);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.carrierBox);
-            this.Controls.Add(this.continueButton);
             this.Name = "EndScreen";
             this.Size = new System.Drawing.Size(1300, 730);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.EndScreen_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.carrierBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button continueButton;
         private System.Windows.Forms.PictureBox carrierBox;
         private System.Windows.Forms.Label scoreLabel;
-        private System.Windows.Forms.Label fLabel;
-        private System.Windows.Forms.Label sLabel;
-        private System.Windows.Forms.Label lLabel;
+        private System.Windows.Forms.Label oneLabel;
+        private System.Windows.Forms.Label twoLabel;
+        private System.Windows.Forms.Label threeLabel;
+        private System.Windows.Forms.Label ContinueLabel;
     }
 }

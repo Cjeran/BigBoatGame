@@ -34,8 +34,8 @@ namespace BigBoatGame.Screens
         }
         private void vsButton_Click(object sender, EventArgs e)
         {
-            GameForm.vs = true;
-            GameForm.ChangeScreen(this, "GameScreen");
+            GameForm.vs =! GameForm.vs;
+            GameForm.ChangeScreen(this, "EndScreen");
         }
 
         private void highscoreButton_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace BigBoatGame.Screens
             writer = XmlWriter.Create("Resources/HighScores.xml"); // make reader
             writer.WriteStartElement("HighScores");
 
-            for(int i = 0; i < GameForm.scores.Count; i++)
+            for(int i = 0; i < 10; i++)
             { 
 
                 //Write sub-elements
