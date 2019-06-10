@@ -153,6 +153,10 @@ namespace BigBoatGame.Screens
             }
         }
 
+        private void GameScreen_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -166,7 +170,7 @@ namespace BigBoatGame.Screens
                 {
                     if (en.Colision(b))
                     {
-                        if (b.cannon) { en.hp -= 2; }/// bullet and enemie plane collision
+                        if (b.cannon) { en.hp -= 2; } // bullet and enemie plane collision
                         else { en.hp -= 1; }
                         if (en.hp <= 0)
                         {
@@ -491,7 +495,7 @@ namespace BigBoatGame.Screens
                 {
                     position = this.Height * (3 / 4);
                 }
-                enemies.Add(enemy = new Plane(2, side, position, 0, type));
+                enemies.Add(enemy = new Plane(2, side, position, 0, type, randGen.Next(150, 600)));
             }
 
         }

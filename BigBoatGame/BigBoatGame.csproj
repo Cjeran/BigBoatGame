@@ -178,7 +178,7 @@
     <None Include="Resources\Images\F4F-4_UpRight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Background.png" />
+    <None Include="Resources\Images\Background.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Highscores.xml">
@@ -186,28 +186,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AmericanFlag.png" />
+    <None Include="Resources\Images\AmericanFlag.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\JapaneseFlag.png" />
+    <None Include="Resources\Images\JapaneseFlag.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A6M2_Menu.png" />
+    <None Include="Resources\Images\A6M2_Menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\F4F-4_Menu.png" />
+    <None Include="Resources\Images\F4F-4_Menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A6M2_Down.png" />
+    <None Include="Resources\Images\A6M2_Down.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A6M2_Left.png" />
+    <None Include="Resources\Images\A6M2_Left.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A6M2_Right.png" />
+    <None Include="Resources\Images\A6M2_Right.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A6M2_Up.png" />
+    <None Include="Resources\Images\A6M2_Up.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shokaku.png" />
