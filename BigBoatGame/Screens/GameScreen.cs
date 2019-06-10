@@ -176,7 +176,7 @@ namespace BigBoatGame.Screens
                         {
                             if (GameForm.vs)
                             {
-                                GameOver("you lose carrier ded", "MenuScreen");
+                                GameOver("", "MenuScreen");
                             }
                             else
                             {
@@ -377,7 +377,7 @@ namespace BigBoatGame.Screens
                     waves++;
                     if (waves == 6)
                     {
-                        GameOver("you lose carrier ded", "EndScreen");
+                        GameOver("Congratulations! You've fought off all the enemies!", "EndScreen");
                     }
                     if (GameForm.yank)
                     {
@@ -453,7 +453,8 @@ namespace BigBoatGame.Screens
                     if (carrier.hp <= 0)
                     {
                         carrier.hp = 0;
-                        GameOver("you lose carrier ded","EndScreen");
+                        GameOver("The carrier has been destroyed. This is a shameful display!", "EndScreen");
+                        break;
                     }
 
                 }
