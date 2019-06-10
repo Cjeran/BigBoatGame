@@ -13,7 +13,7 @@ namespace BigBoatGame
 {
     public partial class GameForm : Form
     {
-
+        public static string msg;
         public static List<Score> scores;
         public static string score;
         XmlReader reader; 
