@@ -39,6 +39,8 @@ namespace BigBoatGame
         }
         public void XmlRead()
         {
+            if (!System.IO.File.Exists("Resources/HighScores.xml"))
+                System.IO.File.Create("Resources/HighScores.xml");
             scores = new List<Score>();
             reader = XmlReader.Create("Resources/HighScores.xml");
 

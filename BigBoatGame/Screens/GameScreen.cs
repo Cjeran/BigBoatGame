@@ -173,6 +173,7 @@ namespace BigBoatGame.Screens
                             if (GameForm.vs)
                             {
                                 GameOver("you lose carrier ded", "MenuScreen");
+                                
                             }
                             else
                             {
@@ -531,7 +532,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Bullet b in enemyBullets)
             {
-                e.Graphics.FillRectangle(reloadBrush, b.rect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.Orange), b.rect);
             }
 
             //HUD
