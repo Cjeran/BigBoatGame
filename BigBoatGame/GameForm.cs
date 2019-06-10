@@ -18,7 +18,7 @@ namespace BigBoatGame
         public static string score;
         XmlReader reader; 
         public static bool yank = true;
-        public static bool vs;
+        public static bool vs = false;
         public GameForm()
         {
             InitializeComponent();
