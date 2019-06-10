@@ -178,12 +178,36 @@
     <None Include="Resources\Images\F4F-4_UpRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Background.png" />
+    <None Include="Resources\AmericanFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JapaneseFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\F4F-4_Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A6M2_Up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

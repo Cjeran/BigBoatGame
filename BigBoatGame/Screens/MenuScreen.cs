@@ -17,6 +17,15 @@ namespace BigBoatGame.Screens
         public MenuScreen()
         {
             InitializeComponent();
+            GameForm.yank = true;
+            flipperButton.Text = "USA";
+            flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+            displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
+            foreach(var button in Controls.OfType<Button>())
+            {
+                button.GotFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Yellow; };
+                button.LostFocus += (object sender, EventArgs e) => { (sender as Button).ForeColor = Color.Black; };
+            }
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -25,7 +34,8 @@ namespace BigBoatGame.Screens
         }
         private void vsButton_Click(object sender, EventArgs e)
         {
-
+            GameForm.vs =! GameForm.vs;
+            GameForm.ChangeScreen(this, "EndScreen");
         }
 
         private void highscoreButton_Click(object sender, EventArgs e)
@@ -45,12 +55,14 @@ namespace BigBoatGame.Screens
             if (GameForm.yank)
             {
                 flipperButton.Text = "USA";
-                flipperButton.BackColor = Color.Navy;
+                flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
+                displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
             }
             else
             {
-                flipperButton.Text = "japapapapapanes";
-                flipperButton.BackColor = Color.Red;
+                flipperButton.Text = "Japan";
+                flipperButton.BackgroundImage = Properties.Resources.JapaneseFlag;
+                displayBox.BackgroundImage = Properties.Resources.A6M2_Menu;
             }
         }
 

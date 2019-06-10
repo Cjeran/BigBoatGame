@@ -20,7 +20,7 @@ namespace BigBoatGame.Screens
         private void OnStart()
         {
             
-            for (int i = 0; i < 10;i++)
+            for (int i = 0; i < GameForm.scores.Count;i++)
             {
                 scoreLabel.Text += "\n"+GameForm.scores[i].name+" - "+ GameForm.scores[i].number;
             }
