@@ -507,7 +507,14 @@ namespace BigBoatGame.Screens
         {
             foreach (Carrier c in carriers)
             {
-                e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+                if (GameForm.yank)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(Properties.Resources.Shokaku, c.rect);
+                }
             }
             foreach (Plane p in players)
             {
