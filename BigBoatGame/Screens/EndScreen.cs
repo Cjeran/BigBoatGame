@@ -59,6 +59,18 @@ namespace BigBoatGame.Screens
                             c--;
                         }
                         break;
+                    case Keys.Up:
+                        if (c != 'A')
+                        {
+                            c--;
+                        }
+                        break;
+                    case Keys.Down:
+                        if (c != 'Z')
+                        {
+                            c++;
+                        }
+                        break;
 
                     case Keys.Space:
                         boxNumber++;

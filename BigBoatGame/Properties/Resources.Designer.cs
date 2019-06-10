@@ -103,9 +103,9 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap A6M2_Right {
+        internal static System.Drawing.Bitmap A6M2_Menu {
             get {
-                object obj = ResourceManager.GetObject("A6M2_Right", resourceCulture);
+                object obj = ResourceManager.GetObject("A6M2_Menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap A6M2_Menu {
+        internal static System.Drawing.Bitmap A6M2_Right {
             get {
-                object obj = ResourceManager.GetObject("A6M2_Menu", resourceCulture);
+                object obj = ResourceManager.GetObject("A6M2_Right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,16 +343,16 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;HighScores&gt;
-        ///  &lt;player score =&quot;6&quot; name =&quot;aac&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;abc&quot;/&gt;
-        ///  &lt;player score =&quot;1&quot; name =&quot;acc&quot;/&gt;
+        ///  &lt;player number =&quot;6&quot; name =&quot;aac&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;abc&quot;/&gt;
+        ///  &lt;player number =&quot;1&quot; name =&quot;acc&quot;/&gt;
         ///&lt;/HighScores&gt;.
         /// </summary>
         internal static string Highscores {
@@ -367,6 +367,26 @@ namespace BigBoatGame.Properties {
         internal static System.Drawing.Bitmap JapaneseFlag {
             get {
                 object obj = ResourceManager.GetObject("JapaneseFlag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Lexington {
+            get {
+                object obj = ResourceManager.GetObject("Lexington", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Shokaku {
+            get {
+                object obj = ResourceManager.GetObject("Shokaku", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
