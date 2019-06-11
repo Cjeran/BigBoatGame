@@ -34,6 +34,7 @@
             this.twoLabel = new System.Windows.Forms.Label();
             this.threeLabel = new System.Windows.Forms.Label();
             this.ContinueLabel = new System.Windows.Forms.Label();
+            this.msgLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.carrierBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.Location = new System.Drawing.Point(423, 132);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(293, 55);
+            this.scoreLabel.Size = new System.Drawing.Size(277, 55);
             this.scoreLabel.TabIndex = 2;
             this.scoreLabel.Text = "la ywyeyy";
             // 
@@ -86,16 +87,26 @@
             // ContinueLabel
             // 
             this.ContinueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContinueLabel.Location = new System.Drawing.Point(826, 442);
+            this.ContinueLabel.Location = new System.Drawing.Point(717, 442);
             this.ContinueLabel.Name = "ContinueLabel";
-            this.ContinueLabel.Size = new System.Drawing.Size(185, 23);
+            this.ContinueLabel.Size = new System.Drawing.Size(294, 23);
             this.ContinueLabel.TabIndex = 6;
-            this.ContinueLabel.Text = "Continue";
+            this.ContinueLabel.Text = "Press space to Continue";
+            // 
+            // msgLabel
+            // 
+            this.msgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msgLabel.Location = new System.Drawing.Point(427, 77);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(136, 23);
+            this.msgLabel.TabIndex = 7;
+            this.msgLabel.Text = "label1";
             // 
             // EndScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.msgLabel);
             this.Controls.Add(this.ContinueLabel);
             this.Controls.Add(this.threeLabel);
             this.Controls.Add(this.twoLabel);
@@ -117,5 +128,6 @@
         private System.Windows.Forms.Label twoLabel;
         private System.Windows.Forms.Label threeLabel;
         private System.Windows.Forms.Label ContinueLabel;
+        private System.Windows.Forms.Label msgLabel;
     }
 }
