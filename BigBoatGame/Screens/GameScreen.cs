@@ -182,6 +182,7 @@ namespace BigBoatGame.Screens
                             else
                             {
                                 enemies.Remove(en);
+                               // GameForm.score += 5;
                             }
                         }
                         delete = true;
@@ -224,7 +225,7 @@ namespace BigBoatGame.Screens
                 if (end) { break; }
             }
 
-            foreach (Plane p in players) ///player 1
+            foreach (Plane p in players) ///player 
             {
                 p.OnScreen(gameTime);
                 p.Update();
@@ -378,6 +379,7 @@ namespace BigBoatGame.Screens
 
                 if (enemies.Count == 0) //New Wave
                 {
+                    GameForm.score += carrier.hp;
                     waves++;
                     if (waves == 6)
                     {
@@ -505,7 +507,7 @@ namespace BigBoatGame.Screens
             gameTimer.Enabled = false;
             if (!GameForm.vs)
             {
-                GameForm.score = carrier.hp + "";
+               // GameForm.score = carrier.hp + "";
             }
             GameForm.msg = msg;
             GameForm.ChangeScreen(this, screen);
