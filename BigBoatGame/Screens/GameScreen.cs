@@ -517,7 +517,7 @@ namespace BigBoatGame.Screens
             {
                 if (GameForm.yank)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.Dauntless_Down, c.rect);
+                    e.Graphics.DrawImage(Properties.Resources.Lexington, c.rect);
                 }
                 else
                 {
