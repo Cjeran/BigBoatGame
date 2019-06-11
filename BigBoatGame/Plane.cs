@@ -131,7 +131,7 @@ namespace BigBoatGame
         {
             if (turnTimer > 10)
             {
-                
+
                 Direction changer = direction;
 
                 if (p.rect.X > rect.X && target + 25 > rect.Y && target - 25 < rect.Y)
@@ -163,54 +163,6 @@ namespace BigBoatGame
                     direction = Direction.DownLeft;
                 }
                 else if (p.rect.X < rect.X && target < rect.Y)
-                {
-                    direction = Direction.UpLeft;
-                }
-
-                if (changer != direction)
-                {
-                    speed -= 3;
-                    turnTimer = 0;
-                }
-            }
-        }
-
-        public void PlayerAutoTurn(Plane p)
-        {
-            if (turnTimer > 10)
-            {
-
-                Direction changer = direction;
-
-                if (p.rect.X > rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
-                {
-                    direction = Direction.Right;
-                }
-                else if (p.rect.X < rect.X && p.rect.Y + 25 > rect.Y && p.rect.Y - 25 < rect.Y)
-                {
-                    direction = Direction.Left;
-                }
-                else if (p.rect.Y > rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
-                {
-                    direction = Direction.Down;
-                }
-                else if (p.rect.Y < rect.Y && p.rect.X + 25 > rect.X && p.rect.X - 25 < rect.X)
-                {
-                    direction = Direction.Up;
-                }
-                else if (p.rect.X > rect.X && p.rect.Y > rect.Y)
-                {
-                    direction = Direction.DownRight;
-                }
-                else if (p.rect.X > rect.X && p.rect.Y < rect.Y)
-                {
-                    direction = Direction.UpRight;
-                }
-                else if (p.rect.X < rect.X && p.rect.Y > rect.Y)
-                {
-                    direction = Direction.DownLeft;
-                }
-                else if (p.rect.X < rect.X && p.rect.Y < rect.Y)
                 {
                     direction = Direction.UpLeft;
                 }
