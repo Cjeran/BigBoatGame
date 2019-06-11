@@ -222,6 +222,65 @@ namespace BigBoatGame.Screens
                 if (end) { break; }
             }
 
+            foreach (Plane p in players) ///player 1
+            {
+                p.OnScreen(gameTime);
+                p.Update();
+                p.GunPosition();
+                p.Move();
+                if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
+                {
+                    p.ammo1--;
+                    if (p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                    }
+                    else if (!p.gunSide)
+                    {
+                        bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                    }
+                    p.gunSide = !p.gunSide;
+                }
+                else if (p.ammo1 <= 0)
+                {
+                    p.PrimaryReload();
+                }
+                //Secondary Shooting
+                if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
+                {
+                    p.ammo2--;
+                    if (GameForm.yank)
+                    {
+                        if (p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
+                        }
+                        else if (!p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
+                        }
+                        p.gunSide = !p.gunSide;
+                    }
+                    else
+                    {
+                        if (p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                        }
+                        else if (!p.gunSide)
+                        {
+                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                        }
+                        p.gunSide = !p.gunSide;
+                    }
+
+                }
+                else if (p.ammo2 <= 0)
+                {
+                    p.SecondaryReload();
+                }
+            }
+
 
             if (GameForm.vs) // vs mode checks/////////////////////////////////////////////////////////////////////////////////
             {
@@ -242,64 +301,7 @@ namespace BigBoatGame.Screens
                 {
                     players[0].Turn(false);
                 }
-                foreach (Plane p in players) ///player 1
-                {
-                    p.OnScreen(gameTime);
-                    p.Update();
-                    p.GunPosition();
-                    p.Move();
-                    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
-                    {
-                        p.ammo1--;
-                        if (p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
-                        }
-                        else if (!p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
-                        }
-                        p.gunSide = !p.gunSide;
-                    }
-                    else if (p.ammo1 <= 0)
-                    {
-                        p.PrimaryReload();
-                    }
-                    //Secondary Shooting
-                    if (mKeyDown && p.shotClock > p.fireRate && p.ammo2 > 0)
-                    {
-                        p.ammo2--;
-                        if (GameForm.yank)
-                        {
-                            if (p.gunSide)
-                            {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));
-                            }
-                            else if (!p.gunSide)
-                            {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), false, false));
-                            }
-                            p.gunSide = !p.gunSide;
-                        }
-                        else
-                        {
-                            if (p.gunSide)
-                            {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
-                            }
-                            else if (!p.gunSide)
-                            {
-                                bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
-                            }
-                            p.gunSide = !p.gunSide;
-                        }
-
-                    }
-                    else if (p.ammo2 <= 0)
-                    {
-                        p.SecondaryReload();
-                    }
-                }
+              
 
                 foreach (Plane p in enemies) ///player 2
                 {
@@ -413,42 +415,42 @@ namespace BigBoatGame.Screens
                     p.Move();
                 }
 
-                foreach (Plane p in players)
-                {
-                    p.OnScreen(gameTime);
-                    p.Update();
-                    p.GunPosition();
-                    p.Move();
-                    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
-                    {
-                        p.ammo1--;
-                        if (p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
-                        }
-                        else if (!p.gunSide)
-                        {
-                            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
-                        }
-                        p.gunSide = !p.gunSide;
-                    }
-                    else if (p.ammo1 <= 0)
-                    {
-                        p.PrimaryReload();
-                    }
-                    foreach (Plane en in enemies)
-                    {
-                        p.Colision(en);
+                //foreach (Plane p in players)
+                //{
+                //    p.OnScreen(gameTime);
+                //    p.Update();
+                //    p.GunPosition();
+                //    p.Move();
+                //    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
+                //    {
+                //        p.ammo1--;
+                //        if (p.gunSide)
+                //        {
+                //            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
+                //        }
+                //        else if (!p.gunSide)
+                //        {
+                //            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
+                //        }
+                //        p.gunSide = !p.gunSide;
+                //    }
+                //    else if (p.ammo1 <= 0)
+                //    {
+                //        p.PrimaryReload();
+                //    }
+                //    foreach (Plane en in enemies)
+                //    {
+                //        p.Colision(en);
 
-                    }
-                }
+                //    }
+                //}
                 foreach (Plane en in enemies)
                 {
                     if (en.Colision(carrier) && en.bombed == false)
                     {
                         en.bombed = true;
                         en.maxSpeed = 8;
-                        carrier.hp -= 10;
+                        carrier.hp -= 5;
                     }
                     if (carrier.hp <= 0)
                     {
@@ -505,6 +507,7 @@ namespace BigBoatGame.Screens
             {
                 GameForm.score = carrier.hp + "";
             }
+            GameForm.msg = msg;
             GameForm.ChangeScreen(this, screen);
         }
 
@@ -536,7 +539,7 @@ namespace BigBoatGame.Screens
             }
             foreach (Bullet b in enemyBullets)
             {
-                e.Graphics.FillRectangle(reloadBrush, b.rect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.Orange), b.rect);
             }
 
             //HUD
