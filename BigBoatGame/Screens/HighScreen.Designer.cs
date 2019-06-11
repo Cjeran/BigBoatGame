@@ -46,7 +46,7 @@
             this.scoreLabel.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.Location = new System.Drawing.Point(112, 106);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(183, 324);
+            this.scoreLabel.Size = new System.Drawing.Size(183, 383);
             this.scoreLabel.TabIndex = 1;
             this.scoreLabel.Text = "Highscores ";
             // 
