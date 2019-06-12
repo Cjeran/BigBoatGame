@@ -14,6 +14,7 @@ namespace BigBoatGame.Screens
     {
         Boolean leftKeyDown, rightKeyDown, spaceKeyDown, mKeyDown;
         Plane example;
+        List<Bullet> bullets = new List<Bullet>();
         public HowScreen()
         {
             InitializeComponent();
@@ -25,9 +26,28 @@ namespace BigBoatGame.Screens
             GameForm.ChangeScreen(this, "MenuScreen");
         }
 
+        private void HowScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case (Keys.Left):
+                    leftKeyDown = true;
+                    break;
+                case (Keys.Right):
+                    rightKeyDown = true;
+                    break;
+                case (Keys.Space):
+                    spaceKeyDown = true;
+                    break;
+                case (Keys.M):
+                    mKeyDown = true;
+                    break;
+            }
+        }
+
         private void HowScreen_KeyUp(object sender, KeyEventArgs e)
         {
-            switch (Keys.KeyCode)
+            switch (e.KeyCode)
             {
                 case (Keys.Left):
                     leftKeyDown = false;
@@ -44,15 +64,19 @@ namespace BigBoatGame.Screens
             }
         }
 
-        private void menuButton_Paint(object sender, PaintEventArgs e)
+        private void HowScreen_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(example.playerImage(), example.rect.X, example.rect.Y);
+            foreach (Bullet b in bullets)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.White), b.rect);
+            }
+            e.Graphics.DrawImage(example.playerImage(), example.rect);
         }
 
         public void OnStart()
         {
             example = new Plane(1, this.Width / 2 - 25, this.Height / 2 - 25, 0, "F4F_4", 0);
-            howToTimer.Start();
+            howToTimer.Enabled = true;
         }
 
         private void howToTimer_Tick(object sender, EventArgs e)
@@ -60,15 +84,15 @@ namespace BigBoatGame.Screens
             example.Update();
             example.GunPosition();
 
-            if (spaceKeyDown)
+            if (spaceKeyDown && example.shotClock > example.fireRate)
             {
                 if (example.gunSide)
                 {
-                    example.Shoot(Convert.ToInt16(example.direction), false, true);
+                    bullets.Add(example.Shoot(Convert.ToInt16(example.direction), false, true));
                 }
                 else if (!example.gunSide)
                 {
-                    example.Shoot(Convert.ToInt16(example.direction), false, false);
+                    bullets.Add(example.Shoot(Convert.ToInt16(example.direction), false, false));
                 }
             }
 
@@ -81,25 +105,13 @@ namespace BigBoatGame.Screens
                 example.Turn(false);
             }
             else { }
-        }
 
-        private void HowScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            switch (Keys.KeyCode)
+            foreach (Bullet b in bullets)
             {
-                case (Keys.Left):
-                    leftKeyDown = true;
-                    break;
-                case (Keys.Right):
-                    rightKeyDown = true;
-                    break;
-                case (Keys.Space):
-                    spaceKeyDown = true;
-                    break;
-                case (Keys.M):
-                    mKeyDown = true;
-                    break;
+                b.Move();
             }
+
+            Refresh();
         }
     }
 }
