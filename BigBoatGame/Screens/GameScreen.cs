@@ -26,7 +26,7 @@ namespace BigBoatGame.Screens
 
         int waves;
 
-        int gameTime;
+        int gameTime, gameScore;
         public Carrier carrier, dummy;
         public Plane player;
         public Plane enemy;
@@ -60,7 +60,7 @@ namespace BigBoatGame.Screens
                 {
                     players.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
                 }
-                carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
+                carriers.Add(carrier = new Carrier(this.Width /2 + 120, this.Height / 2 - 225));
                 carriers.Add(dummy = new Carrier(this.Width + 100, this.Height / 2 - 225));
             }
 
@@ -379,7 +379,9 @@ namespace BigBoatGame.Screens
 
                 if (enemies.Count == 0) //New Wave
                 {
-                    GameForm.score += carrier.hp;
+                    gameScore = Convert.ToInt32(GameForm.score);
+                    gameScore += carrier.hp;
+                    GameForm.score = gameScore+"";
                     waves++;
                     if (waves == 6)
                     {
@@ -452,24 +454,24 @@ namespace BigBoatGame.Screens
         {
             for (int i = 0; i <= waves * 2; i++)
             {
-                int position = randGen.Next(1, 4);
-                if (position == 1)
-                {
-                    position = this.Height / 4;
-                }
-                if (position == 1)
-                {
-                    position = this.Height / 4;
-                }
-                else if (position == 2)
-                {
-                    position = this.Height / 2;
-                }
-                else
-                {
-                    position = this.Height * (3 / 4);
-                }
-                enemies.Add(enemy = new Plane(2, - 100, position, 0, type, randGen.Next(150, 600)));
+                int position = randGen.Next(150, 600);
+                //if (position == 1)
+                //{
+                //    position = this.Height / 4;
+                //}
+                //if (position == 1)
+                //{
+                //    position = this.Height / 4;
+                //}
+                //else if (position == 2)
+                //{
+                //    position = this.Height / 2;
+                //}
+                //else
+                //{
+                //    position = this.Height * (3 / 4);
+                //}
+                enemies.Add(enemy = new Plane(2, - 100, position, 0, type, position));
             }
 
         }
