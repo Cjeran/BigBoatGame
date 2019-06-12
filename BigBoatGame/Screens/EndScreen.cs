@@ -26,7 +26,14 @@ namespace BigBoatGame.Screens
             s = new Score();
             s.number = GameForm.score;
             scoreLabel.Text = Convert.ToInt16(s.number) * 5 + " winning points";
-            
+            msgLabel.Text = GameForm.msg;
+            if (GameForm.vs)
+            {
+                oneLabel.Visible = false;
+                twoLabel.Visible = false;
+                threeLabel.Visible = false;
+
+            }
         }
        
         private void selected(Label label)
@@ -40,7 +47,10 @@ namespace BigBoatGame.Screens
 
         private void EndScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            
+            if (GameForm.vs)
+            {
+                boxNumber = 2;
+            }
 
             if (boxNumber < 3)
             {

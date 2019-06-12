@@ -13,7 +13,7 @@ namespace BigBoatGame
 {
     public partial class GameForm : Form
     {
-
+        public static string msg;
         public static List<Score> scores;
         public static string score;
         XmlReader reader; 
@@ -39,6 +39,8 @@ namespace BigBoatGame
         }
         public void XmlRead()
         {
+            if (!System.IO.File.Exists("Resources/HighScores.xml"))
+                System.IO.File.Create("Resources/HighScores.xml");
             scores = new List<Score>();
             reader = XmlReader.Create("Resources/HighScores.xml");
 
