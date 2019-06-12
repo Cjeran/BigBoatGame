@@ -18,7 +18,7 @@ namespace BigBoatGame.Screens
         {
             InitializeComponent();
             GameForm.yank = true;
-            flipperButton.Text = "";
+            flipperButton.Text = "USA";
             flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
             displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
             foreach(var button in Controls.OfType<Button>())
@@ -55,13 +55,13 @@ namespace BigBoatGame.Screens
             GameForm.yank = !GameForm.yank;
             if (GameForm.yank)
             {
-                flipperButton.Text = "";
+                flipperButton.Text = "USA";
                 flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
                 displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
             }
             else
             {
-                flipperButton.Text = "";
+                flipperButton.Text = "Japan";
                 flipperButton.BackgroundImage = Properties.Resources.JapaneseFlag;
                 displayBox.BackgroundImage = Properties.Resources.A6M2_Menu;
             }
