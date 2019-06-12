@@ -27,40 +27,48 @@ namespace BigBoatGame
         }
         public void OnStart()
         {
-            
+         
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             Form f = this.FindForm();
             f.Controls.Remove(this);
             UserControl ns = null;
             ns = new Screens.MenuScreen();
-            ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2)-30);
             f.Controls.Add(ns);
+            ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2) - 30);
             ns.Focus();
             XmlRead();
         }
         public void XmlRead()
         {
-            if (!System.IO.File.Exists("Resources/HighScores.xml"))
-                System.IO.File.Create("Resources/HighScores.xml");
-            scores = new List<Score>();
-            reader = XmlReader.Create("Resources/HighScores.xml");
+            try {
+                //if (!System.IO.File.Exists("Resources/HighScores.xml"))
+                //{
+                //    System.IO.File.Create("Resources/HighScores.xml");
+                //}
+                scores = new List<Score>();
+                reader = XmlReader.Create("Resources/HighScores.xml");
 
-            while (reader.Read())
-            {
-                if (reader.Name == "player")
+                while (reader.Read())
                 {
-                    // create a score object
-                    Score s = new Score();
-                    
-                    // fill score object with required data
-                    s.number = reader.GetAttribute("number");
-                    s.name = reader.GetAttribute("name");
+                    if (reader.Name == "player")
+                    {
+                        // create a score object
+                        Score s = new Score();
 
-                    scores.Add(s);
+                        // fill score object with required data
+                        s.number = reader.GetAttribute("number");
+                        s.name = reader.GetAttribute("name");
+
+                        scores.Add(s);
+                    }
+
                 }
-
+                reader.Close();
             }
-            reader.Close();
+            catch { }
         }
+        
     
 
         public static void ChangeScreen(UserControl current, string next)

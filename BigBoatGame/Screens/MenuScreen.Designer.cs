@@ -97,7 +97,6 @@
             this.flipperButton.Name = "flipperButton";
             this.flipperButton.Size = new System.Drawing.Size(200, 121);
             this.flipperButton.TabIndex = 5;
-            this.flipperButton.Text = "Flop";
             this.flipperButton.UseVisualStyleBackColor = false;
             this.flipperButton.Click += new System.EventHandler(this.flipperButton_Click);
             // 
