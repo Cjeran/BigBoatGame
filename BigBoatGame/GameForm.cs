@@ -15,7 +15,7 @@ namespace BigBoatGame
     {
         public static string msg;
         public static List<Score> scores;
-        public static string score;
+        public static int score;
         XmlReader reader; 
         public static bool yank = true;
         public static bool vs = false;
@@ -55,9 +55,10 @@ namespace BigBoatGame
                     {
                         // create a score object
                         Score s = new Score();
-
+                        string ST;
                         // fill score object with required data
-                        s.number = reader.GetAttribute("number");
+                        ST= s.number+"";
+                        ST = reader.GetAttribute("number");
                         s.name = reader.GetAttribute("name");
 
                         scores.Add(s);
