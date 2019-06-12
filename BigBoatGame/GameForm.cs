@@ -92,10 +92,7 @@ namespace BigBoatGame
                     break;
                 case "HowScreen":
                     ns = new Screens.HowScreen();
-                    break;
-                case "NameScreen":
-                   // ns = new NameScreen1();
-                    break;
+                    break;   
                 case "EndScreen":
                      ns = new Screens.EndScreen();
                     break;

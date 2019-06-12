@@ -209,7 +209,7 @@ namespace BigBoatGame.Screens
                             if (GameForm.vs)
                             {
                                 end = true;
-                                GameOver("you lose carrier ded", "MenuScreen");
+                                GameOver("you lose carrier ded", "EndScreen");
                                 break;
                             }
                             else
@@ -368,7 +368,7 @@ namespace BigBoatGame.Screens
 
 
             }
-            else////////////////////////////////////////////////////////////////////
+            else//////////////////////////////////////////////////////////////////// vs mode end
             {
 
 
@@ -426,35 +426,7 @@ namespace BigBoatGame.Screens
                     
                 }
 
-                //foreach (Plane p in players)
-                //{
-                //    p.OnScreen(gameTime);
-                //    p.Update();
-                //    p.GunPosition();
-                //    p.Move();
-                //    if (spaceKeyDown && p.shotClock > p.fireRate && p.ammo1 > 0)
-                //    {
-                //        p.ammo1--;
-                //        if (p.gunSide)
-                //        {
-                //            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
-                //        }
-                //        else if (!p.gunSide)
-                //        {
-                //            bullets.Add(p.Shoot(Convert.ToInt16(p.direction), true, false));
-                //        }
-                //        p.gunSide = !p.gunSide;
-                //    }
-                //    else if (p.ammo1 <= 0)
-                //    {
-                //        p.PrimaryReload();
-                //    }
-                //    foreach (Plane en in enemies)
-                //    {
-                //        p.Colision(en);
-
-                //    }
-                //}
+                
                 foreach (Plane en in enemies)
                 {
                     if (en.Colision(carrier) && en.bombed == false)
@@ -502,7 +474,7 @@ namespace BigBoatGame.Screens
 
         }
 
-        public void GameOver(string msg,string screen)
+        public void GameOver(string msg,string screen) /// game over changes screen
         {
             gameTimer.Enabled = false;
             if (!GameForm.vs)

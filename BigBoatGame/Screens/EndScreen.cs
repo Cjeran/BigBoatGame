@@ -25,13 +25,14 @@ namespace BigBoatGame.Screens
         {
             s = new Score();
             s.number = GameForm.score;
-            scoreLabel.Text = Convert.ToInt16(s.number) * 5 + " winning points";
+            scoreLabel.Text = Convert.ToInt32(s.number) * 5 + " winning points";
             msgLabel.Text = GameForm.msg;
             if (GameForm.vs)
             {
                 oneLabel.Visible = false;
                 twoLabel.Visible = false;
                 threeLabel.Visible = false;
+                carrierBox.Visible = false;
 
             }
         }
