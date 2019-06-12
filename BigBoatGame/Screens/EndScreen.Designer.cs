@@ -40,11 +40,11 @@
             // 
             // carrierBox
             // 
-            this.carrierBox.BackgroundImage = global::BigBoatGame.Properties.Resources.Dauntless_Down;
+            this.carrierBox.BackgroundImage = global::BigBoatGame.Properties.Resources.Shokaku;
             this.carrierBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.carrierBox.Location = new System.Drawing.Point(140, 132);
+            this.carrierBox.Location = new System.Drawing.Point(155, 77);
             this.carrierBox.Name = "carrierBox";
-            this.carrierBox.Size = new System.Drawing.Size(168, 350);
+            this.carrierBox.Size = new System.Drawing.Size(80, 450);
             this.carrierBox.TabIndex = 1;
             this.carrierBox.TabStop = false;
             // 
@@ -98,7 +98,7 @@
             this.msgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msgLabel.Location = new System.Drawing.Point(427, 77);
             this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(136, 23);
+            this.msgLabel.Size = new System.Drawing.Size(281, 23);
             this.msgLabel.TabIndex = 7;
             this.msgLabel.Text = "label1";
             // 
