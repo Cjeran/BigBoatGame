@@ -210,10 +210,10 @@
     <None Include="Resources\Images\A6M2_Up.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shokaku.png" />
+    <None Include="Resources\Lexington.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Lexington.png" />
+    <None Include="Resources\Shokaku.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
