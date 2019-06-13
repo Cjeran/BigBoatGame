@@ -35,6 +35,10 @@ namespace BigBoatGame.Screens
                 carrierBox.Visible = false;
 
             }
+            if (GameForm.yank)
+            {
+                carrierBox.Image = Properties.Resources.Lexington;
+            }
         }
        
         private void selected(Label label)

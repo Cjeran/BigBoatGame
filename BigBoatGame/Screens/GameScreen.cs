@@ -223,6 +223,7 @@ namespace BigBoatGame.Screens
                     }
                 }
                 if (end) { break; }
+                if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
             }
 
             foreach (Plane p in players) ///player 

@@ -93,6 +93,12 @@
     <Compile Include="Screens\MenuScreen.Designer.cs">
       <DependentUpon>MenuScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\PauseScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\PauseScreen.Designer.cs">
+      <DependentUpon>PauseScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MenuScreen.resx">
       <DependentUpon>MenuScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PauseScreen.resx">
+      <DependentUpon>PauseScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shokaku.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Explosion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
