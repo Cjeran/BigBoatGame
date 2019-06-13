@@ -28,7 +28,7 @@ namespace BigBoatGame.Screens
 
         int gameTime, gameScore;
         public Carrier carrier, dummy;
-        public Plane player;
+        public Plane player, player2;
         public Plane enemy;
         Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown, zKeyDown, xKeyDown;
 
@@ -48,7 +48,7 @@ namespace BigBoatGame.Screens
             if (GameForm.vs)
             {
                 players.Add(player = new Plane(8, 250, 550, 0, "F4F_4", 0));
-                enemies.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
+                enemies.Add(player2 = new Plane(5, 250, 250, 0, "A6M2", 0));
             }
             else
             {
@@ -177,7 +177,7 @@ namespace BigBoatGame.Screens
                         {
                             if (GameForm.vs)
                             {
-                                GameOver("", "MenuScreen");
+                                GameOver("American Player Wins!", "EndScreen");
                             }
                             else
                             {
@@ -209,7 +209,7 @@ namespace BigBoatGame.Screens
                             if (GameForm.vs)
                             {
                                 end = true;
-                                GameOver("you lose carrier ded", "MenuScreen");
+                                GameOver("Japanese Player Wins!", "EndScreen");
                                 break;
                             }
                             else
@@ -556,8 +556,28 @@ namespace BigBoatGame.Screens
             }
             else
             {
+                e.Graphics.DrawString("Player 1", textFont, reloadBrush, this.Width - 125, 150);
                 e.Graphics.DrawString("HP: " + players[0].hp, textFont, textBrush, this.Width - 150, 175);
-                e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 145);
+                //player 2 HUD
+                e.Graphics.DrawString("Player 2", textFont, reloadBrush, this.Width - 125, 450);
+                e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 475);
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 500);
+                if (player2.reload1)
+                {
+                    e.Graphics.DrawString("Reload: " + player2.primaryCounter, textFont, reloadBrush, this.Width - 150, 525);
+                }
+                else
+                {
+                    e.Graphics.DrawString("Primary: " + player2.ammo1, textFont, textBrush, this.Width - 150, 525);
+                }
+                if (player2.reload2)
+                {
+                    e.Graphics.DrawString("Secondary: " + player2.secondaryCounter, textFont, reloadBrush, this.Width - 150, 550);
+                }
+                else
+                {
+                    e.Graphics.DrawString("Secondary: " + player2.ammo2, textFont, textBrush, this.Width - 150, 550);
+                }
             }
 
             if (GameForm.yank)
