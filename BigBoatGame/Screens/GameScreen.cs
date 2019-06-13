@@ -381,7 +381,7 @@ namespace BigBoatGame.Screens
                 {
                     gameScore = Convert.ToInt32(GameForm.score);
                     gameScore += carrier.hp;
-                    GameForm.score = gameScore+"";
+                    GameForm.score = gameScore;
                     waves++;
                     if (waves == 6)
                     {

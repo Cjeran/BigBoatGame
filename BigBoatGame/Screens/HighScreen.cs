@@ -19,7 +19,7 @@ namespace BigBoatGame.Screens
         }
         private void OnStart()
         {
-            //GameForm.scores.Sort();
+            
             GameForm.scores.Reverse();
             for (int i = 0; i < GameForm.scores.Count;i++)
             {
