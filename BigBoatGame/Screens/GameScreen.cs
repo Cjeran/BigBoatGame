@@ -476,8 +476,28 @@ namespace BigBoatGame.Screens
             }
             else
             {
+                e.Graphics.DrawString("Player 1", textFont, reloadBrush, this.Width - 125, 150);
                 e.Graphics.DrawString("HP: " + players[0].hp, textFont, textBrush, this.Width - 150, 175);
-                e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 145);
+                //player 2 HUD
+                e.Graphics.DrawString("Player 2", textFont, reloadBrush, this.Width - 125, 450);
+                e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 475);
+                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 500);
+                if (enemies[0].reload1)
+                {
+                    e.Graphics.DrawString("Reload: " + enemies[0].primaryCounter, textFont, reloadBrush, this.Width - 150, 525);
+                }
+                else
+                {
+                    e.Graphics.DrawString("Primary: " + enemies[0].ammo1, textFont, textBrush, this.Width - 150, 525);
+                }
+                if (enemies[0].reload2)
+                {
+                    e.Graphics.DrawString("Secondary: " + enemies[0].secondaryCounter, textFont, reloadBrush, this.Width - 150, 550);
+                }
+                else
+                {
+                    e.Graphics.DrawString("Secondary: " + enemies[0].ammo2, textFont, textBrush, this.Width - 150, 550);
+                }
             }
 
             if (GameForm.yank)
