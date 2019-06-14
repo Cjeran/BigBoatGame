@@ -224,8 +224,5 @@
   <ItemGroup>
     <None Include="Resources\Shokaku.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Images\Explosion.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

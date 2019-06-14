@@ -163,69 +163,70 @@ namespace BigBoatGame.Screens
         {
             gameTime++;
 
-            foreach (Bullet b in bullets)
-            {
-                bool delete = false;
-                b.Move();
-                foreach (Plane en in enemies)
-                {
-                    if (en.Colision(b))
-                    {
-                        if (b.cannon) { en.hp -= 2; } // bullet and enemie plane collision
-                        else { en.hp -= 1; }
-                        if (en.hp <= 0)
-                        {
-                            if (GameForm.vs)
-                            {
-                                GameOver("American Player Wins!", "EndScreen");
-                            }
-                            else
-                            {
-                                enemies.Remove(en);
-                                // GameForm.score += 5;
-                            }
-                        }
-                        delete = true;
-                        bullets.Remove(b);
-                        break;
-                    }
-                }
-                if (delete) { break; }
-                if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
-            }
+            //foreach (Bullet b in bullets)
+            //{
+            //    bool delete = false;
+            //    b.Move();
+            //    foreach (Plane en in enemies)
+            //    {
+            //        if (en.Colision(b))
+            //        {
+            //            if (b.cannon) { en.hp -= 2; } // bullet and enemie plane collision
+            //            else { en.hp -= 1; }
+            //            if (en.hp <= 0)
+            //            {
+            //                if (GameForm.vs)
+            //                {
+            //                    GameOver("American Player Wins!", "EndScreen");
+            //                }
+            //                else
+            //                {
+            //                    enemies.Remove(en);
+            //                    // GameForm.score += 5;
+            //                }
+            //            }
+            //            delete = true;
+            //            bullets.Remove(b);
+            //            break;
+            //        }
+            //    }
+            //    if (delete) { break; }
+            //    if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
+            //}
 
-            foreach (Bullet b in enemyBullets)
-            {
-                bool end = false;
-                b.Move();
-                foreach (Plane p in players)
-                {
-                    if (p.Colision(b))
-                    {
-                        if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
-                        else { p.hp -= 1; }
-                        if (p.hp <= 0)
-                        {
-                            if (GameForm.vs)
-                            {
-                                end = true;
-                                GameOver("Japanese Player Wins!", "EndScreen");
-                                break;
-                            }
-                            else
-                            {
-                                enemies.Remove(p);
-                            }
+            //foreach (Bullet b in enemyBullets)
+            //{
+            //    bool end = false;
+            //    b.Move();
+            //    foreach (Plane p in players)
+            //    {
+            //        if (p.Colision(b))
+            //        {
+            //            if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
+            //            else { p.hp -= 1; }
+            //            if (p.hp <= 0)
+            //            {
+            //                if (GameForm.vs)
+            //                {
+            //                    end = true;
+            //                    GameOver("Japanese Player Wins!", "EndScreen");
+            //                    break;
+            //                }
+            //                else
+            //                {
+            //                    enemies.Remove(p);
+            //                }
 
-                        }
-                        end = true;
-                        bullets.Remove(b);
-                    }
-                }
-                if (end) { break; }
-                if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
-            }
-
+            //            }
+            //            end = true;
+            //            bullets.Remove(b);
+            //        }
+            //    }
+            //    if (end) { break; }
+            //    if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
+            //}
+            BulletStuff(players, bullets, "Japanese Player Wins!");
+            BulletStuff(enemies, enemyBullets, "America Player Wins!");
             ShootStuff(players,bullets, spaceKeyDown, mKeyDown);
 
 
@@ -335,6 +336,44 @@ namespace BigBoatGame.Screens
             }
             Refresh();
         }
+        public void BulletStuff(List<Plane> planes,List<Bullet> bullets,string winMsg)
+        {
+            foreach (Bullet b in bullets)
+            {
+                bool end = false;
+                b.Move();
+                foreach (Plane p in planes)
+                {
+                    if (p.Colision(b))
+                    {
+                        if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
+                        else { p.hp -= 1; }
+                        if (p.hp <= 0)
+                        {
+                            if (GameForm.vs)
+                            {
+                                end = true;
+                                GameOver(winMsg, "EndScreen");
+                                break;
+                            }
+                            else
+                            {
+                                planes.Remove(p);
+                                break;
+                            }
+                        }
+                        end = true;
+                        bullets.Remove(b);
+                    }
+                }
+                if (end) { break; }
+                if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
+            }
+
+           
+        }
+
+
         public void ShootStuff(List<Plane> planeList,List<Bullet> bulletList,bool key1Down,bool key2Down)
         {
             foreach (Plane p in planeList) ///plane list
