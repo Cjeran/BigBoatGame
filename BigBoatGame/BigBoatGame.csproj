@@ -233,5 +233,11 @@
   <ItemGroup>
     <None Include="Resources\Grenade-SoundBible.com-1777900486.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Joystick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Joystick2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

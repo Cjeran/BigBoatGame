@@ -16,7 +16,7 @@ namespace BigBoatGame.Screens
         SolidBrush hudBrush = new SolidBrush(Color.Moccasin);
         SolidBrush reloadBrush = new SolidBrush(Color.IndianRed);
         Brush textBrush = new SolidBrush(Color.Black);
-        Font textFont = new Font("Mongolian Baiti", 12);
+        Font textFont = new Font("Mongolian Baiti", 16);
 
         List<Plane> players = new List<Plane>();
         List<Plane> enemies = new List<Plane>();
@@ -27,7 +27,7 @@ namespace BigBoatGame.Screens
         int waves;
 
         int gameTime;
-        public Carrier carrier;
+        public Carrier carrier, dummy;
         public Plane player;
         public Plane enemy;
         Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown, zKeyDown, xKeyDown;
@@ -61,6 +61,7 @@ namespace BigBoatGame.Screens
                     players.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
                 }
                 carriers.Add(carrier = new Carrier(this.Width / 2 - 40, this.Height / 2 - 225));
+                carriers.Add(dummy = new Carrier(this.Width + 100, this.Height / 2 - 225));
             }
 
 
@@ -181,6 +182,7 @@ namespace BigBoatGame.Screens
                             else
                             {
                                 enemies.Remove(en);
+                               // GameForm.score += 5;
                             }
                         }
                         delete = true;
@@ -189,6 +191,7 @@ namespace BigBoatGame.Screens
                     }
                 }
                 if (delete) { break; }
+                if (b.rect.X > 1400||b.rect.X<-10||b.rect.Y<-10||b.rect.Y>800) { bullets.Remove(b); break; }
             }
 
             foreach (Bullet b in enemyBullets)
@@ -222,7 +225,7 @@ namespace BigBoatGame.Screens
                 if (end) { break; }
             }
 
-            foreach (Plane p in players) ///player 1
+            foreach (Plane p in players) ///player 
             {
                 p.OnScreen(gameTime);
                 p.Update();
@@ -376,6 +379,7 @@ namespace BigBoatGame.Screens
 
                 if (enemies.Count == 0) //New Wave
                 {
+                    GameForm.score += carrier.hp;
                     waves++;
                     if (waves == 6)
                     {
@@ -401,18 +405,25 @@ namespace BigBoatGame.Screens
                     players[0].Turn(false);
                 }
 
-                foreach (Plane p in enemies)
+                foreach (Plane p in enemies) //Enemy movement
                 {
                     p.Update();
                     if (p.bombed == false)
                     {
                         p.CarrierAutoTurn(carriers[0]);
                     }
-                    else
+                    else //Head offscreen toward dummy carrier
                     {
-                        p.PlayerAutoTurn(players[0]);
+                        p.CarrierAutoTurn(carriers[1]);
+                        if (p.rect.X > this.Width)
+                        {
+                            enemies.Remove(p);
+                            break;
+                        }
                     }
                     p.Move();
+
+                    
                 }
 
                 //foreach (Plane p in players)
@@ -469,16 +480,7 @@ namespace BigBoatGame.Screens
         {
             for (int i = 0; i <= waves * 2; i++)
             {
-                int side = randGen.Next(1, 3);
                 int position = randGen.Next(1, 4);
-                if (side == 1)
-                {
-                    side = -100;
-                }
-                else
-                {
-                    side = this.Width + 100;
-                }
                 if (position == 1)
                 {
                     position = this.Height / 4;
@@ -495,7 +497,7 @@ namespace BigBoatGame.Screens
                 {
                     position = this.Height * (3 / 4);
                 }
-                enemies.Add(enemy = new Plane(2, side, position, 0, type, randGen.Next(150, 600)));
+                enemies.Add(enemy = new Plane(2, - 100, position, 0, type, randGen.Next(150, 600)));
             }
 
         }
@@ -505,7 +507,7 @@ namespace BigBoatGame.Screens
             gameTimer.Enabled = false;
             if (!GameForm.vs)
             {
-                GameForm.score = carrier.hp + "";
+               // GameForm.score = carrier.hp + "";
             }
             GameForm.msg = msg;
             GameForm.ChangeScreen(this, screen);

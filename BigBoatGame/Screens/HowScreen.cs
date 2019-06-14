@@ -12,12 +12,13 @@ namespace BigBoatGame.Screens
 {
     public partial class HowScreen : UserControl
     {
-        Boolean leftKeyDown, rightKeyDown, spaceKeyDown, mKeyDown;
-        Plane example;
+        Boolean leftKeyDown, rightKeyDown, spaceKeyDown, mKeyDown, escapeKeyDown;
+        Plane example, exampleLeft, exampleRight, examplePrimary, exampleSecondary;
         List<Bullet> bullets = new List<Bullet>();
         public HowScreen()
         {
             InitializeComponent();
+            DoubleBuffered = true;
             OnStart();
         }
 
@@ -42,6 +43,9 @@ namespace BigBoatGame.Screens
                 case (Keys.M):
                     mKeyDown = true;
                     break;
+                case (Keys.Escape):
+                    escapeKeyDown = true;
+                    break;
             }
         }
 
@@ -61,6 +65,9 @@ namespace BigBoatGame.Screens
                 case (Keys.M):
                     mKeyDown = false;
                     break;
+                case (Keys.Escape):
+                    escapeKeyDown = false;
+                    break;
             }
         }
 
@@ -71,11 +78,19 @@ namespace BigBoatGame.Screens
                 e.Graphics.FillRectangle(new SolidBrush(Color.White), b.rect);
             }
             e.Graphics.DrawImage(example.playerImage(), example.rect);
+            e.Graphics.DrawImage(exampleLeft.playerImage(), exampleLeft.rect);
+            e.Graphics.DrawImage(exampleRight.playerImage(), exampleRight.rect);
+            e.Graphics.DrawImage(examplePrimary.playerImage(), examplePrimary.rect);
+            e.Graphics.DrawImage(exampleSecondary.playerImage(), exampleSecondary.rect);
         }
 
         public void OnStart()
         {
             example = new Plane(1, this.Width / 2 - 25, this.Height / 2 - 25, 0, "F4F_4", 0);
+            exampleLeft = new Plane(1, 275, 275, 0, "Dauntless", 0);
+            exampleRight = new Plane(1, 25, 575, 0, "Dauntless", 0);
+            examplePrimary = new Plane(1, 1000, 275, 1, "Dauntless", 0);
+            exampleSecondary = new Plane(1, 1000, 575, 1, "Dauntless", 0);
             howToTimer.Enabled = true;
         }
 
@@ -83,6 +98,17 @@ namespace BigBoatGame.Screens
         {
             example.Update();
             example.GunPosition();
+
+            exampleLeft.Update();
+            exampleLeft.Move();
+            exampleLeft.Turn(false);
+            exampleLeft.speed = 10;
+
+            exampleRight.Update();
+            exampleRight.Move();
+            exampleRight.Turn(true);
+            exampleRight.speed = 10;
+
 
             if (spaceKeyDown && example.shotClock > example.fireRate)
             {
@@ -94,6 +120,7 @@ namespace BigBoatGame.Screens
                 {
                     bullets.Add(example.Shoot(Convert.ToInt16(example.direction), false, false));
                 }
+                example.gunSide = !example.gunSide;
             }
 
             if (rightKeyDown)
@@ -109,6 +136,12 @@ namespace BigBoatGame.Screens
             foreach (Bullet b in bullets)
             {
                 b.Move();
+            }
+
+            if (escapeKeyDown)
+            {
+                GameForm.ChangeScreen(this, "MenuScreen");
+                this.Dispose();
             }
 
             Refresh();

@@ -18,7 +18,6 @@ namespace BigBoatGame.Screens
         {
             InitializeComponent();
             GameForm.yank = true;
-            flipperButton.Text = "";
             flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
             displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
             foreach(var button in Controls.OfType<Button>())
@@ -31,7 +30,7 @@ namespace BigBoatGame.Screens
         private void startButton_Click(object sender, EventArgs e)
         {
             GameForm.vs = false;
-            GameForm.ChangeScreen(this, "GameScreen");
+            GameForm.ChangeScreen(this, "GameScreen"); // sends to new screen
         }
         private void vsButton_Click(object sender, EventArgs e)
         {
@@ -57,7 +56,7 @@ namespace BigBoatGame.Screens
             {
                 flipperButton.Text = "";
                 flipperButton.BackgroundImage = Properties.Resources.AmericanFlag;
-                displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;
+                displayBox.BackgroundImage = Properties.Resources.F4F_4_Menu;// change what the flag looks like 
             }
             else
             {
