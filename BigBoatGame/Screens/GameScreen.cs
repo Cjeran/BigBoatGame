@@ -225,8 +225,8 @@ namespace BigBoatGame.Screens
             //    if (end) { break; }
             //    if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
             //}
-            BulletStuff(players, bullets, "Japanese Player Wins!");
-            BulletStuff(enemies, enemyBullets, "America Player Wins!");
+            BulletStuff(players, enemyBullets, "Japanese Player Wins!");
+            BulletStuff(enemies, bullets, "America Player Wins!");
             ShootStuff(players,bullets, spaceKeyDown, mKeyDown);
 
 
