@@ -440,9 +440,9 @@ namespace BigBoatGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream MachineGun {
+        internal static System.IO.UnmanagedMemoryStream Primary {
             get {
-                return ResourceManager.GetStream("MachineGun", resourceCulture);
+                return ResourceManager.GetStream("Primary", resourceCulture);
             }
         }
         
