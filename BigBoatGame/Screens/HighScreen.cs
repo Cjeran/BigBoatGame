@@ -20,9 +20,12 @@ namespace BigBoatGame.Screens
         private void OnStart()
         {
             
+            GameForm.scores = GameForm.scores.OrderByDescending(x => x.number).ThenBy(x => x.name).ToList();
+
             for (int i = 0; i < GameForm.scores.Count;i++)
             {
                 scoreLabel.Text += "\n"+GameForm.scores[i].name+" - "+ GameForm.scores[i].number;
+                
             }
             
         }
