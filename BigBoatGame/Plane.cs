@@ -268,10 +268,10 @@ namespace BigBoatGame
         {
             return (rect.IntersectsWith(c.rect));
         }
-        public void OnScreen(int time)
+        public void OnScreen(int time) // make sure the plane stays on screen
         {
 
-            if (rect.X > 1100)
+            if (rect.X > 1060)
             {
 
                 direction = Direction.Left;
@@ -281,7 +281,7 @@ namespace BigBoatGame
 
                 direction = Direction.Right;
             }
-            if (rect.Y > 750)
+            if (rect.Y > 720)
             {
 
                 direction = Direction.Up;

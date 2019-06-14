@@ -30,14 +30,7 @@ namespace BigBoatGame
          
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            Form f = this.FindForm();
-            f.Controls.Remove(this);
-            UserControl ns = null;
-            ns = new Screens.MenuScreen();
-            f.Controls.Add(ns);
-            ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2) - 30);
-            ns.Focus();
-            XmlRead();
+            
         }
         public void XmlRead()
         {
@@ -96,6 +89,10 @@ namespace BigBoatGame
                 case "EndScreen":
                      ns = new Screens.EndScreen();
                     break;
+                case "PauseScreen":
+                    ns = new Screens.PauseScreen();
+                    break;
+
             }
             //centres on the screen
             ns.Location = new Point((f.Width - ns.Width) / 2, ((f.Height - ns.Height) / 2) - 30);
@@ -104,7 +101,16 @@ namespace BigBoatGame
             ns.Focus();
         }
 
-
-
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            UserControl ns = null;
+            ns = new Screens.MenuScreen();
+            f.Controls.Add(ns);
+            ns.Location = new Point(f.Width / 2 - ns.Width / 2, (f.Height / 2 - ns.Height / 2) - 30);
+            ns.Focus();
+            XmlRead();
+        }
     }
 }
