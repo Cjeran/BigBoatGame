@@ -552,7 +552,7 @@ namespace BigBoatGame.Screens
             if (!GameForm.vs)
             {
                 e.Graphics.DrawString("Carrier HP: " + carrier.hp, textFont, textBrush, this.Width - 150, 75);
-                e.Graphics.DrawString("HP: " + player.hp, textFont, textBrush, this.Width - 150, 175);
+                e.Graphics.DrawString("HP: " + players[0].hp, textFont, textBrush, this.Width - 150, 175);
             }
             else
             {
@@ -561,7 +561,7 @@ namespace BigBoatGame.Screens
                 //player 2 HUD
                 e.Graphics.DrawString("Player 2", textFont, reloadBrush, this.Width - 125, 450);
                 e.Graphics.DrawString("HP: " + enemies[0].hp, textFont, textBrush, this.Width - 150, 475);
-                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 500);
+                e.Graphics.DrawString("Speed: " + enemies[0].speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 500);
                 if (enemies[0].reload1)
                 {
                     e.Graphics.DrawString("Reload: " + enemies[0].primaryCounter, textFont, reloadBrush, this.Width - 150, 525);
@@ -582,27 +582,27 @@ namespace BigBoatGame.Screens
 
             if (GameForm.yank)
             {
-                e.Graphics.DrawString("Speed: " + player.speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
+                e.Graphics.DrawString("Speed: " + players[0].speed * 15 + "mph", textFont, textBrush, this.Width - 150, 200);
             }
             else
             {
-                e.Graphics.DrawString("Speed: " + player.speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
+                e.Graphics.DrawString("Speed: " + players[0].speed * 15 + "km/h", textFont, textBrush, this.Width - 150, 200);
             }
             if (player.reload1)
             {
-                e.Graphics.DrawString("Reload: " + player.primaryCounter, textFont, reloadBrush, this.Width - 150, 225);
+                e.Graphics.DrawString("Reload: " + players[0].primaryCounter, textFont, reloadBrush, this.Width - 150, 225);
             }
             else
             {
-                e.Graphics.DrawString("Primary: " + player.ammo1, textFont, textBrush, this.Width - 150, 225);
+                e.Graphics.DrawString("Primary: " + players[0].ammo1, textFont, textBrush, this.Width - 150, 225);
             }
             if (player.reload2)
             {
-                e.Graphics.DrawString("Secondary: " + player.secondaryCounter, textFont, reloadBrush, this.Width - 150, 250);
+                e.Graphics.DrawString("Secondary: " + players[0].secondaryCounter, textFont, reloadBrush, this.Width - 150, 250);
             }
             else
             {
-                e.Graphics.DrawString("Secondary: " + player.ammo2, textFont, textBrush, this.Width - 150, 250);
+                e.Graphics.DrawString("Secondary: " + players[0].ammo2, textFont, textBrush, this.Width - 150, 250);
             }
 
         }
