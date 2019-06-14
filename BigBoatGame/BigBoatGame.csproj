@@ -215,5 +215,23 @@
   <ItemGroup>
     <None Include="Resources\Shokaku.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Engine1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Engine2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Engine3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MachineGun.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Secondary.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grenade-SoundBible.com-1777900486.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
