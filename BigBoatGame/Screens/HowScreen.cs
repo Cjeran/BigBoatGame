@@ -86,11 +86,11 @@ namespace BigBoatGame.Screens
 
         public void OnStart()
         {
-            example = new Plane(1, this.Width / 2 - 25, this.Height / 2 - 25, 0, "F4F_4", 0);
-            exampleLeft = new Plane(1, 275, 275, 0, "Dauntless", 0);
-            exampleRight = new Plane(1, 25, 575, 0, "Dauntless", 0);
-            examplePrimary = new Plane(1, 1000, 275, 1, "Dauntless", 0);
-            exampleSecondary = new Plane(1, 1000, 575, 1, "Dauntless", 0);
+            example = new Plane(1, this.Width / 2 - 25, this.Height / 2 - 25, 0, "F4F_4");
+            exampleLeft = new Plane(1, 275, 275, 0, "Dauntless");
+            exampleRight = new Plane(1, 25, 575, 0, "Dauntless");
+            examplePrimary = new Plane(1, 1000, 275, 1, "Dauntless");
+            exampleSecondary = new Plane(1, 1000, 575, 1, "Dauntless");
             howToTimer.Enabled = true;
         }
 

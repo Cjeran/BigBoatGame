@@ -91,7 +91,7 @@
             // 
             this.flipperButton.BackColor = System.Drawing.Color.Navy;
             this.flipperButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.flipperButton.Font = new System.Drawing.Font("Mixage Bk BT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipperButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipperButton.ForeColor = System.Drawing.Color.Black;
             this.flipperButton.Location = new System.Drawing.Point(918, 20);
             this.flipperButton.Name = "flipperButton";
@@ -127,6 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::BigBoatGame.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.displayBox);
             this.Controls.Add(this.vsButton);

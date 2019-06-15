@@ -19,6 +19,7 @@ namespace BigBoatGame
         XmlReader reader; 
         public static bool yank = true;
         public static bool vs = false;
+        public static Random rand = new Random();
         public GameForm()
         {
             InitializeComponent();

@@ -47,18 +47,18 @@ namespace BigBoatGame.Screens
             gameTimer.Start();
             if (GameForm.vs)
             {
-                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4", 0));
-                enemies.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
+                players.Add(player = new Plane(8, 250, 550, 0, "F4F_4" ));
+                enemies.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
             }
             else
             {
                 if (GameForm.yank == true)
                 {
-                    players.Add(player = new Plane(8, 250, 550, 0, "F4F_4", 0));
+                    players.Add(player = new Plane(8, 250, 550, 0, "F4F_4"));
                 }
                 else
                 {
-                    players.Add(player = new Plane(5, 250, 250, 0, "A6M2", 0));
+                    players.Add(player = new Plane(5, 250, 250, 0, "A6M2"));
                 }
                 carriers.Add(carrier = new Carrier(this.Width / 2 + 120, this.Height / 2 - 225));
                 carriers.Add(dummy = new Carrier(this.Width + 100, this.Height / 2 - 225));
@@ -111,7 +111,7 @@ namespace BigBoatGame.Screens
         }
 
 
-        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
+        private void GameScreen_KeyUp(object sender, KeyEventArgs e) // when keys are relesed 
         {
             switch (e.KeyCode)
             {
@@ -154,79 +154,11 @@ namespace BigBoatGame.Screens
             }
         }
 
-        private void GameScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             gameTime++;
-
-            //foreach (Bullet b in bullets)
-            //{
-            //    bool delete = false;
-            //    b.Move();
-            //    foreach (Plane en in enemies)
-            //    {
-            //        if (en.Colision(b))
-            //        {
-            //            if (b.cannon) { en.hp -= 2; } // bullet and enemie plane collision
-            //            else { en.hp -= 1; }
-            //            if (en.hp <= 0)
-            //            {
-            //                if (GameForm.vs)
-            //                {
-            //                    GameOver("American Player Wins!", "EndScreen");
-            //                }
-            //                else
-            //                {
-            //                    enemies.Remove(en);
-            //                    // GameForm.score += 5;
-            //                }
-            //            }
-            //            delete = true;
-            //            bullets.Remove(b);
-            //            break;
-            //        }
-            //    }
-            //    if (delete) { break; }
-            //    if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
-            //}
-
-            //foreach (Bullet b in enemyBullets)
-            //{
-            //    bool end = false;
-            //    b.Move();
-            //    foreach (Plane p in players)
-            //    {
-            //        if (p.Colision(b))
-            //        {
-            //            if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
-            //            else { p.hp -= 1; }
-            //            if (p.hp <= 0)
-            //            {
-            //                if (GameForm.vs)
-            //                {
-            //                    end = true;
-            //                    GameOver("Japanese Player Wins!", "EndScreen");
-            //                    break;
-            //                }
-            //                else
-            //                {
-            //                    enemies.Remove(p);
-            //                }
-
-            //            }
-            //            end = true;
-            //            bullets.Remove(b);
-            //        }
-            //    }
-            //    if (end) { break; }
-            //    if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
-            //}
-            BulletStuff(players, enemyBullets, "Japanese Player Wins!");
-            BulletStuff(enemies, bullets, "America Player Wins!");
+            BulletStuff(players, enemyBullets, "Japanese Player Wins!");  // bullet collision and updates with players and enemies bullets
+            BulletStuff(enemies, bullets, "America Player Wins!"); // bullet collision and updates with enemies and bullets
             ShootStuff(players,bullets, spaceKeyDown, mKeyDown);
 
 
@@ -249,16 +181,11 @@ namespace BigBoatGame.Screens
                 {
                     players[0].Turn(false);
                 }
-
-
                 ShootStuff(enemies,enemyBullets, zKeyDown, xKeyDown);
-
 
             }
             else/// vs mode end
             {
-
-
                 foreach (Plane en in enemies) //Enemy Shooting
                 {
                     enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction) - 5));
@@ -311,8 +238,6 @@ namespace BigBoatGame.Screens
                         }
                     }
                     p.Move();
-
-
                 }
 
 
@@ -330,9 +255,7 @@ namespace BigBoatGame.Screens
                         GameOver("The carrier has been destroyed. This is a shameful display!", "EndScreen");
                         break;
                     }
-
                 }
-
             }
             Refresh();
         }
@@ -370,7 +293,6 @@ namespace BigBoatGame.Screens
                 if (b.rect.X > 1400 || b.rect.X < -10 || b.rect.Y < -10 || b.rect.Y > 800) { bullets.Remove(b); break; }
             }
 
-           
         }
 
 
@@ -441,24 +363,9 @@ namespace BigBoatGame.Screens
         {
             for (int i = 0; i <= waves * 2; i++)
             {
-                int position = randGen.Next(150, 600);
-                //if (position == 1)
-                //{
-                //    position = this.Height / 4;
-                //}
-                //if (position == 1)
-                //{
-                //    position = this.Height / 4;
-                //}
-                //else if (position == 2)
-                //{
-                //    position = this.Height / 2;
-                //}
-                //else
-                //{
-                //    position = this.Height * (3 / 4);
-                //}
-                enemies.Add(enemy = new Plane(2, - 100, position, 0, type, position));
+                int position = 300;
+
+                enemies.Add(enemy = new Plane(2, - 100, position, 0, type));
             }
 
         }
@@ -489,7 +396,6 @@ namespace BigBoatGame.Screens
             }
             foreach (Plane p in players)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.Red), p.rect);
                 e.Graphics.DrawImage(p.playerImage(), p.rect);
             }
             foreach (Plane p in enemies)

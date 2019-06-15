@@ -11,13 +11,13 @@ namespace BigBoatGame
     {
         public Direction direction;
         public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter, maxSpeed;
-        int gunNumber,turnTimer, speedMult, speedTimer, target;
+        int gunNumber,turnTimer, speedMult, speedTimer, target,Stagger;
         public bool cannon, gunSide, reload1, reload2;
         public bool bombed = false;
         public Rectangle rect;
         public Point leftGun, rightGun, backGun;
         string name;
-
+        
 
         public enum Direction
         {
@@ -31,7 +31,7 @@ namespace BigBoatGame
             UpLeft = 7
         }
 
-        public Plane(int _hp, int _x, int _y, int _direction, string _name, int _target)
+        public Plane(int _hp, int _x, int _y, int _direction, string _name)
         {
             hp = _hp;
             x = _x;
@@ -39,9 +39,8 @@ namespace BigBoatGame
             speed = 0;
             direction = (Direction)_direction;
             maxSpeed = 10;
-            target = _target;
 
-
+         
             ammo1 = 40;
             ammo2 = 20;
             rect = new Rectangle(x, y, 50, 50);
@@ -50,7 +49,7 @@ namespace BigBoatGame
             shotClock = 0;
             speedTimer = 0;
             fireRate = 5;
-
+            
             switch (name)
             {
                 case "F4F_4":
@@ -80,8 +79,13 @@ namespace BigBoatGame
                     ammo2 = 0;
                     gunNumber = 1;
                     maxSpeed = 5;
+                    Stagger = GameForm.rand.Next(10, 50);
+                    target = GameForm.rand.Next(150, 600);
+                    rect.Y = target;
+                    rect.X -= Stagger;
                     break;
             }
+
 
         }
 
