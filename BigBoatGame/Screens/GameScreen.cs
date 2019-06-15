@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace BigBoatGame.Screens
 {
@@ -23,6 +24,9 @@ namespace BigBoatGame.Screens
         List<Carrier> carriers = new List<Carrier>();
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> enemyBullets = new List<Bullet>();
+        SoundPlayer primaryPlayer = new SoundPlayer(Properties.Resources.Primary);
+        SoundPlayer bombPlayer = new SoundPlayer(Properties.Resources.Explosion);
+        
 
         int waves;
 
@@ -240,6 +244,7 @@ namespace BigBoatGame.Screens
                 {
                     if (en.Colision(carrier) && en.bombed == false)
                     {
+                        bombPlayer.Play();
                         en.bombed = true;
                         en.maxSpeed = 8;
                         carrier.hp -= 5;
@@ -301,6 +306,7 @@ namespace BigBoatGame.Screens
                 p.Move();
                 if (key1Down && p.shotClock > p.fireRate && p.ammo1 > 0)
                 {
+                    primaryPlayer.Play();
                     p.ammo1--;
                     if (p.gunSide)
                     {
@@ -322,6 +328,7 @@ namespace BigBoatGame.Screens
                     p.ammo2--;
                     if (GameForm.yank)
                     {
+                        primaryPlayer.Play();
                         if (p.gunSide)
                         {
                             bulletList.Add(p.Shoot(Convert.ToInt16(p.direction), false, true));

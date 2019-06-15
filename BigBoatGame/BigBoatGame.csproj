@@ -231,16 +231,24 @@
     <None Include="Resources\Engine2.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Engine3.wav" />
+    <None Include="Resources\Engine3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MachineGun.wav" />
+    <None Include="Resources\MachineGun.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Secondary.wav" />
+    <None Include="Resources\Secondary.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Grenade-SoundBible.com-1777900486.wav" />
+    <None Include="Resources\Grenade-SoundBible.com-1777900486.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Joystick.png" />
