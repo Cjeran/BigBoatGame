@@ -63,9 +63,6 @@ namespace BigBoatGame.Screens
                 carriers.Add(carrier = new Carrier(this.Width / 2 + 120, this.Height / 2 - 225));
                 carriers.Add(dummy = new Carrier(this.Width + 100, this.Height / 2 - 225));
             }
-
-
-
         }
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -154,7 +151,7 @@ namespace BigBoatGame.Screens
             }
         }
 
-        private void gameTimer_Tick(object sender, EventArgs e)
+        private void gameTimer_Tick(object sender, EventArgs e)// game tick 
         {
             gameTime++;
             BulletStuff(players, enemyBullets, "Japanese Player Wins!");  // bullet collision and updates with players and enemies bullets
@@ -182,7 +179,6 @@ namespace BigBoatGame.Screens
                     players[0].Turn(false);
                 }
                 ShootStuff(enemies,enemyBullets, zKeyDown, xKeyDown);
-
             }
             else/// vs mode end
             {
@@ -209,7 +205,6 @@ namespace BigBoatGame.Screens
                     {
                         EnemySpawn("Dauntless");
                     }
-
                 }
 
                 if (rightKeyDown)
@@ -282,11 +277,11 @@ namespace BigBoatGame.Screens
                             else
                             {
                                 planes.Remove(p);
-                                break;
                             }
                         }
                         end = true;
                         bullets.Remove(b);
+                        break;
                     }
                 }
                 if (end) { break; }
