@@ -15,16 +15,6 @@ namespace BigBoatGame.Screens
         Boolean leftKeyDown, rightKeyDown, spaceKeyDown, mKeyDown, escapeKeyDown, aKeyDown, dKeyDown, zKeyDown, xKeyDown;
         Plane example, exampleLeft, exampleRight, examplePrimary, exampleSecondary;
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         List<Bullet> bullets = new List<Bullet>();
         public HowScreen()
         {

@@ -113,7 +113,6 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Press and Hold \'Green\' To Fire Primary Weapons";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -145,7 +144,6 @@
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Notes:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 

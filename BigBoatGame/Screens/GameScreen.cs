@@ -246,7 +246,7 @@ namespace BigBoatGame.Screens
 
                 foreach (Plane en in enemies)
                 {
-                    if (en.Colision(carrier) && en.bombed == false)
+                    if (en.Collision(carrier) && en.bombed == false)
                     {
                         bombPlayer.Play();
                         en.bombed = true;
@@ -259,7 +259,7 @@ namespace BigBoatGame.Screens
                         GameOver("The carrier has been destroyed. This is a shameful display!", "EndScreen");
                         break;
                     }
-                    if (en.Colision(player))
+                    if (en.Collision(player))
                     {
                         player.hp -= 2;
                         if (player.hp <= 0)
@@ -281,7 +281,7 @@ namespace BigBoatGame.Screens
                 b.Move();
                 foreach (Plane p in planes)
                 {
-                    if (p.Colision(b))
+                    if (p.Collision(b))
                     {
                         if (b.cannon) { p.hp -= 2; }/// bullet and enemie plane collision
                         else { p.hp -= 1; }

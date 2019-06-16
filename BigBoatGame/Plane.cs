@@ -264,15 +264,15 @@ namespace BigBoatGame
                 }
             }
         }
-        public Boolean Colision(Plane p)
+        public Boolean Collision(Plane p)
         {
             return (rect.IntersectsWith(p.rect));
         }
-        public Boolean Colision(Bullet b)
+        public Boolean Collision(Bullet b)
         {
             return (rect.IntersectsWith(b.rect));
         }
-        public Boolean Colision(Carrier c)
+        public Boolean Collision(Carrier c)
         {
             return (rect.IntersectsWith(c.rect));
         }
