@@ -25,6 +25,7 @@ namespace BigBoatGame.Screens
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> enemyBullets = new List<Bullet>();
         SoundPlayer primaryPlayer = new SoundPlayer(Properties.Resources.Primary);
+        SoundPlayer secondaryPlayer = new SoundPlayer(Properties.Resources.Secondary);
         SoundPlayer bombPlayer = new SoundPlayer(Properties.Resources.Explosion);
         
 
@@ -354,6 +355,7 @@ namespace BigBoatGame.Screens
                     }
                     else
                     {
+                        secondaryPlayer.Play();
                         if (p.gunSide)
                         {
                             bulletList.Add(p.Shoot(Convert.ToInt16(p.direction), true, true));
