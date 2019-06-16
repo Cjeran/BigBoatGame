@@ -188,7 +188,7 @@ namespace BigBoatGame.Screens
                 }
                 ShootStuff(enemies,enemyBullets, zKeyDown, xKeyDown);
             }
-            else/// vs mode end
+            else/// normal mode
             {
                 foreach (Plane en in enemies) //Enemy Shooting
                 {
@@ -243,7 +243,6 @@ namespace BigBoatGame.Screens
                     p.Move();
                 }
 
-
                 foreach (Plane en in enemies)
                 {
                     if (en.Colision(carrier) && en.bombed == false)
@@ -264,12 +263,11 @@ namespace BigBoatGame.Screens
                         player.hp -= 2;
                         if (player.hp <= 0)
                         {
-                            GameOver("You have chrashed into the ocean", "EndScreen");
+                            GameOver("You have crashed into the ocean", "EndScreen");
                         }
                         enemies.Remove(en);
                         break;
                     }
-                    
                 }
             }
             Refresh();
