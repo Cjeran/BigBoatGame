@@ -35,7 +35,7 @@ namespace BigBoatGame.Screens
         public Carrier carrier, dummy;
         public Plane player;
         public Plane enemy;
-        Boolean upKeyDown, rightKeyDown, leftKeyDown, downKeyDown, wKeyDown, dKeyDown, aKeyDown, sKeyDown, mKeyDown, spaceKeyDown, zKeyDown, xKeyDown, escapeKeyDown,paused;
+        Boolean rightKeyDown, leftKeyDown, dKeyDown, aKeyDown, mKeyDown, spaceKeyDown, zKeyDown, xKeyDown, escapeKeyDown, paused;
 
         public GameScreen()
         {
@@ -73,29 +73,17 @@ namespace BigBoatGame.Screens
         {
             switch (e.KeyCode)
             {
-                case Keys.Up:
-                    upKeyDown = true;
-                    break;
                 case Keys.Right:
                     rightKeyDown = true;
                     break;
                 case Keys.Left:
                     leftKeyDown = true;
                     break;
-                case Keys.Down:
-                    downKeyDown = true;
-                    break;
-                case Keys.W:
-                    wKeyDown = true;
-                    break;
                 case Keys.D:
                     dKeyDown = true;
                     break;
                 case Keys.A:
                     aKeyDown = true;
-                    break;
-                case Keys.S:
-                    sKeyDown = true;
                     break;
                 case Keys.Space:
                     spaceKeyDown = true;
@@ -120,29 +108,17 @@ namespace BigBoatGame.Screens
         {
             switch (e.KeyCode)
             {
-                case Keys.Up:
-                    upKeyDown = false;
-                    break;
                 case Keys.Right:
                     rightKeyDown = false;
                     break;
                 case Keys.Left:
                     leftKeyDown = false;
                     break;
-                case Keys.Down:
-                    downKeyDown = false;
-                    break;
-                case Keys.W:
-                    wKeyDown = false;
-                    break;
                 case Keys.D:
                     dKeyDown = false;
                     break;
                 case Keys.A:
                     aKeyDown = false;
-                    break;
-                case Keys.S:
-                    sKeyDown = false;
                     break;
                 case Keys.Space:
                     spaceKeyDown = false;

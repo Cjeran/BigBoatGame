@@ -50,17 +50,13 @@ namespace BigBoatGame
                         // fill score object with required data
                         s.number = Convert.ToInt16(reader.GetAttribute("number"));
                         s.name = reader.GetAttribute("name");
-
                         scores.Add(s);
                     }
-
                 }
                 reader.Close();
             }
             catch { }
         }
-        
-    
 
         public static void ChangeScreen(UserControl current, string next)
         {
