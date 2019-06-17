@@ -256,5 +256,29 @@
   <ItemGroup>
     <None Include="Resources\Joystick2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_DownLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_DownRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_UpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_UpRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
