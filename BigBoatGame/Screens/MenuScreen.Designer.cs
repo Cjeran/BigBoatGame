@@ -41,10 +41,10 @@
             // startButton
             // 
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(864, 173);
+            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.Location = new System.Drawing.Point(865, 173);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(308, 46);
+            this.startButton.Size = new System.Drawing.Size(307, 46);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Start Game";
             this.startButton.UseVisualStyleBackColor = true;
@@ -53,10 +53,10 @@
             // highscoreButton
             // 
             this.highscoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.highscoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.highscoreButton.Location = new System.Drawing.Point(864, 314);
+            this.highscoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highscoreButton.Location = new System.Drawing.Point(865, 314);
             this.highscoreButton.Name = "highscoreButton";
-            this.highscoreButton.Size = new System.Drawing.Size(308, 46);
+            this.highscoreButton.Size = new System.Drawing.Size(307, 46);
             this.highscoreButton.TabIndex = 2;
             this.highscoreButton.Text = "Aces Lounge   (Highscores)";
             this.highscoreButton.UseVisualStyleBackColor = true;
@@ -65,12 +65,12 @@
             // howButton
             // 
             this.howButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.howButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.howButton.Location = new System.Drawing.Point(864, 381);
+            this.howButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.howButton.Location = new System.Drawing.Point(865, 381);
             this.howButton.Name = "howButton";
-            this.howButton.Size = new System.Drawing.Size(308, 46);
+            this.howButton.Size = new System.Drawing.Size(307, 46);
             this.howButton.TabIndex = 3;
-            this.howButton.Text = "Flight School   (How To Play)";
+            this.howButton.Text = "Flight School ";
             this.howButton.UseVisualStyleBackColor = true;
             this.howButton.Click += new System.EventHandler(this.howButton_Click);
             // 
@@ -91,7 +91,7 @@
             // 
             this.flipperButton.BackColor = System.Drawing.Color.Navy;
             this.flipperButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.flipperButton.Font = new System.Drawing.Font("Mixage Bk BT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipperButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flipperButton.ForeColor = System.Drawing.Color.Black;
             this.flipperButton.Location = new System.Drawing.Point(918, 20);
             this.flipperButton.Name = "flipperButton";
@@ -103,22 +103,22 @@
             // vsButton
             // 
             this.vsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vsButton.Location = new System.Drawing.Point(864, 245);
+            this.vsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vsButton.Location = new System.Drawing.Point(865, 245);
             this.vsButton.Name = "vsButton";
-            this.vsButton.Size = new System.Drawing.Size(308, 46);
+            this.vsButton.Size = new System.Drawing.Size(307, 46);
             this.vsButton.TabIndex = 1;
-            this.vsButton.Text = "Dogfight   (Vs. Mode)";
+            this.vsButton.Text = "Dogfight ";
             this.vsButton.UseVisualStyleBackColor = true;
             this.vsButton.Click += new System.EventHandler(this.vsButton_Click);
             // 
             // displayBox
             // 
-            this.displayBox.BackgroundImage = global::BigBoatGame.Properties.Resources.A6M2_UpRight;
+            this.displayBox.BackgroundImage = global::BigBoatGame.Properties.Resources.A6M2_Menu;
             this.displayBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.displayBox.Location = new System.Drawing.Point(84, 3);
             this.displayBox.Name = "displayBox";
-            this.displayBox.Size = new System.Drawing.Size(720, 720);
+            this.displayBox.Size = new System.Drawing.Size(750, 750);
             this.displayBox.TabIndex = 6;
             this.displayBox.TabStop = false;
             // 
