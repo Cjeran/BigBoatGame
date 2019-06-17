@@ -103,6 +103,7 @@ namespace BigBoatGame
 
         private void GameForm_Load(object sender, EventArgs e)
         {
+            Cursor.Hide();
             Form f = this.FindForm();
             f.Controls.Remove(this);
             UserControl ns = null;
