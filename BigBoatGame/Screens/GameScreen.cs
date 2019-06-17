@@ -167,11 +167,7 @@ namespace BigBoatGame.Screens
             }
             else/// normal mode
             {
-                foreach (Plane en in enemies) //Enemy Shooting
-                {
-                    enemyBullets.Add(en.BackShoot(Convert.ToInt16(en.direction) - 5));
-                }
-
+            
                 if (enemies.Count == 0) //New Wave
                 {
                     gameScore = Convert.ToInt32(GameForm.score);
@@ -227,24 +223,14 @@ namespace BigBoatGame.Screens
                         bombPlayer.Play();
                         en.bombed = true;
                         en.maxSpeed = 8;
-                        carrier.hp -= 5;
+                        carrier.hp -= 8;
                     }
                     if (carrier.hp <= 0)
                     {
                         carrier.hp = 0;
                         GameOver("The carrier has been destroyed. This is a shameful display!", "EndScreen");
                         break;
-                    }
-                    if (en.Collision(player))
-                    {
-                        player.hp -= 2;
-                        if (player.hp <= 0)
-                        {
-                            GameOver("You have crashed into the ocean", "EndScreen");
-                        }
-                        enemies.Remove(en);
-                        break;
-                    }
+                    }     
                 }
             }
             Refresh();
