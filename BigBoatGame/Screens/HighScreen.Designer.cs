@@ -94,7 +94,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::BigBoatGame.Properties.Resources.F4F_4_Up;
-            this.pictureBox2.Location = new System.Drawing.Point(800, 338);
+            this.pictureBox2.Location = new System.Drawing.Point(800, 385);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 4;
@@ -168,6 +168,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::BigBoatGame.Properties.Resources.Background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);

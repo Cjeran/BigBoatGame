@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Andrew, Garrett and Cjeran -Carrier Defence- 16 june 2019
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace BigBoatGame
         XmlReader reader; 
         public static bool yank = true;
         public static bool vs = false;
+        public static Random rand = new Random();
         public GameForm()
         {
             InitializeComponent();
@@ -49,17 +51,13 @@ namespace BigBoatGame
                         // fill score object with required data
                         s.number = Convert.ToInt16(reader.GetAttribute("number"));
                         s.name = reader.GetAttribute("name");
-
                         scores.Add(s);
                     }
-
                 }
                 reader.Close();
             }
             catch { }
         }
-        
-    
 
         public static void ChangeScreen(UserControl current, string next)
         {
