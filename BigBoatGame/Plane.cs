@@ -487,23 +487,23 @@ namespace BigBoatGame
                     switch (direction)                        // TODO change image directory when images are done
                     {
                         case Direction.Up:
-                            return Properties.Resources.F4F_4_Up;
+                            return Properties.Resources.B7A2_Up;
                         case Direction.UpRight:
-                            return Properties.Resources.F4F_4_UpRight;
+                            return Properties.Resources.B7A2_UpRight;
                         case Direction.Right:
-                            return Properties.Resources.F4F_4_Right;
+                            return Properties.Resources.B7A2_Right;
                         case Direction.DownRight:
-                            return Properties.Resources.F4F_4_DownRight;
+                            return Properties.Resources.B7A2_DownRight;
                         case Direction.Down:
-                            return Properties.Resources.F4F_4_Down;
+                            return Properties.Resources.B7A2_Down;
                         case Direction.DownLeft:
-                            return Properties.Resources.F4F_4_DownLeft;
+                            return Properties.Resources.B7A2_DownLeft;
                         case Direction.Left:
-                            return Properties.Resources.F4F_4_Left;
+                            return Properties.Resources.B7A2_Left;
                         case Direction.UpLeft:
-                            return Properties.Resources.F4F_4_UpLeft;
+                            return Properties.Resources.B7A2_UpLeft;
                     }
-                    return Properties.Resources.F4F_4_Up;
+                    return Properties.Resources.B7A2_Up;
 
 
             }
