@@ -142,7 +142,7 @@ namespace BigBoatGame.Screens
         {
             gameTime++;
             BulletStuff(players, enemyBullets, "Japanese Player Wins!");  // bullet collision and updates with players and enemies bullets
-            BulletStuff(enemies, bullets, "America Player Wins!"); // bullet collision and updates with enemies and bullets
+            BulletStuff(enemies, bullets, "American Player Wins!"); // bullet collision and updates with enemies and bullets
             ShootStuff(players,bullets, spaceKeyDown, mKeyDown);
 
             if (GameForm.vs) // vs mode checks
