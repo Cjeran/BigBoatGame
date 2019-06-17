@@ -11,13 +11,13 @@ namespace BigBoatGame
     {
         public Direction direction;
         public int hp, x, y, speed, ammo1, ammo2, shotClock, fireRate, primaryCounter, secondaryCounter, maxSpeed;
-        int gunNumber,turnTimer, speedMult, speedTimer, target;
+        int turnTimer, speedTimer, target,Stagger;
         public bool cannon, gunSide, reload1, reload2;
         public bool bombed = false;
         public Rectangle rect;
         public Point leftGun, rightGun, backGun;
         string name;
-
+        
 
         public enum Direction
         {
@@ -31,7 +31,7 @@ namespace BigBoatGame
             UpLeft = 7
         }
 
-        public Plane(int _hp, int _x, int _y, int _direction, string _name, int _target)
+        public Plane(int _hp, int _x, int _y, int _direction, string _name)
         {
             hp = _hp;
             x = _x;
@@ -39,9 +39,8 @@ namespace BigBoatGame
             speed = 0;
             direction = (Direction)_direction;
             maxSpeed = 10;
-            target = _target;
 
-
+         
             ammo1 = 40;
             ammo2 = 20;
             rect = new Rectangle(x, y, 50, 50);
@@ -50,38 +49,43 @@ namespace BigBoatGame
             shotClock = 0;
             speedTimer = 0;
             fireRate = 5;
-
+            
             switch (name)
             {
                 case "F4F_4":
                     cannon = false;
                     ammo1 = 40;
                     ammo2 = 40;
-                    gunNumber = 3;
-                    break;
+                  break;
                 case "A6M2":
                     cannon = true;
                     ammo1 = 40;
                     ammo2 = 20;
-                    gunNumber = 2;
                     break;
                 case "Dauntless":
                     cannon = false;
                     hp = 2;
                     ammo1 = 40;
                     ammo2 = 0;
-                    gunNumber = 1;
                     maxSpeed = 5;
+                    Stagger = GameForm.rand.Next(10, 50);
+                    target = GameForm.rand.Next(150, 600);
+                    rect.Y = target;
+                    rect.X -= Stagger;
                     break;
                 case "B7A2":
                     cannon = false;
                     hp = 1;
                     ammo1 = 40;
                     ammo2 = 0;
-                    gunNumber = 1;
                     maxSpeed = 5;
+                    Stagger = GameForm.rand.Next(10, 50);
+                    target = GameForm.rand.Next(150, 600);
+                    rect.Y = target;
+                    rect.X -= Stagger;
                     break;
             }
+
 
         }
 
@@ -256,22 +260,22 @@ namespace BigBoatGame
                 }
             }
         }
-        public Boolean Colision(Plane p)
+        public Boolean Collision(Plane p)
         {
             return (rect.IntersectsWith(p.rect));
         }
-        public Boolean Colision(Bullet b)
+        public Boolean Collision(Bullet b)
         {
             return (rect.IntersectsWith(b.rect));
         }
-        public Boolean Colision(Carrier c)
+        public Boolean Collision(Carrier c)
         {
             return (rect.IntersectsWith(c.rect));
         }
-        public void OnScreen(int time)
+        public void OnScreen(int time) // make sure the plane stays on screen
         {
 
-            if (rect.X > 1100)
+            if (rect.X > 1060)
             {
 
                 direction = Direction.Left;
@@ -281,7 +285,7 @@ namespace BigBoatGame
 
                 direction = Direction.Right;
             }
-            if (rect.Y > 750)
+            if (rect.Y > 720)
             {
 
                 direction = Direction.Up;
@@ -312,12 +316,12 @@ namespace BigBoatGame
             return bullet;
         }
 
-        public Bullet BackShoot(int shootDirection)
-        {
-                shotClock = 0;
-                Bullet b = new Bullet(backGun.X, backGun.Y, false, shootDirection);
-                return b;
-        }
+        //public Bullet BackShoot(int shootDirection)
+        //{
+        //        shotClock = 0;
+        //        Bullet b = new Bullet(backGun.X, backGun.Y, false, shootDirection);
+        //        return b;
+        //}
 
 
         public void GunPosition()
@@ -487,23 +491,23 @@ namespace BigBoatGame
                     switch (direction)                        // TODO change image directory when images are done
                     {
                         case Direction.Up:
-                            return Properties.Resources.F4F_4_Up;
+                            return Properties.Resources.B7A2_Up;
                         case Direction.UpRight:
-                            return Properties.Resources.F4F_4_UpRight;
+                            return Properties.Resources.B7A2_UpRight;
                         case Direction.Right:
-                            return Properties.Resources.F4F_4_Right;
+                            return Properties.Resources.B7A2_Right;
                         case Direction.DownRight:
-                            return Properties.Resources.F4F_4_DownRight;
+                            return Properties.Resources.B7A2_DownRight;
                         case Direction.Down:
-                            return Properties.Resources.F4F_4_Down;
+                            return Properties.Resources.B7A2_Down;
                         case Direction.DownLeft:
-                            return Properties.Resources.F4F_4_DownLeft;
+                            return Properties.Resources.B7A2_DownLeft;
                         case Direction.Left:
-                            return Properties.Resources.F4F_4_Left;
+                            return Properties.Resources.B7A2_Left;
                         case Direction.UpLeft:
-                            return Properties.Resources.F4F_4_UpLeft;
+                            return Properties.Resources.B7A2_UpLeft;
                     }
-                    return Properties.Resources.F4F_4_Up;
+                    return Properties.Resources.B7A2_Up;
 
 
             }

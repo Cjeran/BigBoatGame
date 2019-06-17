@@ -231,22 +231,54 @@
     <None Include="Resources\Engine2.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Engine3.wav" />
+    <None Include="Resources\Engine3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MachineGun.wav" />
+    <None Include="Resources\MachineGun.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Secondary.wav" />
+    <None Include="Resources\Secondary.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Grenade-SoundBible.com-1777900486.wav" />
+    <None Include="Resources\Grenade-SoundBible.com-1777900486.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Joystick.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Joystick2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_DownLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_DownRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_UpLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B7A2_UpRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

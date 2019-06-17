@@ -34,15 +34,18 @@
             // 
             // backButton
             // 
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Location = new System.Drawing.Point(657, 143);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(128, 64);
             this.backButton.TabIndex = 0;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // leaveButton
             // 
+            this.leaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.leaveButton.Location = new System.Drawing.Point(657, 374);
             this.leaveButton.Name = "leaveButton";
             this.leaveButton.Size = new System.Drawing.Size(128, 64);

@@ -44,7 +44,6 @@
             this.BackgroundImage = global::BigBoatGame.Properties.Resources.Background;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1300, 750);
-            this.Load += new System.EventHandler(this.GameScreen_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
